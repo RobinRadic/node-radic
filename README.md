@@ -54,11 +54,11 @@ var radic = require('radic'),
     // Radic helpers (require's global installation and configuration)
     services = radic.gitServices, // bitbucket/github REST API 
     config = radic.config;   
-     
-     
-    // Example usage
-    var config = new Config('config', { /** options */ });
-    var db = new DB('name');
+ 
+ 
+// Example usage
+var config = new Config('config', { /** options */ });
+var db = new DB('name');
 ```
  
 **More documentation soon**

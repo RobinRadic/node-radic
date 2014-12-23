@@ -4,8 +4,9 @@
   "description": "radic created by Robin Radic",
   "main": "index.js",
   "scripts": {
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec; cp -r coverage docs/ >/dev/null 2>&1; rm -rf coverage >/dev/null 2>&1; exit 0",
-    "doc": "jsdoc -c ./jsdoc.json ./README.md"
+    "jsdoc": "jsdoc -t ./node_modules/ink-docstrap/template -c ./jsdoc.json  ./README.md"
   },
   "bin": {
     "radic": "bin/radic.js"
@@ -30,8 +31,11 @@
   },
   "devDependencies": {
     "chai": "^1.10.0",
+    "coveralls": "^2.11.2",
+    "ink-docstrap": "^0.4.12",
     "istanbul": "^0.3.5",
     "mocha": "^2.1.0",
+    "mocha-lcov-reporter": "0.0.1",
     "sinon": "^1.12.2"
   }
 }

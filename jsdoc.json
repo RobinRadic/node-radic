@@ -10,7 +10,21 @@
     "plugins": [
         "plugins/markdown"
     ],
-
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false,
+        "default": {
+            "outputSourceFiles": true
+        },
+        "systemName"      : "Radic",
+        "footer"          : "",
+        "copyright"       : "Radic Copyright © 2012-2014 Robin Radic.",
+        "navType"         : "vertical",
+        "theme"           : "amelia",
+        "linenums"        : true,
+        "collapseSymbols" : false,
+        "inverseNav"      : true
+    },
     "markdown": {
         "parser": "gfm"
     }
