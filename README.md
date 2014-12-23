@@ -1,5 +1,8 @@
 radic
 =============
+[![Build Status](https://secure.travis-ci.org/robinradic/node-radic.png)](http://travis-ci.org/robinradic/node-radic)
+[![Coverage Status](https://img.shields.io/coveralls/robinradic/node-radic.svg)](https://coveralls.io/r/robinradic/node-radic?branch=master)
+
 **version:** 0.0.1
 
 ## Overview
