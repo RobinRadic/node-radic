@@ -1,7 +1,9 @@
 radic
 =============
-[![Build Status](https://secure.travis-ci.org/robinradic/node-radic.png)](http://travis-ci.org/robinradic/node-radic)
+[![Build Status](https://travis-ci.org/RobinRadic/node-radic.svg?branch=master)](http://travis-ci.org/RobinRadic/node-radic)
+[![GitHub version](https://badge.fury.io/gh/robinradic%2Fnode-radic.svg)](http://badge.fury.io/gh/robinradic%2Fnode-radic)
 [![Coverage Status](https://img.shields.io/coveralls/robinradic/node-radic.svg)](https://coveralls.io/r/robinradic/node-radic?branch=master)
+[![License](http://img.shields.io/badge/license-MIT-blue.svg)](http://radic.mit-license.org)
 
 **version:** 0.0.1
 
