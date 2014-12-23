@@ -2,10 +2,8 @@ radic
 =============
 [![Build Status](https://travis-ci.org/RobinRadic/node-radic.svg?branch=master)](http://travis-ci.org/RobinRadic/node-radic)
 [![GitHub version](https://badge.fury.io/gh/robinradic%2Fnode-radic.svg)](http://badge.fury.io/gh/robinradic%2Fnode-radic)
-[![Coverage Status](https://img.shields.io/coveralls/robinradic/node-radic.svg)](https://coveralls.io/r/robinradic/node-radic?branch=master)
+[![Coverage Status](https://img.shields.io/coveralls/RobinRadic/node-radic.svg)](https://coveralls.io/r/RobinRadic/node-radic)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](http://radic.mit-license.org)
-
-**version:** 0.0.1
 
 ## Overview
 `radic` is the core library and application for many of my node applications.
