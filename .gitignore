@@ -3,3 +3,7 @@
 /composer
 /vendor
 /.idea/
+/docs
+/coverage
+/npm-debug.log
+/.yo-rc.json

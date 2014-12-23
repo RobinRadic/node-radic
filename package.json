@@ -4,11 +4,34 @@
   "description": "radic created by Robin Radic",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec; cp -r coverage docs/ >/dev/null 2>&1; rm -rf coverage >/dev/null 2>&1; exit 0",
+    "doc": "jsdoc -c ./jsdoc.json ./README.md"
+  },
+  "bin": {
+    "radic": "bin/radic.js"
   },
   "license": "MIT",
   "author": {
     "name": "Robin Radic",
     "email": "robin@radic.nl"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "blessed": "0.0.37",
+    "chalk": "^0.5.0",
+    "configstore": "^0.3.1",
+    "eventemitter2": "^0.4.14",
+    "fs-extra": "^0.12.0",
+    "ini": "^1.3.2",
+    "lodash": "^2.4.1",
+    "moment": "^2.8.4",
+    "nedb": "^1.0.1",
+    "schema-inspector": "^1.5.0"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "istanbul": "^0.3.5",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2"
   }
 }
