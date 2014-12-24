@@ -1,7 +1,7 @@
 {
   "name": "radic",
   "version": "0.1.0",
-  "description": "radic created by Robin Radic",
+  "description": "The core library and application for many of my node applications.",
   "main": "index.js",
   "scripts": {
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
@@ -14,7 +14,12 @@
   "license": "MIT",
   "author": {
     "name": "Robin Radic",
-    "email": "robin@radic.nl"
+    "email": "robin@radic.nl",
+    "url": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robinradic/radic-cli"
   },
   "dependencies": {
     "async": "^0.9.0",
