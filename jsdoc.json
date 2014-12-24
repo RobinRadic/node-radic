@@ -20,7 +20,7 @@
         "footer"          : "",
         "copyright"       : "Radic Copyright © 2012-2014 Robin Radic.",
         "navType"         : "vertical",
-        "theme"           : "amelia",
+        "theme"           : "spruce",
         "linenums"        : true,
         "collapseSymbols" : false,
         "inverseNav"      : true
