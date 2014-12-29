@@ -404,7 +404,9 @@
 186
 187
 188
-189</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+189
+190
+191</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -426,6 +428,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -588,6 +591,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -600,22 +604,23 @@
 &nbsp;
 var helpMenu = function(cli) {
 &nbsp;
-    var usage, 
+    var usage,
     desc,
-    items = {}, 
-    used = {}, 
+    items = {},
+    used = {},
     children = {};
-    
+&nbsp;
 &nbsp;
     var self = {
 &nbsp;
         /**
+         * description
          */
 &nbsp;
         description: function(value) {
-            
+&nbsp;
             desc = value;
-              
+&nbsp;
         },
 &nbsp;
         /**
@@ -639,7 +644,7 @@ var helpMenu = function(cli) {
             used[name]= 1;
 &nbsp;
             if(!items[category]) items[category] = [];
-            
+&nbsp;
            items[category].push({
                name: name,
                desc: desc
@@ -664,11 +669,11 @@ var helpMenu = function(cli) {
 <span class="cstat-no" title="statement not covered" >            if(desc) {</span>
 <span class="cstat-no" title="statement not covered" >                console.log('%s\n'.bold, desc);</span>
             }
-            
+&nbsp;
 <span class="cstat-no" title="statement not covered" >            if(usage) <span class="cstat-no" title="statement not covered" >console.log('%s: %s\n', 'Usage'.bold, usage);</span></span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            for(var category in items) {</span>
-                
+&nbsp;
 <span class="cstat-no" title="statement not covered" >                console.log('%s:'.bold, capitalizeFirst(category));</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >                var ops = {</span>
@@ -684,8 +689,8 @@ var helpMenu = function(cli) {
 &nbsp;
 &nbsp;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                cli.table(items[category], ops);  </span>
-<span class="cstat-no" title="statement not covered" >                console.log();  </span>
+<span class="cstat-no" title="statement not covered" >                cli.table(items[category], ops);</span>
+<span class="cstat-no" title="statement not covered" >                console.log();</span>
             }
         }
     };
@@ -722,7 +727,7 @@ exports.plugin = function(cli) {
         var k;
 &nbsp;
 &nbsp;
-        <span class="missing-if-branch" title="if path not taken" >I</span>if(ops.defaults) { 
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(ops.defaults) {
 <span class="cstat-no" title="statement not covered" >            for(var op in ops.optional) {</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >                k = op;</span>
@@ -731,9 +736,9 @@ exports.plugin = function(cli) {
 <span class="cstat-no" title="statement not covered" >                    k = k + "=" + ops.defaults[k];</span>
                 }
 &nbsp;
-                
+&nbsp;
 <span class="cstat-no" title="statement not covered" >                childHelp.add('Optional Flags', "--" + k, ops.optional[op]);</span>
-                
+&nbsp;
             }
         }
 &nbsp;
@@ -749,7 +754,7 @@ exports.plugin = function(cli) {
     cli.help = <span class="fstat-no" title="function not covered" >function() {</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        help.print();</span>
-        
+&nbsp;
     }
 &nbsp;
     cli.commandHelp = <span class="fstat-no" title="function not covered" >function(data, next) {</span>
@@ -757,7 +762,7 @@ exports.plugin = function(cli) {
 &nbsp;
         //intercept commands that are :command help
 <span class="cstat-no" title="statement not covered" >        if(this.path.segments.length &gt; 1 &amp;&amp; this.path.segments[1].value == 'help') {</span>
-            
+&nbsp;
 <span class="cstat-no" title="statement not covered" >            help.child(this.path.segments[0].value).print();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            return;</span>
@@ -780,12 +785,13 @@ exports.plugin = function(cli) {
         name: 'help',
         description: 'Show help menu'
     });
-}</pre></td></tr>
+}
+&nbsp;</pre></td></tr>
 </table></pre>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 29 2014 02:36:28 GMT+0100 (CET)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 29 2014 05:31:01 GMT+0100 (CET)</div>
 </div>
 
 <script src="../../../../prettify.js"></script>
