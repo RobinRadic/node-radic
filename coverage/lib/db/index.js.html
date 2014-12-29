@@ -16,8 +16,6 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
-      - name: git/api
-        link: /node-radic/api.html
       - name: radic
         link: /node-radic/module-radic.html
   - name: Classes
@@ -289,7 +287,19 @@ navigation:
 59
 60
 61
-62</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -334,6 +344,14 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -343,6 +361,10 @@ navigation:
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -396,7 +418,15 @@ function DB(name, options){
 DB.Model = Model;
 module.exports = DB;
 &nbsp;
-// Get or set models
+/**
+ * Get or define a model
+ * @param {string} name - The name of the model
+ * @param {object} schema - The model schema. Uses schema-inspector
+ * @returns {Model}
+ * @throws Error
+ * @see {@link http://atinux.github.io/schema-inspector|Schema inspector documentation}
+ * @see {@link Model} for examples
+ */
 DB.prototype.model = function(name, schema){
     if(util.defined(schema)){
         return this._models[name] = new Model(name, schema, this._db);
@@ -407,7 +437,11 @@ DB.prototype.model = function(name, schema){
     }
 };
 &nbsp;
-&nbsp;
+/**
+ * Checks if a model with the given name has been defined
+ * @param {string} name - The name for the model
+ * @returns {boolean} - Returns true if model is defined, otherwise false
+ */
 DB.prototype.hasModel = function(name){
     return util.defined(this._models[name]);
 };

@@ -15,8 +15,6 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
-      - name: git/api
-        link: /node-radic/api.html
       - name: radic
         link: /node-radic/module-radic.html
   - name: Classes
