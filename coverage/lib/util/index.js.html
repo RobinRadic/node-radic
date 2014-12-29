@@ -40,6 +40,12 @@ navigation:
         link: /node-radic/git.html
       - name: util
         link: /node-radic/util.html
+  - name: Mixins
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: dotaccess
+        link: /node-radic/dotaccess.html
 
 ---
 <style>
@@ -244,8 +250,14 @@ navigation:
 16
 17
 18
-19</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+19
+20
+21
+22</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -273,7 +285,10 @@ var _util = require('util'),
     ini = require('ini');
 &nbsp;
 &nbsp;
-/** @namespace */
+/**
+ * @namespace
+ * @mixes dotaccess
+ */
 var util = {};
 _util._extend(util, _util);
 module.exports = util;

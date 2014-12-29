@@ -61,101 +61,264 @@ navigation:
 
 
 
+
+<section>
+
+<header>
     
-            {% highlight javascript %}
-            var exec = require('child_process').exec,
-    _ = require('lodash'),
-    os = require('os'),
-    api = require('./api'),
-    app = require('../app'),
-    util = require('../util'),
-    config = app.config;
+        <h2>
+        
+        </h2>
+        
+    
+</header>
 
-function createCallback(callback) {
-    return function (error, stdout, stderr) {
-        if (error !== null) {
-            callback(error, stderr);
-        }
-        callback(null, stdout);
-    }
-}
+<article>
+    <div class="container-overview">
+    
+        
 
-/**
- * @namespace git
- * @requires api
- */
-var git = {
-    config: config.get('git')
-};
+        
 
-module.exports = git;
 
-/**
- * Get an API object for the given provider
- * @param {string} provider - The provider (bitbucket or github)
- * @returns {api}
- * @memberOf git
- */
-git.getApi = function (provider) {
-    return api(provider);
-};
+<dl class="details">
 
-/**
- * Initializes git in the current directory
- * @param cb
- */
-git.init = function init(cb) {
-    exec('git init', createCallback(cb));
-};
+    
 
-/**
- * Adds all files
- * @param cb
- */
-git.addAll = function commit(cb) {
-    exec('git add -A', createCallback(cb));
-};
+    
 
-/**
- *
- * @param message
- * @param cb
- */
-git.commit = function commit(message, cb) {
-    exec('git commit -m "' + message + '"', createCallback(cb));
-};
+    
 
-/**
- * Pushes the commits
- * @param remote
- * @param branch
- * @param cb
- */
-git.push = function push(remote, branch, cb) {
-    exec('git push -u "' + remote + '" "' + branch + '"', createCallback(cb));
-};
+    
 
-/**
- *
- * @type {{add: Function}}
- */
-git.remote = {
-    add: function (type, url, cb) {
-        exec('git remote add ' + type + ' ' + url, createCallback(cb));
-    }
-};
+    
 
-/**
- * Checkout a branch
- * @param branchName
- * @param cb
- */
-git.checkout = function(branchName, cb){
-    exec('git checkout ' + branchName, createCallback(cb));
-};
+    
 
-            {% endhighlight %}
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="set"><span class="type-signature"></span>set<span class="signature">(obj, key, value, overwrite)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Set it</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>overwrite</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

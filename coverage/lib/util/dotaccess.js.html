@@ -40,6 +40,12 @@ navigation:
         link: /node-radic/git.html
       - name: util
         link: /node-radic/util.html
+  - name: Mixins
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: dotaccess
+        link: /node-radic/dotaccess.html
 
 ---
 <style>
@@ -216,10 +222,10 @@ navigation:
     <link rel="stylesheet" href="../../prettify.css">
 <div class="coverage-header high">
     <div>
-        Statements: <span class="metric">91.18% <small>(31 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">90.91% <small>(30 / 33)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">78.57% <small>(11 / 14)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">100% <small>(6 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">96.55% <small>(28 / 29)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">96.43% <small>(27 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">lib/util/</a> &#187; dotaccess.js</div>
@@ -277,8 +283,13 @@ navigation:
 49
 50
 51
-52</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
+52
+53
+54
+55
+56
+57
+58</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">63</span>
 <span class="cline-any cline-yes">63</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -293,6 +304,13 @@ navigation:
 <span class="cline-any cline-yes">16</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -322,63 +340,69 @@ navigation:
 <span class="cline-any cline-yes">28</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports = function () {
-    function parts(key) {
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (Array.isArray(key)) <span class="cstat-no" title="statement not covered" >return key;</span>
-        return key.split('.')
-    }
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function parts(key) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (Array.isArray(key)) <span class="cstat-no" title="statement not covered" >return key;</span>
+    return key.split('.')
+}
 &nbsp;
-    function lookup(obj, key) {
-        key = parts(key);
-        var lastKey = key.pop();
-        for (var i = 0, l = key.length; i &lt; l; i++) {
-            var part = key[i];
-            if (!(part in obj)) obj[part] = {};
-            obj = obj[part];
-            <span class="missing-if-branch" title="if path not taken" >I</span>if (!obj) <span class="cstat-no" title="statement not covered" >throw new Error('dotaccess: incompatible value in ' + part)</span>
-        }
-        return [obj, lastKey];
+function lookup(obj, key) {
+    key = parts(key);
+    var lastKey = key.pop();
+    for (var i = 0, l = key.length; i &lt; l; i++) {
+        var part = key[i];
+        if (!(part in obj)) obj[part] = {};
+        obj = obj[part];
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!obj) <span class="cstat-no" title="statement not covered" >throw new Error('dotaccess: incompatible value in ' + part)</span>
     }
+    return [obj, lastKey];
+}
 &nbsp;
-    function set(obj, key, value, overwrite) {
-        var objectAndKey = lookup(obj, key),
-            obj = objectAndKey[0],
-            key = objectAndKey[1];
-        if (overwrite || !(key in obj)) obj[key] = value
-    }
+/**
+ * Set it
+ * @param obj
+ * @param key
+ * @param value
+ * @param overwrite
+ */
+function set(obj, key, value, overwrite) {
+    var objectAndKey = lookup(obj, key),
+        obj = objectAndKey[0],
+        key = objectAndKey[1];
+    if (overwrite || !(key in obj)) obj[key] = value
+}
 &nbsp;
-    function unset(obj, key) {
-        var objectAndKey = lookup(obj, key),
-            obj = objectAndKey[0],
-            key = objectAndKey[1];
-        return delete obj[key];
-    }
+function unset(obj, key) {
+    var objectAndKey = lookup(obj, key),
+        obj = objectAndKey[0],
+        key = objectAndKey[1];
+    return delete obj[key];
+}
 &nbsp;
-    function get(obj, key, def) {
-        <span class="missing-if-branch" title="if path not taken" >I</span>if(typeof key === 'undefined'){
-<span class="cstat-no" title="statement not covered" >            return obj;</span>
-        }
-        key = parts(key);
-        for (var i = 0, l = key.length; i &lt; l; i++) {
-            var part = key[i];
-            if (!(part in obj)) return def;
-            obj = obj[part]
-        }
-        return obj
+function get(obj, key, def) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof key === 'undefined') {
+<span class="cstat-no" title="statement not covered" >        return obj;</span>
     }
+    key = parts(key);
+    for (var i = 0, l = key.length; i &lt; l; i++) {
+        var part = key[i];
+        if (!(part in obj)) return def;
+        obj = obj[part]
+    }
+    return obj
+}
 &nbsp;
-    return {
-        dot_set: set,
-        dot_get: get,
-        dot_del: unset
-    }
-}.call();
+/** @mixin dotaccess */
+var dotaccess = module.exports = {
+    dot_set: set,
+    dot_get: get,
+    dot_del: unset
+};
 &nbsp;</pre></td></tr>
 </table></pre>
 </div>

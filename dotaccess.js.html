@@ -63,95 +63,62 @@ navigation:
 
     
             {% highlight javascript %}
-            var exec = require('child_process').exec,
-    _ = require('lodash'),
-    os = require('os'),
-    api = require('./api'),
-    app = require('../app'),
-    util = require('../util'),
-    config = app.config;
+            function parts(key) {
+    if (Array.isArray(key)) return key;
+    return key.split('.')
+}
 
-function createCallback(callback) {
-    return function (error, stdout, stderr) {
-        if (error !== null) {
-            callback(error, stderr);
-        }
-        callback(null, stdout);
+function lookup(obj, key) {
+    key = parts(key);
+    var lastKey = key.pop();
+    for (var i = 0, l = key.length; i &lt; l; i++) {
+        var part = key[i];
+        if (!(part in obj)) obj[part] = {};
+        obj = obj[part];
+        if (!obj) throw new Error('dotaccess: incompatible value in ' + part)
     }
+    return [obj, lastKey];
 }
 
 /**
- * @namespace git
- * @requires api
+ * Set it
+ * @param obj
+ * @param key
+ * @param value
+ * @param overwrite
  */
-var git = {
-    config: config.get('git')
-};
+function set(obj, key, value, overwrite) {
+    var objectAndKey = lookup(obj, key),
+        obj = objectAndKey[0],
+        key = objectAndKey[1];
+    if (overwrite || !(key in obj)) obj[key] = value
+}
 
-module.exports = git;
+function unset(obj, key) {
+    var objectAndKey = lookup(obj, key),
+        obj = objectAndKey[0],
+        key = objectAndKey[1];
+    return delete obj[key];
+}
 
-/**
- * Get an API object for the given provider
- * @param {string} provider - The provider (bitbucket or github)
- * @returns {api}
- * @memberOf git
- */
-git.getApi = function (provider) {
-    return api(provider);
-};
-
-/**
- * Initializes git in the current directory
- * @param cb
- */
-git.init = function init(cb) {
-    exec('git init', createCallback(cb));
-};
-
-/**
- * Adds all files
- * @param cb
- */
-git.addAll = function commit(cb) {
-    exec('git add -A', createCallback(cb));
-};
-
-/**
- *
- * @param message
- * @param cb
- */
-git.commit = function commit(message, cb) {
-    exec('git commit -m "' + message + '"', createCallback(cb));
-};
-
-/**
- * Pushes the commits
- * @param remote
- * @param branch
- * @param cb
- */
-git.push = function push(remote, branch, cb) {
-    exec('git push -u "' + remote + '" "' + branch + '"', createCallback(cb));
-};
-
-/**
- *
- * @type {{add: Function}}
- */
-git.remote = {
-    add: function (type, url, cb) {
-        exec('git remote add ' + type + ' ' + url, createCallback(cb));
+function get(obj, key, def) {
+    if (typeof key === 'undefined') {
+        return obj;
     }
-};
+    key = parts(key);
+    for (var i = 0, l = key.length; i &lt; l; i++) {
+        var part = key[i];
+        if (!(part in obj)) return def;
+        obj = obj[part]
+    }
+    return obj
+}
 
-/**
- * Checkout a branch
- * @param branchName
- * @param cb
- */
-git.checkout = function(branchName, cb){
-    exec('git checkout ' + branchName, createCallback(cb));
+/** @mixin dotaccess */
+var dotaccess = module.exports = {
+    dot_set: set,
+    dot_get: get,
+    dot_del: unset
 };
 
             {% endhighlight %}
