@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Node-Radic
+title: Node Radic
 navigation:
   - name: Home
     link: /
