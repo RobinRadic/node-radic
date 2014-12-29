@@ -58,8 +58,7 @@ npm install --save radic
 {% endhighlight %}
   
   
-#### Usage
-##### Command line tools
+#### Command line tools
 {% highlight bash %}
 radic -h
 {% endhighlight %}
