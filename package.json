@@ -1,6 +1,6 @@
 {
   "name": "radic",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "The core library and application for many of my node applications.",
   "main": "index.js",
   "scripts": {
@@ -68,7 +68,6 @@
     "grunt-usemin": "^2.6.2",
     "grunt-radic": "^0.0.1",
     "load-grunt-tasks": "^0.4.0",
-    "grunt": "^0.4.5",
     "time-grunt": "^0.3.1",
     "jsdoc": "~3.3.0-alpha5"
   }
