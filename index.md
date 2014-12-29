@@ -15,7 +15,7 @@ navigation:
     icon: fa fa-code
 
   - name: Coverage
-    link: /node-radic/coverage/lcov-report
+    link: /node-radic/coverage
     icon: fa fa-mortar-board
 
 ---
