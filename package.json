@@ -4,8 +4,8 @@
   "description": "The core library and application for many of my node applications.",
   "main": "index.js",
   "scripts": {
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec; cp -r coverage docs/ >/dev/null 2>&1; rm -rf coverage >/dev/null 2>&1; exit 0",
+    "coverage": "./node_modules/.bin/istanbul cover -x 'lib/cli/_celeri/**' ./node_modules/.bin/_mocha -- -R spec; rm -rf docs/coverage/* >/dev/null 2>&1; cp -r coverage/lcov-report/* docs/coverage/ >/dev/null 2>&1; cp -f coverage/coverage.json docs/coverage/coverage.json >/dev/null 2>&1; rm -rf coverage >/dev/null 2>&1; exit 0",
+    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec",
     "doc": "jsdoc -t ./node_modules/ink-docstrap/template -c ./jsdoc.json  ./README.md"
   },
   "bin": {

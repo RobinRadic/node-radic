@@ -1,2 +1,0 @@
-var chalk = require('chalk');
-var util = require('util');

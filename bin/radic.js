@@ -22,10 +22,7 @@ cli.command('version OR version :when :type')
     });
 
 
-cli.log.ok('asdf');
-cli.log('ok', 'asdf2');
-cli.log('ok');
-cli.debug('asdf');
+cli.log.ok(radic.app.config.get());
 
 cli.usage('radic [command] --optionals');
 cli.parse(process.argv);

@@ -4,7 +4,9 @@ var path = require('path'),
     async = require('async'),
     _ = require('lodash'),
     fs = require('fs'),
-    fse = require('fs-extra');
+    fse = require('fs-extra'),
+
+    radic = require('./lib');
 
 var args = process.argv;
 console.log(args);
@@ -19,6 +21,13 @@ if (args[2] === 'jsdoc2') {
     //fs.unlinkSync(path.join(__dirname, '_README.md'));
 }
 
+var ascmd = function(cmd){
+    return function(next){
+        exec(cmd, function(err, stdin, stdout){
+            next(err);
+        });
+    }
+};
 
 if (args[2] === 'publish') {
     var type = args[3]; // major, minor, patch
@@ -51,4 +60,63 @@ if (args[2] === 'publish') {
         if(err) throw new Error(err);
         console.log('done');
     });
+}
+
+if (args[2] === 'docs') {
+    var msg = args[3];
+
+    var cwd = process.cwd();
+    function chdirReset(){
+        process.chdir(cwd);
+    }
+
+    async.waterfall([
+        //ascmd('npm run-script coverage'),
+        //ascmd('npm run-script doc'),
+        function(next){
+            var fm = fs.readFileSync(path.join(__dirname, 'docs/_index'), 'utf-8');
+            var readme = fs.readFileSync(path.join(__dirname, 'README.md'), 'utf-8')
+                .replace('# radic', fm)
+                .replace(/```(?=\w)(\w*)/g, '{% highlight $1 %}')
+                .replace(/```\n/g, '{% endhighlight %}\n');
+
+            fse.outputFileSync(path.join(__dirname, 'docs/index.md'), readme, 'utf-8');
+            process.chdir(path.join(__dirname, 'docs'));
+            next(null);
+        },
+        ascmd('git add -A'),
+        ascmd('git commit -m "' + msg + '"'),
+        ascmd('git push -u origin gh-pages'),
+        function(next){
+            chdirReset();
+            next();
+        }
+    ], function(err, result){
+        if(err) throw new Error(err);
+
+        console.log('done');
+    });
+}
+
+if (args[2] === 'cover') {
+
+    var istanbul = require('istanbul');
+    var RadicReport = require('./istanbul-radic-report');
+
+
+    var Report = istanbul.Report;
+    Report.register(RadicReport);
+
+    var report = Report.create('radic', { dir: path.join(__dirname, 'docs/coverage' )}),
+        collector = new istanbul.Collector;
+
+
+    //radic.util.log('getit', report);
+    //radic.util.log('report', );
+    collector.add(JSON.parse(fs.readFileSync(path.join(__dirname, 'docs/coverage/coverage.json'), 'utf8')));
+
+    report.on('done', function () { console.log('done'); });
+    report.writeReport(collector, true, function () { console.log('done'); });
+
+
 }

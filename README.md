@@ -1,11 +1,10 @@
-radic
-=============
+# radic
 [![Build Status](https://travis-ci.org/RobinRadic/node-radic.svg?branch=master)](http://travis-ci.org/RobinRadic/node-radic)
 [![GitHub version](https://badge.fury.io/gh/robinradic%2Fnode-radic.svg)](http://badge.fury.io/gh/robinradic%2Fnode-radic)
 [![Coverage Status](https://img.shields.io/coveralls/RobinRadic/node-radic.svg)](https://coveralls.io/r/RobinRadic/node-radic)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](http://radic.mit-license.org)
 
-## Overview
+### Overview
 `radic` is the core library and application for many of my node applications.
  
 - It exports a variety of objects, classes and instances for external use.   
@@ -27,7 +26,8 @@ radic
 - cli
   
   
-## How to use
+### How to use
+  
 #### Installation
 ```bash
 # Globally install radic for using radic command line tools
@@ -38,8 +38,7 @@ npm install --save radic
 ```
   
   
-#### Usage
-##### Command line tools
+#### Command line tools
 ```bash
 radic -h
 ```
@@ -67,7 +66,7 @@ var db = new DB('name');
  
 **More documentation soon**
 
-## License
+### License
 Copyright 2014 Robin Radic 
 
 [MIT Licensed](http://radic.mit-license.org)
