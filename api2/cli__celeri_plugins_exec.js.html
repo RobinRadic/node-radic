@@ -1,0 +1,105 @@
+---
+layout: page
+title: "Source: cli/_celeri/plugins/exec.js"
+---
+<div id="main">
+
+    <h1 class="page-title">Source: cli/_celeri/plugins/exec.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var spawn = require('child_process').spawn;
+
+exports.plugin = function(cli) {
+
+    /**
+     * goal = dead simple and painless. 
+     */
+     
+    cli.exec = function(command, args, ops, callback) {
+
+        if(typeof args == 'function') {
+            callback = args;
+            args = [];
+            ops = {};
+        } else 
+        if(!(args instanceof Array)) {
+            callback = ops;
+            ops = args;
+            args = [];
+        }
+        
+        
+    
+        if(typeof ops == 'function') {
+            callback = ops;
+            ops = {};
+        }
+        
+        //no callbacks? THEY MUST EXIST!!!!
+        if(!callback) callback = ops.callback || ops;
+        
+        var callbacks = {};
+        
+        if(typeof callback != 'function') {
+            callbacks = callback;
+        }
+        
+        if(!callbacks.error) callbacks.error = function(){};
+        if(!callbacks.exit) callbacks.exit = function(){};
+        if(!callbacks.data) callbacks.data = function(){};
+        
+        
+        var procOps = {
+            cwd: ops.cwd,
+            env: ops.env,
+            customFds: ops.customFds
+        };
+        
+        
+        var proc = spawn(command, ops.args || args, procOps), errors = [], buffer = [];
+        
+        proc.stdout.on('data', function(data) {
+            buffer.push(data);
+            
+            callbacks.data(data);
+        });
+        
+        proc.stderr.on('data', function(data) {
+            errors.push(data);
+            
+            callbacks.error(data);
+        });
+        
+        proc.on('exit', function(code) {
+            
+            if(typeof callback == 'function')  {
+                callback(errors.length ? errors.join(' ') : false, buffer.length ? buffer.join(' ') : false);
+            } else
+            if(callbacks.exit) {
+                callbacks.exit(code);
+            }
+        });
+        
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-radic.html">radic</a></li><li><a href="module-radic_cli.html">radic/cli</a></li><li><a href="module-radic_config.html">radic/config</a></li><li><a href="module-radic_db.html">radic/db</a></li></ul><h3>Classes</h3><ul><li><a href="module-radic_config-Config.html">Config</a></li><li><a href="module-radic_db-DB.html">DB</a></li></ul><h3>Global</h3><ul><li><a href="global.html#buffer">buffer</a></li><li><a href="global.html#columns">columns</a></li><li><a href="global.html#cursor">cursor</a></li><li><a href="global.html#inputPrefix">inputPrefix</a></li><li><a href="global.html#insertText">insertText</a></li><li><a href="global.html#next">next</a></li><li><a href="global.html#replaceLine">replaceLine</a></li><li><a href="global.html#rows">rows</a></li><li><a href="global.html#size">size</a></li><li><a href="global.html#spliceLine">spliceLine</a></li></ul>
+</nav>
+
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>

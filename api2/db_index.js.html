@@ -1,0 +1,79 @@
+---
+layout: page
+title: "Source: db/index.js"
+---
+<div id="main">
+
+    <h1 class="page-title">Source: db/index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @module radic/db */
+var path = require('path'),
+
+    _ = require('lodash'),
+    Datastore = require('nedb'),
+
+    util = require('../util'),
+    Model = require('./model'),
+    app = require('../app');
+
+/**
+ * Database object. Creates and manages database files, models etc.
+ *
+ * @param name
+ * @param options
+ * @constructor
+ */
+function DB(name, options){
+    options = options || {};
+    this.defaults = {
+        path: path.join(app.path, 'stores'),
+        name: name,
+        ext: '.db',
+        onLoaded: function(){}
+    };
+    this.options = _.extend({}, this.defaults, options);
+    this._models = {};
+    this._db = new Datastore(path.join(this.options.path, this.options.name + this.options.ext));
+    this._db.loadDatabase(this.options.onLoaded);
+}
+DB.Model = Model;
+module.exports = DB;
+
+// Get or set models
+DB.prototype.model = function(name, schema){
+    if(util.defined(schema)){
+        return this._models[name] = new Model(name, schema, this._db);
+    } else if(this.hasModel(name)) {
+        return this._models[name];
+    } else {
+        throw new Error('Could not get model "' + name + '".')
+    }
+};
+
+
+DB.prototype.hasModel = function(name){
+    return util.defined(this._models[name]);
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-radic.html">radic</a></li><li><a href="module-radic_cli.html">radic/cli</a></li><li><a href="module-radic_config.html">radic/config</a></li><li><a href="module-radic_db.html">radic/db</a></li></ul><h3>Classes</h3><ul><li><a href="module-radic_config-Config.html">Config</a></li><li><a href="module-radic_db-DB.html">DB</a></li></ul><h3>Global</h3><ul><li><a href="global.html#buffer">buffer</a></li><li><a href="global.html#columns">columns</a></li><li><a href="global.html#cursor">cursor</a></li><li><a href="global.html#inputPrefix">inputPrefix</a></li><li><a href="global.html#insertText">insertText</a></li><li><a href="global.html#next">next</a></li><li><a href="global.html#replaceLine">replaceLine</a></li><li><a href="global.html#rows">rows</a></li><li><a href="global.html#size">size</a></li><li><a href="global.html#spliceLine">spliceLine</a></li></ul>
+</nav>
+
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
