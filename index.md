@@ -1,3 +1,4 @@
+---
 layout: page
 title: Node Radic
 minify_content: false
@@ -29,6 +30,8 @@ navigation:
         link: /node-radic/config-Config.html
       - name: DB
         link: /node-radic/db-DB.html
+
+---
 
 [![Build Status](https://travis-ci.org/RobinRadic/node-radic.svg?branch=master)](http://travis-ci.org/RobinRadic/node-radic)
 [![GitHub version](https://badge.fury.io/gh/robinradic%2Fnode-radic.svg)](http://badge.fury.io/gh/robinradic%2Fnode-radic)
