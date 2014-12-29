@@ -435,7 +435,7 @@ cli.parse(process.argv);{% endhighlight %}
 
     
     <hr class="hr-top-margin">
-    <h4 class="name" id="table"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>table<span class="signature">(style, design, options)</span><span class="type-signature"> &rarr; {<a href="Table.html">Table</a>}</span></h4>
+    <h4 class="name" id="table"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>table<span class="signature">(<span class="optional">style</span>, <span class="optional">design</span>, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {<a href="Table.html">Table</a>}</span></h4>
 
     
 
@@ -466,7 +466,11 @@ cli.parse(process.argv);{% endhighlight %}
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -479,7 +483,7 @@ cli.parse(process.argv);{% endhighlight %}
         <tr>
             
                 <td class="name">
-                    <code class="font-red-thunderbird">
+                    <code class="font-red-pink">
                     style
                     </code>
                 </td>
@@ -487,13 +491,35 @@ cli.parse(process.argv);{% endhighlight %}
 
             <td class="type">
             
+                
+<span class="label bg-green-jungle label-sm">string</span></span>
+
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    default
+                
+                </td>
+            
+
+            <td class="description last"><p>Style to use for this table</p></td>
         </tr>
 
     
@@ -501,7 +527,7 @@ cli.parse(process.argv);{% endhighlight %}
         <tr>
             
                 <td class="name">
-                    <code class="font-red-thunderbird">
+                    <code class="font-red-pink">
                     design
                     </code>
                 </td>
@@ -509,13 +535,35 @@ cli.parse(process.argv);{% endhighlight %}
 
             <td class="type">
             
+                
+<span class="label bg-green-jungle label-sm">string</span></span>
+
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                    default
+                
+                </td>
+            
+
+            <td class="description last"><p>Design to use for this table</p></td>
         </tr>
 
     
@@ -523,7 +571,7 @@ cli.parse(process.argv);{% endhighlight %}
         <tr>
             
                 <td class="name">
-                    <code class="font-red-thunderbird">
+                    <code class="font-red-pink">
                     options
                     </code>
                 </td>
@@ -531,13 +579,33 @@ cli.parse(process.argv);{% endhighlight %}
 
             <td class="type">
             
+                
+<span class="label bg-blue-hoki label-sm">object</span></span>
+
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"></td>
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Options</p></td>
         </tr>
 
     
@@ -580,6 +648,13 @@ cli.parse(process.argv);{% endhighlight %}
     
 
     
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="Table.html">Table</a></li>
+        </ul>
+    </dd>
+    
 
     
 </dl>
@@ -615,6 +690,13 @@ cli.parse(process.argv);{% endhighlight %}
 </dl>
 
     
+
+
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var cli = require('radic').cli;
+cli.table('default', 'borderless');{% endhighlight %}
+
 
 
 

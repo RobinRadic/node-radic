@@ -402,7 +402,11 @@ navigation:
 172
 173
 174
-175</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+175
+176
+177
+178
+179</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -446,6 +450,10 @@ navigation:
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -624,11 +632,15 @@ _.each(chalkStyles, function(style){
 &nbsp;
 /**
  * Create a table from pre-defined styles
- * @param style
- * @param design
- * @param options
+ * @param {string} [style=default] - Style to use for this table
+ * @param {string} [design=default] - Design to use for this table
+ * @param {object} [options] - Options
  * @memberOf cli
  * @returns {Table}
+ * @see {@link Table}
+ * @example
+ * var cli = require('radic').cli;
+ * cli.table('default', 'borderless');
  */
 cli.table = <span class="fstat-no" title="function not covered" >function (style, design, options) {</span>
 <span class="cstat-no" title="statement not covered" >    return new Table(style, design, options)</span>

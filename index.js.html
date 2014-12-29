@@ -107,11 +107,15 @@ _.each(chalkStyles, function(style){
 
 /**
  * Create a table from pre-defined styles
- * @param style
- * @param design
- * @param options
+ * @param {string} [style=default] - Style to use for this table
+ * @param {string} [design=default] - Design to use for this table
+ * @param {object} [options] - Options
  * @memberOf cli
  * @returns {Table}
+ * @see {@link Table}
+ * @example
+ * var cli = require('radic').cli;
+ * cli.table('default', 'borderless');
  */
 cli.table = function (style, design, options) {
     return new Table(style, design, options)
