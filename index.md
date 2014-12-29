@@ -48,6 +48,7 @@ navigation:
   
   
 ### How to use
+
 #### Installation
 {% highlight bash %}
 # Globally install radic for using radic command line tools
