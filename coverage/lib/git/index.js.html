@@ -279,7 +279,40 @@ navigation:
 51
 52
 53
-54</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -303,29 +336,62 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -356,32 +422,65 @@ var git = {
 &nbsp;
 module.exports = git;
 &nbsp;
+/**
+ * Get an API object for the given provider
+ * @param {string} provider - The provider (bitbucket or github)
+ * @returns {api}
+ */
 git.getApi = <span class="fstat-no" title="function not covered" >function (provider) {</span>
 <span class="cstat-no" title="statement not covered" >    return api(provider);</span>
 };
 &nbsp;
+/**
+ * Initializes git in the current directory
+ * @param cb
+ */
 git.init = <span class="fstat-no" title="function not covered" >function init(cb) {</span>
 <span class="cstat-no" title="statement not covered" >    exec('git init', createCallback(cb));</span>
 };
 &nbsp;
+/**
+ * Adds all files
+ * @param cb
+ */
 git.addAll = <span class="fstat-no" title="function not covered" >function commit(cb) {</span>
 <span class="cstat-no" title="statement not covered" >    exec('git add -A', createCallback(cb));</span>
 };
 &nbsp;
+/**
+ *
+ * @param message
+ * @param cb
+ */
 git.commit = <span class="fstat-no" title="function not covered" >function commit(message, cb) {</span>
 <span class="cstat-no" title="statement not covered" >    exec('git commit -m "' + message + '"', createCallback(cb));</span>
 };
 &nbsp;
+/**
+ * Pushes the commits
+ * @param remote
+ * @param branch
+ * @param cb
+ */
 git.push = <span class="fstat-no" title="function not covered" >function push(remote, branch, cb) {</span>
 <span class="cstat-no" title="statement not covered" >    exec('git push -u "' + remote + '" "' + branch + '"', createCallback(cb));</span>
 };
 &nbsp;
+/**
+ *
+ * @type {{add: Function}}
+ */
 git.remote = {
     add: <span class="fstat-no" title="function not covered" >function (type, url, cb) {</span>
 <span class="cstat-no" title="statement not covered" >        exec('git remote add ' + type + ' ' + url, createCallback(cb));</span>
     }
 };
 &nbsp;
+/**
+ * Checkout a branch
+ * @param branchName
+ * @param cb
+ */
 git.checkout = <span class="fstat-no" title="function not covered" >function(branchName, cb){</span>
 <span class="cstat-no" title="statement not covered" >    exec('git checkout ' + branchName, createCallback(cb));</span>
 };
