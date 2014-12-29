@@ -376,7 +376,13 @@ navigation:
 150
 151
 152
-153</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+153
+154
+155
+156</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -540,7 +546,10 @@ navigation:
     Command = require('./command'),
     Table = require('./table');
 &nbsp;
-&nbsp;
+/**
+ * @module
+ * @type {{_commands: Array, _usage: string, _logFile: boolean, enableDebug: boolean}}
+ */
 var cli = module.exports = {
     _commands: [],
     _usage: 'app [command] --optional=value',
