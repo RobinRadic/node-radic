@@ -20,8 +20,6 @@ navigation:
         link: /node-radic/module-radic.html
       - name: radic/cli
         link: /node-radic/cli.html
-      - name: radic/config
-        link: /node-radic/config.html
       - name: radic/db
         link: /node-radic/db.html
       - name: util
@@ -31,7 +29,7 @@ navigation:
     icon: fa fa-mortar-board
     children:
       - name: Config
-        link: /node-radic/config-Config.html
+        link: /node-radic/Config.html
       - name: DB
         link: /node-radic/db-DB.html
   - name: Namespaces
@@ -47,7 +45,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li><li><a href="cli.html">radic/cli</a></li><li><a href="config.html">radic/config</a></li><li><a href="db.html">radic/db</a></li><li><a href="module-util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="config-Config.html">Config</a></li><li><a href="db-DB.html">DB</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-util-util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li><li><a href="cli.html">radic/cli</a></li><li><a href="db.html">radic/db</a></li><li><a href="module-util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="db-DB.html">DB</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-util-util.html">util</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -57,138 +55,42 @@ navigation:
 
     
             {% highlight javascript %}
-            /** @module radic/cli */
-var path = require('path'),
+            /**
+ * Exports all objects for external libraries to use.
+ * @module radic
+ * @type {exports.exec}
+ */
+
+var exec = require('child_process').exec,
+    path = require('path'),
+
+    async = require('async'),
+    fs = require('fs-extra'),
     _ = require('lodash'),
 
-    chalk = require('chalk'),
-
-    util = require('../util'),
-    app = require('../app'),
-
-    celeri = require('./_celeri'),
-    Command = require('./command'),
-    Table = require('./table'),
-
-    cli = module.exports = {
-        _commands: [],
-        _usage: 'app [command] --optional=value',
-        _logFile: false,
-        enableDebug: true
-    };
+    app = require('./app'),
+    util = require('./util'),
+    Config = require('./config');
 
 
-var chalkStyles = ['reset', 'bold', 'dim', 'italic', 'underline', 'inverse', 'hidden', 'strikethrough', 'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'gray', 'bgBlack', 'bgRed', 'bgGreen', 'bgYellow', 'bgBlue', 'bgMagenta', 'bgCyan', 'bgWhite'];
-_.each(chalkStyles, function(style){
-    cli[style] = chalk[style];
-});
 
-cli.table = function (style, design, options) {
-    return new Table(style, design, options)
+module.exports = {
+    /** Application data */
+    app: app,
+    /** Utility functions */
+    util: util,
+    git: require('./git'),
+    cli: require('./cli'),
+
+    DB: require('./db'),
+
+    /**
+     * The config class
+     * @see {@link Config}
+     */
+    Config: Config
 };
 
-cli.command = function (expr) {
-    return new Command(expr, cli);
-};
-
-cli.usage = function(msg){
-    cli._usage = msg;
-};
-
-cli.parse = function (argv) {
-    cli._commands.forEach(function (command) {
-
-        var option = {
-            command: command.command,
-            description: command.description,
-            optional: command.optional
-        };
-
-        if (typeof(command.usage) == 'object') {
-            var table = cli
-                .table('default', 'default')
-                .head('Command', 'Description');
-            //.percWidth([33, 66], 100);
-
-            //t.push([cli.bold(cli.cyan('Command')), cli.bold('Description')]);
-
-            _.each(command.usage, function (val, key) {
-                table.push([key, val]);
-            });
-
-            option.usage = "\n" + 'parameters: ' + "[required] {optional}\n" + table.toString();
-        }
-        else if (typeof(command.usage) == 'string') {
-            option.usage = command.usage;
-        }
-
-        if (typeof(command.optional) == 'object') {
-            var optionalTable = this.table('default', 'borderless');
-            _.each(command.optional, function (val, key) {
-                optionalTable.push([key, val]);
-            });
-            option.usage += "\n\n" + cli.bold('Optional flags') + ":\n" + optionalTable.toString();
-        }
-        celeri.option(option, command.method);
-
-
-    }.bind(this));
-
-    //console.log(utils.logSymbols.warn + 'asdf');
-    celeri.usage(cli._usage);
-
-    //_.contains(_.toArray(arg))
-    celeri.parse(argv);
-
-    if (cli.autoexit === true) {
-        process.exit(1);
-    }
-};
-
-var outputs = {
-    ok: ["green", "√ "],
-    info: ["cyan", "i "],
-    warn: ["yellow", "! "],
-    debug: ["blue", "＃"],
-    error: ["red", "✖ "],
-    fatal: ["red", "☠ FATAL ERROR ☠"]
-};
-cli.log = function(){
-    var args = _.toArray(arguments);
-    var level, msg;
-    level = args.length == 1 ? 'info' : args[0];
-    msg = args.length == 1 ? args[0] : args[1];
-    cli.log[level](msg);
-};
-cli.debug = function(msg){
-    cli.log('debug', msg);
-};
-cli.write = function(msg){
-    util.print(msg);
-};
-cli.writeln = function(msg){
-    cli.write(msg + "\n");
-};
-
-/* Print status messsages */
-_.each(outputs, function (opts, type) {
-    cli.log[type] = function (msg) {
-
-        if(cli._logFile !== false){
-
-        }
-        var output = outputs[type];
-        output = chalk[output[0]](chalk.bold(output[1].toString()));
-        if (type === 'debug') {
-            if (cli.enableDebug === true) {
-                cli.writeln(output + msg);
-            }
-        } else {
-            cli.writeln(output + msg);
-        }
-        if (type == 'fatal') process.exit();
-    };
-});
 
             {% endhighlight %}
 

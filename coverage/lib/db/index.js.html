@@ -20,8 +20,6 @@ navigation:
         link: /node-radic/module-radic.html
       - name: radic/cli
         link: /node-radic/cli.html
-      - name: radic/config
-        link: /node-radic/config.html
       - name: radic/db
         link: /node-radic/db.html
       - name: util
@@ -31,7 +29,7 @@ navigation:
     icon: fa fa-mortar-board
     children:
       - name: Config
-        link: /node-radic/config-Config.html
+        link: /node-radic/Config.html
       - name: DB
         link: /node-radic/db-DB.html
   - name: Namespaces

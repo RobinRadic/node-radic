@@ -20,8 +20,6 @@ navigation:
         link: /node-radic/module-radic.html
       - name: radic/cli
         link: /node-radic/cli.html
-      - name: radic/config
-        link: /node-radic/config.html
       - name: radic/db
         link: /node-radic/db.html
       - name: util
@@ -31,7 +29,7 @@ navigation:
     icon: fa fa-mortar-board
     children:
       - name: Config
-        link: /node-radic/config-Config.html
+        link: /node-radic/Config.html
       - name: DB
         link: /node-radic/db-DB.html
   - name: Namespaces
@@ -370,8 +368,8 @@ navigation:
 142
 143
 144
-145</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+145</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -514,8 +512,7 @@ navigation:
 <span class="cline-any cline-yes">9</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/** @module radic/config **/
-var _ = require('lodash'),
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var _ = require('lodash'),
     path = require('path'),
 &nbsp;
     fs = require('fs'),
@@ -526,6 +523,7 @@ var _ = require('lodash'),
 /**
  * Configuration
  *
+ * @class
  * @param {string} name - Name for this config
  * @param {object} [options] - Configuration options
  * @constructor
