@@ -16,8 +16,6 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
-      - name: git
-        link: /node-radic/module-git.html
       - name: radic
         link: /node-radic/module-radic.html
       - name: radic/cli
@@ -34,6 +32,12 @@ navigation:
         link: /node-radic/DB.html
       - name: Model
         link: /node-radic/Model.html
+  - name: Namespaces
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: git
+        link: /node-radic/git.html
 
 ---
 
