@@ -73,15 +73,14 @@ navigation:
 
 /**
  * @namespace cli
- * @type {{_commands: Array, _usage: string, _logFile: boolean, enableDebug: boolean}}
  */
-var cli = module.exports = {
+var cli = {
     _commands: [],
     _usage: 'app [command] --optional=value',
     _logFile: false,
     enableDebug: true
 };
-
+module.exports = cli;
 
 var chalkStyles = ['reset', 'bold', 'dim', 'italic', 'underline', 'inverse', 'hidden', 'strikethrough', 'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'gray', 'bgBlack', 'bgRed', 'bgGreen', 'bgYellow', 'bgBlue', 'bgMagenta', 'bgCyan', 'bgWhite'];
 _.each(chalkStyles, function(style){

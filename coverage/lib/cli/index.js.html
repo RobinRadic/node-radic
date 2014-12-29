@@ -214,10 +214,10 @@ navigation:
     <link rel="stylesheet" href="../../prettify.css">
 <div class="coverage-header low">
     <div>
-        Statements: <span class="metric">29.09% <small>(16 / 55)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">30.36% <small>(17 / 56)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">0% <small>(0 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">14.29% <small>(2 / 14)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">29.63% <small>(16 / 54)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">30.91% <small>(17 / 55)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">lib/cli/</a> &#187; index.js</div>
@@ -379,9 +379,7 @@ navigation:
 153
 154
 155
-156
-157</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+156</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -402,7 +400,7 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -550,15 +548,14 @@ navigation:
 &nbsp;
 /**
  * @namespace cli
- * @type {{_commands: Array, _usage: string, _logFile: boolean, enableDebug: boolean}}
  */
-var cli = module.exports = {
+var cli = {
     _commands: [],
     _usage: 'app [command] --optional=value',
     _logFile: false,
     enableDebug: true
 };
-&nbsp;
+module.exports = cli;
 &nbsp;
 var chalkStyles = ['reset', 'bold', 'dim', 'italic', 'underline', 'inverse', 'hidden', 'strikethrough', 'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'gray', 'bgBlack', 'bgRed', 'bgGreen', 'bgYellow', 'bgBlue', 'bgMagenta', 'bgCyan', 'bgWhite'];
 _.each(chalkStyles, function(style){
