@@ -22,8 +22,6 @@ navigation:
         link: /node-radic/module-radic.html
       - name: radic/cli
         link: /node-radic/cli.html
-      - name: radic/db
-        link: /node-radic/db.html
       - name: util
         link: /node-radic/module-util.html
   - name: Classes
@@ -33,7 +31,9 @@ navigation:
       - name: Config
         link: /node-radic/Config.html
       - name: DB
-        link: /node-radic/db-DB.html
+        link: /node-radic/DB.html
+      - name: Model
+        link: /node-radic/Model.html
   - name: Namespaces
     link: "#"
     icon: fa fa-mortar-board
@@ -281,7 +281,16 @@ navigation:
 53
 54
 55
-56</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -289,6 +298,15 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -346,6 +364,15 @@ var path = require('path'),
 <span class="cstat-no" title="statement not covered" >    return path.join(storePath, name + '.db');</span>
 }
 &nbsp;
+/**
+ * The Model class
+ *
+ * @class
+ * @param name
+ * @param schema
+ * @param db
+ * @constructor
+ */
 function Model(name, schema, db){
     this.name = name;
     this.schema = schema;
