@@ -16,12 +16,12 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: git/api
+        link: /node-radic/api.html
       - name: radic
         link: /node-radic/module-radic.html
       - name: radic/cli
         link: /node-radic/cli.html
-      - name: util
-        link: /node-radic/module-util.html
   - name: Classes
     link: "#"
     icon: fa fa-mortar-board
@@ -38,6 +38,8 @@ navigation:
     children:
       - name: git
         link: /node-radic/git.html
+      - name: util
+        link: /node-radic/util.html
 
 ---
 <style>
@@ -299,7 +301,13 @@ navigation:
 73
 74
 75
-76</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+76
+77
+78
+79
+80
+81
+82</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -341,6 +349,12 @@ navigation:
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -419,8 +433,14 @@ var providers = {
             }
         }
     },
+    /** @module git/api */
     github: {
         user: {
+            /**
+             *
+             * @param options
+             * @param cb
+             */
             repos: <span class="fstat-no" title="function not covered" >function(options, cb){</span>
 <span class="cstat-no" title="statement not covered" >                options = opts(options, defaults.user.repos);</span>
 <span class="cstat-no" title="statement not covered" >                gcurl.get('user/repos', options, cb);</span>

@@ -1,0 +1,148 @@
+---
+layout: page
+title: Node Radic
+minify_content: false
+navigation:
+  - name: Home
+    link: /
+    icon: fa fa-home
+  - name: Overview
+    link: /node-radic
+    icon: fa fa-dashboard
+  - name: Coverage
+    link: /node-radic/coverage
+    icon: fa fa-code
+  - name: Modules
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: git/api
+        link: /node-radic/api.html
+      - name: radic
+        link: /node-radic/module-radic.html
+      - name: radic/cli
+        link: /node-radic/cli.html
+  - name: Classes
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: Config
+        link: /node-radic/Config.html
+      - name: DB
+        link: /node-radic/DB.html
+      - name: Model
+        link: /node-radic/Model.html
+  - name: Namespaces
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: git
+        link: /node-radic/git.html
+      - name: util
+        link: /node-radic/util.html
+
+---
+
+<link type="text/css" rel="stylesheet" href="styles/jsdoc-radic.css">
+
+
+<ul class="nav nav-tabs hide">
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="api.html">git/api</a></li><li><a href="module-radic.html">radic</a></li><li><a href="cli.html">radic/cli</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li>
+</ul>
+
+<div id="main">
+    
+
+
+
+    
+            {% highlight javascript %}
+            var _ = require('lodash'),
+    curl = require('./curl'),
+    util = require('./../util'),
+    config = require('../app').config;
+
+
+var c, bcurl, gcurl, burl, gurl;
+
+var defaults = {
+    user: {
+        repos: {
+            type: 'all',
+            sort: 'full_name',
+            direction: 'asc'
+        }
+    },
+    repos: {
+        create: {
+            description: 'a repo',
+            has_issues: true,
+            has_wiki: false
+        }
+    }
+};
+function opts(options, defaults) {
+    options = options || {};
+    return _.extend(options, defaults);
+}
+var providers = {
+    bitbucket: {
+        user: {
+            repos: function(options, cb){
+                options = opts(options, defaults.repos.create);
+                //bcurl.post(burl + '/repositories/' + owner + '/' + name, options, cb);
+
+            }
+        },
+        repos: {
+            create: function (owner, name, options, cb) {
+                options = opts(options, defaults.repos.create);
+                options.name = name;
+                bcurl.post('repositories/' + owner + '/' + name, options, cb);
+            }
+        }
+    },
+    /** @module git/api */
+    github: {
+        user: {
+            /**
+             *
+             * @param options
+             * @param cb
+             */
+            repos: function(options, cb){
+                options = opts(options, defaults.user.repos);
+                gcurl.get('user/repos', options, cb);
+            }
+        },
+        repos: {
+            create: function (owner, name, options, cb) {
+                options = opts(options, defaults.repos.create);
+                options.name = name;
+                if (owner.toLowerCase() === c.github.username.toLowerCase()) {
+                    gcurl.post('user/repos', options, cb);
+                } else {
+                    gcurl.post('orgs/' + owner + '/repos', options, cb);
+                }
+            }
+        }
+    }
+};
+
+
+module.exports = function (provider) {
+    c = config.get('git.providers');
+
+    bcurl = curl(c.bitbucket.username + ':' + c.bitbucket.password, 'https://bitbucket.org/api/2.0');
+    gcurl = curl(c.github.username + ':' + c.github.password, 'https://api.github.com');
+
+    return providers[provider];
+};
+
+            {% endhighlight %}
+
+
+
+
+
+</div>

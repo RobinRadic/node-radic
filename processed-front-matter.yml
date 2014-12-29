@@ -15,12 +15,12 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: git/api
+        link: /node-radic/api.html
       - name: radic
         link: /node-radic/module-radic.html
       - name: radic/cli
         link: /node-radic/cli.html
-      - name: util
-        link: /node-radic/module-util.html
   - name: Classes
     link: "#"
     icon: fa fa-mortar-board
@@ -37,3 +37,5 @@ navigation:
     children:
       - name: git
         link: /node-radic/git.html
+      - name: util
+        link: /node-radic/util.html
