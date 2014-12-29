@@ -11,10 +11,6 @@ navigation:
     link: /node-radic
     icon: fa fa-mortar-board
 
-  - name: Documentation
-    link: /node-radic/api
-    icon: fa fa-code
-
   - name: Coverage
     link: /node-radic/coverage
     icon: fa fa-mortar-board
