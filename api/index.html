@@ -1,17 +1,42 @@
 ---
 layout: page
-hide-title: true
-title: "Index"
-custom-js: ['vendor/prismjs/prism']
-custom-css: ['vendor/prismjs/prism']
+title: Node Radic
+minify_content: false
+navigation:
+  - name: Home
+    link: /
+    icon: fa fa-home
+  - name: Overview
+    link: /node-radic
+    icon: fa fa-mortar-board
+  - name: Documentation
+    link: /node-radic/api
+    icon: fa fa-code
+    children:
+      - name: Modules
+        link: "#"
+        children:
+          - name: radic
+            link: /node-radic/api/module-radic.html
+          - name: radic/cli
+            link: /node-radic/api/cli.html
+          - name: radic/config
+            link: /node-radic/api/config.html
+          - name: radic/db
+            link: /node-radic/api/db.html
+      - name: Classes
+        link: "#"
+        children:
+          - name: Config
+            link: /node-radic/api/config-Config.html
+          - name: DB
+            link: /node-radic/api/db-DB.html
+  - name: Coverage
+    link: /node-radic/coverage
+    icon: fa fa-mortar-board
+
 ---
 
-<script src="scripts/prettify/prettify.js"> </script>
-<script src="scripts/prettify/lang-css.js"> </script>
-<!--[if lt IE 9]>
-  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
 <link type="text/css" rel="stylesheet" href="styles/jsdoc-radic.css">
 
 
@@ -43,71 +68,9 @@ custom-css: ['vendor/prismjs/prism']
 
 
 
-    <section>
-        <article><h1>radic</h1>
-<p><a href="http://travis-ci.org/RobinRadic/node-radic"><img src="https://travis-ci.org/RobinRadic/node-radic.svg?branch=master" alt="Build Status"></a>
-<a href="http://badge.fury.io/gh/robinradic%2Fnode-radic"><img src="https://badge.fury.io/gh/robinradic%2Fnode-radic.svg" alt="GitHub version"></a>
-<a href="https://coveralls.io/r/RobinRadic/node-radic"><img src="https://img.shields.io/coveralls/RobinRadic/node-radic.svg" alt="Coverage Status"></a>
-<a href="http://radic.mit-license.org"><img src="http://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a></p>
-<h3>Overview</h3>
-<p><code>radic</code> is the core library and application for many of my node applications.</p>
-<ul>
-<li>It exports a variety of objects, classes and instances for external use.   </li>
-<li><code>radic</code> is also a stand-alone application which manages global configuration and such.</li>
-</ul>
-<h4>Library classes that can be instantieted in external applications</h4>
-<ul>
-<li>config</li>
-<li>db</li>
-<li>git</li>
-<li>utilities</li>
-</ul>
-<h4>Helper objects/functions that can be called in external applications</h4>
-<ul>
-<li>config (global <code>radic</code> configuration)</li>
-<li>github</li>
-<li>bitbucket</li>
-<li>ui</li>
-<li>cli</li>
-</ul>
-<h3>How to use</h3>
-<h4>Installation</h4>
-<pre><code class="lang-bash"># Globally install radic for using radic command line tools
-sudo npm install -g radic
-
-# Local install into project for using libraries and helpers
-npm install --save radic</code></pre>
-<h4>Command line tools</h4>
-<pre><code class="lang-bash">radic -h</code></pre>
-<h4>Implementing <code>radic</code> in an external application</h4>
-<pre><code class="lang-javascript">var radic = require('radic'),
-    // Classes
-    Config = radic.Config,
-    DB = radic.DB,
-
-    // Stand-alone helpers
-    git = radic.git,
-    util = radic.util,
-
-    // Radic helpers (require's global installation and configuration)
-    services = radic.gitServices, // bitbucket/github REST API 
-    config = radic.config;   
-
-
-// Example usage
-var config = new Config('config', { /** options */ });
-var db = new DB('name');</code></pre>
-<p><strong>More documentation soon</strong></p>
-<h3>License</h3>
-<p>Copyright 2014 Robin Radic </p>
-<p><a href="http://radic.mit-license.org">MIT Licensed</a></p></article>
-    </section>
-
 
 
 
 
 
 </div>
-
-<script> prettyPrint(); </script>

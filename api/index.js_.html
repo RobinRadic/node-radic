@@ -1,17 +1,42 @@
 ---
 layout: page
-hide-title: true
-title: "Source: cli/index.js"
-custom-js: ['vendor/prismjs/prism']
-custom-css: ['vendor/prismjs/prism']
+title: Node Radic
+minify_content: false
+navigation:
+  - name: Home
+    link: /
+    icon: fa fa-home
+  - name: Overview
+    link: /node-radic
+    icon: fa fa-mortar-board
+  - name: Documentation
+    link: /node-radic/api
+    icon: fa fa-code
+    children:
+      - name: Modules
+        link: "#"
+        children:
+          - name: radic
+            link: /node-radic/api/module-radic.html
+          - name: radic/cli
+            link: /node-radic/api/cli.html
+          - name: radic/config
+            link: /node-radic/api/config.html
+          - name: radic/db
+            link: /node-radic/api/db.html
+      - name: Classes
+        link: "#"
+        children:
+          - name: Config
+            link: /node-radic/api/config-Config.html
+          - name: DB
+            link: /node-radic/api/db-DB.html
+  - name: Coverage
+    link: /node-radic/coverage
+    icon: fa fa-mortar-board
+
 ---
 
-<script src="scripts/prettify/prettify.js"> </script>
-<script src="scripts/prettify/lang-css.js"> </script>
-<!--[if lt IE 9]>
-  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
 <link type="text/css" rel="stylesheet" href="styles/jsdoc-radic.css">
 
 
@@ -166,5 +191,3 @@ _.each(outputs, function (opts, type) {
 
 
 </div>
-
-<script> prettyPrint(); </script>

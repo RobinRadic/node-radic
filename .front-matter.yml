@@ -7,11 +7,11 @@ navigation:
     link: /
     icon: fa fa-home
 
-  - name: Readme
+  - name: Overview
     link: /node-radic
     icon: fa fa-mortar-board
 
-  - name: API
+  - name: Documentation
     link: /node-radic/api
     icon: fa fa-code
 
