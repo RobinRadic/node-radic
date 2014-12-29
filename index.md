@@ -35,9 +35,10 @@ navigation:
 
 ---
 
-[![Build Status](https://travis-ci.org/RobinRadic/node-radic.svg?branch=master)](http://travis-ci.org/RobinRadic/node-radic)
-[![GitHub version](https://badge.fury.io/gh/robinradic%2Fnode-radic.svg)](http://badge.fury.io/gh/robinradic%2Fnode-radic)
-[![Coverage Status](https://img.shields.io/coveralls/RobinRadic/node-radic.svg)](https://coveralls.io/r/RobinRadic/node-radic)
+[![Travis build status](https://img.shields.io/travis/RobinRadic/node-radic.svg)](http://travis-ci.org/RobinRadic/node-radic)
+[![NPM Version](https://img.shields.io/npm/v/radic.svg)](http://npmjs.org/package/radic)
+[![Goto documentation](http://img.shields.io/badge/goto-documentation-orange.svg)](http://robin.radic.nl/node-radic)
+[![Goto repository](http://img.shields.io/badge/goto-repository-orange.svg)](https://github.com/robinradic/node-radic)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](http://radic.mit-license.org)
 
 ### Overview
@@ -99,9 +100,11 @@ var radic = require('radic'),
 var config = new Config('config', { /** options */ });
 var db = new DB('name');
 {% endhighlight %}
- 
-**More documentation soon**
-
+  
+#### Documentation
+You can check [the documentation here](http://robin.radic.nl/node-radic)
+  
+  
 ### License
 Copyright 2014 Robin Radic 
 
