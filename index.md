@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Node Radic
+minify_content: false
 navigation:
   - name: Home
     link: /
