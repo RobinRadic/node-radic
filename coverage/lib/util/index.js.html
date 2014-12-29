@@ -24,6 +24,8 @@ navigation:
         link: /node-radic/config.html
       - name: radic/db
         link: /node-radic/db.html
+      - name: util
+        link: /node-radic/module-util.html
   - name: Classes
     link: "#"
     icon: fa fa-mortar-board
@@ -32,6 +34,12 @@ navigation:
         link: /node-radic/config-Config.html
       - name: DB
         link: /node-radic/db-DB.html
+  - name: Namespaces
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: util
+        link: /node-radic/module-util-util.html
 
 ---
 <style>
@@ -210,7 +218,7 @@ navigation:
     <div>
         Statements: <span class="metric">100% <small>(6 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">0% <small>(0 / 1)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Lines: <span class="metric">100% <small>(6 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
@@ -237,24 +245,25 @@ navigation:
 17
 18
 19</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+/** @module util */
 var _util = require('util'),
     path = require('path'),
     os = require('os'),
@@ -264,9 +273,8 @@ var _util = require('util'),
     _ = require('lodash'),
     ini = require('ini');
 &nbsp;
-<span class="fstat-no" title="function not covered" >function util() {</span>
-&nbsp;
-}
+/** @namespace */
+var util = {};
 _util._extend(util, _util);
 module.exports = util;
 &nbsp;

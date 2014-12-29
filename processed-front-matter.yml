@@ -23,6 +23,8 @@ navigation:
         link: /node-radic/config.html
       - name: radic/db
         link: /node-radic/db.html
+      - name: util
+        link: /node-radic/module-util.html
   - name: Classes
     link: "#"
     icon: fa fa-mortar-board
@@ -31,3 +33,9 @@ navigation:
         link: /node-radic/config-Config.html
       - name: DB
         link: /node-radic/db-DB.html
+  - name: Namespaces
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: util
+        link: /node-radic/module-util-util.html
