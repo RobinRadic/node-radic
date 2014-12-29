@@ -2,29 +2,18 @@
 var radic = require('../lib'),
    cli = radic.cli;
 
-
-
-cli.command('version OR version :when :type')
+cli.command('version OR version :type')
     .description('Shows current version')
-    .usage('asdfasdf')
+    .usage('radic version minor', 'shows version')
     .method(function (cmd) {
         if (typeof cmd.type === 'undefined') {
-            console.log(radic.app.version);
+            cli.writeln(radic.app.version);
         } else {
-            var when = cmd.when === 'next' ? 1 : 0; // next or current
-            when = cmd.when === 'previous' ? -1 : when; // previous or keep
-
-            var part = cmd.type === 'minor' ? 1 : 2; // minor or patch
-            part = cmd.type === 'major' ? 0 : part; // major or keep
-
-            console.log(parseInt(radic.app.version.split('.')[part]) + when);
+            cli.log.ok('Yeah we done that');
+            cli.log.debug('But this aswell');
         }
     });
 
-
-cli.log.ok(radic.app.config.get());
-
-cli.usage('radic [command] --optionals');
 cli.parse(process.argv);
 
 
