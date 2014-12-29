@@ -18,8 +18,6 @@ navigation:
     children:
       - name: git/api
         link: /node-radic/api.html
-      - name: lib/cli/index
-        link: /node-radic/index_.html
       - name: radic
         link: /node-radic/module-radic.html
   - name: Classes
@@ -38,6 +36,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: cli
+        link: "/node-radic/global.html#cli"
       - name: git
         link: /node-radic/git.html
       - name: util
@@ -49,7 +49,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="api.html">git/api</a></li><li><a href="index_.html">lib/cli/index</a></li><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="api.html">git/api</a></li><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#cli">cli</a></li><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li><li><a href="global.html">Global</a></li>
 </ul>
 
 <div id="main">
@@ -85,7 +85,7 @@ navigation:
     <h3>Constructor</h3>
     
     <hr class="hr-top-margin">
-    <h4 class="name" id="DB"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>new DB<span class="signature">(name, options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="DB"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>new DB<span class="signature">(name, <span class="optional">options</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -116,6 +116,8 @@ navigation:
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -137,13 +139,27 @@ navigation:
 
             <td class="type">
             
+                
+<span class="label bg-green-jungle label-sm">string</span></span>
+
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The name of the database (and file)</p></td>
         </tr>
 
     
@@ -151,7 +167,7 @@ navigation:
         <tr>
             
                 <td class="name">
-                    <code class="font-red-thunderbird">
+                    <code class="font-red-pink">
                     options
                     </code>
                 </td>
@@ -159,13 +175,29 @@ navigation:
 
             <td class="type">
             
+                
+<span class="label bg-blue-hoki label-sm">object</span></span>
+
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Database options</p></td>
         </tr>
 
     
@@ -223,6 +255,16 @@ navigation:
 
 
 
+
+
+
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var db = new require('radic').DB('myfileDB4', {
+    path: 'HOMEDIR/.radic/stores',
+    ext: '.db',
+    onLoaded: function(){}
+});;{% endhighlight %}
 
 
 

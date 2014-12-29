@@ -18,8 +18,6 @@ navigation:
     children:
       - name: git/api
         link: /node-radic/api.html
-      - name: lib/cli/index
-        link: /node-radic/index_.html
       - name: radic
         link: /node-radic/module-radic.html
   - name: Classes
@@ -38,6 +36,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: cli
+        link: "/node-radic/global.html#cli"
       - name: git
         link: /node-radic/git.html
       - name: util
@@ -49,7 +49,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="api.html">git/api</a></li><li><a href="index_.html">lib/cli/index</a></li><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="api.html">git/api</a></li><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#cli">cli</a></li><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li><li><a href="global.html">Global</a></li>
 </ul>
 
 <div id="main">
@@ -59,95 +59,66 @@ navigation:
 
     
             {% highlight javascript %}
-            var exec = require('child_process').exec,
-    _ = require('lodash'),
-    os = require('os'),
-    api = require('./api'),
-    app = require('../app'),
-    util = require('../util'),
-    config = app.config;
+            var path = require('path'),
 
-function createCallback(callback) {
-    return function (error, stdout, stderr) {
-        if (error !== null) {
-            callback(error, stderr);
-        }
-        callback(null, stdout);
-    }
+    _ = require('lodash'),
+    Datastore = require('nedb'),
+
+    util = require('../util'),
+    Model = require('./model'),
+    app = require('../app');
+
+/**
+ * Database object. Creates and manages database files, models etc.
+ *
+ * @class
+ * @param {string} name - The name of the database (and file)
+ * @param {object} [options] - Database options
+ * @constructor
+ * @example
+ * var db = new require('radic').DB('myfileDB4', {
+ *     path: 'HOMEDIR/.radic/stores',
+ *     ext: '.db',
+ *     onLoaded: function(){}
+ * });;
+ *
+ */
+function DB(name, options){
+    options = options || {};
+    this.defaults = {
+        path: path.join(app.path, 'stores'),
+        name: name,
+        ext: '.db',
+        onLoaded: function(){}
+    };
+    this.options = _.extend({}, this.defaults, options);
+    this._models = {};
+    this._db = new Datastore(path.join(this.options.path, this.options.name + this.options.ext));
+    this._db.loadDatabase(this.options.onLoaded);
 }
 
 /**
- * @namespace git
- * @requires api
+ * The Model class
+ * @see {@link Model}
+ * @type {Model|exports}
  */
-var git = {
-    config: config.get('git')
-};
+DB.Model = Model;
+module.exports = DB;
 
-module.exports = git;
-
-/**
- * Get an API object for the given provider
- * @param {string} provider - The provider (bitbucket or github)
- * @returns {api}
- * @memberOf git
- */
-git.getApi = function (provider) {
-    return api(provider);
-};
-
-/**
- * Initializes git in the current directory
- * @param cb
- */
-git.init = function init(cb) {
-    exec('git init', createCallback(cb));
-};
-
-/**
- * Adds all files
- * @param cb
- */
-git.addAll = function commit(cb) {
-    exec('git add -A', createCallback(cb));
-};
-
-/**
- *
- * @param message
- * @param cb
- */
-git.commit = function commit(message, cb) {
-    exec('git commit -m "' + message + '"', createCallback(cb));
-};
-
-/**
- * Pushes the commits
- * @param remote
- * @param branch
- * @param cb
- */
-git.push = function push(remote, branch, cb) {
-    exec('git push -u "' + remote + '" "' + branch + '"', createCallback(cb));
-};
-
-/**
- *
- * @type {{add: Function}}
- */
-git.remote = {
-    add: function (type, url, cb) {
-        exec('git remote add ' + type + ' ' + url, createCallback(cb));
+// Get or set models
+DB.prototype.model = function(name, schema){
+    if(util.defined(schema)){
+        return this._models[name] = new Model(name, schema, this._db);
+    } else if(this.hasModel(name)) {
+        return this._models[name];
+    } else {
+        throw new Error('Could not get model "' + name + '".')
     }
 };
 
-/**
- * Checkout a branch
- * @param branchName
- * @param cb
- */
-git.checkout = function(branchName, cb){
-    exec('git checkout ' + branchName, createCallback(cb));
+
+DB.prototype.hasModel = function(name){
+    return util.defined(this._models[name]);
 };
 
             {% endhighlight %}

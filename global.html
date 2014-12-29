@@ -20,8 +20,6 @@ navigation:
         link: /node-radic/api.html
       - name: radic
         link: /node-radic/module-radic.html
-      - name: radic/cli
-        link: /node-radic/cli.html
   - name: Classes
     link: "#"
     icon: fa fa-mortar-board
@@ -32,20 +30,18 @@ navigation:
         link: /node-radic/DB.html
       - name: Model
         link: /node-radic/Model.html
+      - name: Table
+        link: /node-radic/Table.html
   - name: Namespaces
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: cli
+        link: "/node-radic/global.html#cli"
       - name: git
         link: /node-radic/git.html
       - name: util
         link: /node-radic/util.html
-  - name: Mixins
-    link: "#"
-    icon: fa fa-mortar-board
-    children:
-      - name: dotaccess
-        link: /node-radic/dotaccess.html
 
 ---
 
@@ -53,7 +49,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="api.html">git/api</a></li><li><a href="module-radic.html">radic</a></li><li><a href="cli.html">radic/cli</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Mixins<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="dotaccess.html">dotaccess</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#set">set</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="api.html">git/api</a></li><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#cli">cli</a></li><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li><li><a href="global.html">Global</a></li>
 </ul>
 
 <div id="main">
@@ -65,12 +61,19 @@ navigation:
 <section>
 
 <header>
-    
-        <h2>
-        
-        </h2>
-        
-    
+    <div class="portlet-title">
+        <div class="caption">
+            
+                <i class="fa fa-puzzle-piece fa-2x font-red-flamingo"></i>
+                <h2 class="caption-subject bold font-red-flamingo uppercase" style="display: inline-flex;">
+                    
+                        
+                    </h2>
+                    
+                </h2>
+            
+        </div>
+    </div>
 </header>
 
 <article>
@@ -132,129 +135,20 @@ navigation:
     
 
     
-
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
 
         
             
+<h4 class="name" id="cli"><span class="type-signature"></span>cli<span class="type-signature"></span></h4>
 
-    
-
-    <h4 class="name" id="set"><span class="type-signature"></span>set<span class="signature">(obj, key, value, overwrite)</span><span class="type-signature"></span></h4>
-
-    
 
 
 
 <div class="description">
-    <p>Set it</p>
+    <p>Create a table from pre-defined styles</p>
 </div>
 
 
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>obj</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>overwrite</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -300,17 +194,9 @@ navigation:
 
 
 
-
-
-
-
-
-
-
-
-
-
         
+    
+
     
 
     
