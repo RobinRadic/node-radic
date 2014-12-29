@@ -34,12 +34,6 @@ navigation:
         link: /node-radic/DB.html
       - name: Model
         link: /node-radic/Model.html
-  - name: Namespaces
-    link: "#"
-    icon: fa fa-mortar-board
-    children:
-      - name: util
-        link: /node-radic/module-util-util.html
 
 ---
 

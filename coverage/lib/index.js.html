@@ -34,12 +34,6 @@ navigation:
         link: /node-radic/DB.html
       - name: Model
         link: /node-radic/Model.html
-  - name: Namespaces
-    link: "#"
-    icon: fa fa-mortar-board
-    children:
-      - name: util
-        link: /node-radic/module-util-util.html
 
 ---
 <style>
@@ -266,7 +260,18 @@ navigation:
 38
 39
 40
-41</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -286,6 +291,17 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -328,9 +344,20 @@ var exec = require('child_process').exec,
 module.exports = {
     /** Application data */
     app: app,
-    /** Utility functions */
+&nbsp;
+    /**
+     * Utility functions
+     * @see {@link util}
+     */
     util: util,
+&nbsp;
+    /**
+     * Git tools
+     * @see {@link git}
+     */
     git: require('./git'),
+&nbsp;
+&nbsp;
     cli: require('./cli'),
 &nbsp;
     /**

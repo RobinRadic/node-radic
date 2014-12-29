@@ -34,12 +34,6 @@ navigation:
         link: /node-radic/DB.html
       - name: Model
         link: /node-radic/Model.html
-  - name: Namespaces
-    link: "#"
-    icon: fa fa-mortar-board
-    children:
-      - name: util
-        link: /node-radic/module-util-util.html
 
 ---
 <style>
@@ -245,8 +239,8 @@ navigation:
 17
 18
 19</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -263,7 +257,6 @@ navigation:
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
-/** @module util */
 var _util = require('util'),
     path = require('path'),
     os = require('os'),
@@ -273,7 +266,8 @@ var _util = require('util'),
     _ = require('lodash'),
     ini = require('ini');
 &nbsp;
-/** @namespace */
+&nbsp;
+/** @module util */
 var util = {};
 _util._extend(util, _util);
 module.exports = util;

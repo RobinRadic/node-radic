@@ -34,12 +34,6 @@ navigation:
         link: /node-radic/DB.html
       - name: Model
         link: /node-radic/Model.html
-  - name: Namespaces
-    link: "#"
-    icon: fa fa-mortar-board
-    children:
-      - name: util
-        link: /node-radic/module-util-util.html
 
 ---
 
@@ -47,7 +41,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-git.html">git</a></li><li><a href="module-radic.html">radic</a></li><li><a href="cli.html">radic/cli</a></li><li><a href="module-util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-util-util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-git.html">git</a></li><li><a href="module-radic.html">radic</a></li><li><a href="cli.html">radic/cli</a></li><li><a href="module-util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -58,7 +52,6 @@ navigation:
     
             {% highlight javascript %}
             'use strict';
-/** @module util */
 var _util = require('util'),
     path = require('path'),
     os = require('os'),
@@ -68,7 +61,8 @@ var _util = require('util'),
     _ = require('lodash'),
     ini = require('ini');
 
-/** @namespace */
+
+/** @module util */
 var util = {};
 _util._extend(util, _util);
 module.exports = util;
