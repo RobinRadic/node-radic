@@ -9,10 +9,10 @@ navigation:
 
   - name: Overview
     link: /node-radic
-    icon: fa fa-mortar-board
+    icon: fa fa-dashboard
 
   - name: Coverage
     link: /node-radic/coverage
-    icon: fa fa-mortar-board
+    icon: fa fa-code
 
 ---

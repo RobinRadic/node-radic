@@ -8,12 +8,13 @@ navigation:
     icon: fa fa-home
   - name: Overview
     link: /node-radic
-    icon: fa fa-mortar-board
+    icon: fa fa-dashboard
   - name: Coverage
     link: /node-radic/coverage
-    icon: fa fa-mortar-board
+    icon: fa fa-code
   - name: Modules
     link: "#"
+    icon: fa fa-mortar-board
     children:
       - name: radic
         link: /node-radic/module-radic.html
@@ -25,6 +26,7 @@ navigation:
         link: /node-radic/db.html
   - name: Classes
     link: "#"
+    icon: fa fa-mortar-board
     children:
       - name: Config
         link: /node-radic/config-Config.html
