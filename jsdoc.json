@@ -1,11 +1,12 @@
 {
     "source": {
         "include": ["index.js", "lib"],
-        "includePattern": ".+\\.js(doc)?$"
+        "includePattern": ".+\\.js(doc)?$",
+        "exclude": ["lib/cli/_celeri"]
     },
     "opts": {
         "recurse": true,
-        "destination": "docs/api"
+        "destination": "docs"
     },
     "plugins": [
         "plugins/markdown"
@@ -19,13 +20,10 @@
         "systemName"      : "Radic",
         "footer"          : "",
         "copyright"       : "Radic Copyright © 2012-2014 Robin Radic.",
-        "navType"         : "vertical",
-        "theme"           : "spruce",
-        "linenums"        : true,
-        "collapseSymbols" : false,
-        "inverseNav"      : true
+        "frontMatterPath": "docs/.front-matter.yml",
+        "baseurl" : "/node-radic"
     },
     "markdown": {
-        "parser": "gfm"
+        "parser": "marked"
     }
 }

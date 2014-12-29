@@ -4,9 +4,7 @@
   "description": "The core library and application for many of my node applications.",
   "main": "index.js",
   "scripts": {
-    "coverage": "./node_modules/.bin/istanbul cover -x 'lib/cli/_celeri/**' ./node_modules/.bin/_mocha -- -R spec; rm -rf docs/coverage/* >/dev/null 2>&1; cp -r coverage/lcov-report/* docs/coverage/ >/dev/null 2>&1; cp -f coverage/coverage.json docs/coverage/coverage.json >/dev/null 2>&1; rm -rf coverage >/dev/null 2>&1; exit 0",
-    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec",
-    "doc": "jsdoc -t ./node_modules/ink-docstrap/template -c ./jsdoc.json  ./README.md"
+    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec"
   },
   "bin": {
     "radic": "bin/radic.js"
@@ -15,7 +13,7 @@
   "author": {
     "name": "Robin Radic",
     "email": "robin@radic.nl",
-    "url": ""
+    "url": "http://robin.radic.nl"
   },
   "repository": {
     "type": "git",
@@ -26,7 +24,6 @@
     "beanpoll": "0.2.x",
     "blessed": "0.0.37",
     "chalk": "^0.5.0",
-    "cli-color": "^0.3.2",
     "cli-table": "^0.3.1",
     "colors": "^1.0.3",
     "crema": "0.1.x",
@@ -45,10 +42,34 @@
   },
   "devDependencies": {
     "chai": "^1.10.0",
-    "coveralls": "^2.11.2",
     "ink-docstrap": "^0.4.12",
     "istanbul": "^0.3.5",
     "mocha": "^2.1.0",
-    "sinon": "^1.12.2"
+    "sinon": "^1.12.2",
+    "grunt": "^0.4.5",
+    "grunt-build-control": "^0.2.2",
+    "grunt-concurrent": "^1.0.0",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-cssmin": "^0.10.0",
+    "grunt-contrib-handlebars": "^0.9.1",
+    "grunt-contrib-htmlmin": "^0.3.0",
+    "grunt-contrib-jade": "^0.13.0",
+    "grunt-contrib-sass": "^0.8.1",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-filerev": "^2.1.2",
+    "grunt-newer": "^0.8.0",
+    "grunt-preprocess": "^4.0.0",
+    "grunt-shell": "^1.1.1",
+    "grunt-string-replace": "^1.0.0",
+    "grunt-subgrunt": "^0.4.3",
+    "grunt-usemin": "^2.6.2",
+    "grunt-radic": "^0.0.1",
+    "load-grunt-tasks": "^0.4.0",
+    "grunt": "^0.4.5",
+    "time-grunt": "^0.3.1",
+    "jsdoc": "~3.3.0-alpha5"
   }
 }
