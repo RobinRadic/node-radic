@@ -222,10 +222,10 @@ navigation:
     <link rel="stylesheet" href="../../prettify.css">
 <div class="coverage-header high">
     <div>
-        Statements: <span class="metric">90.91% <small>(30 / 33)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">90% <small>(27 / 30)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">78.57% <small>(11 / 14)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(5 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">96.43% <small>(27 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">96% <small>(24 / 25)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">lib/util/</a> &#187; dotaccess.js</div>
@@ -289,7 +289,20 @@ navigation:
 55
 56
 57
-58</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">63</span>
 <span class="cline-any cline-yes">63</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -310,24 +323,30 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">16</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">16</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">43</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -341,9 +360,16 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function parts(key) {
@@ -363,45 +389,58 @@ function lookup(obj, key) {
     return [obj, lastKey];
 }
 &nbsp;
-/**
- * Set it
- * @param obj
- * @param key
- * @param value
- * @param overwrite
- */
-function set(obj, key, value, overwrite) {
-    var objectAndKey = lookup(obj, key),
-        obj = objectAndKey[0],
-        key = objectAndKey[1];
-    if (overwrite || !(key in obj)) obj[key] = value
-}
 &nbsp;
-function unset(obj, key) {
-    var objectAndKey = lookup(obj, key),
-        obj = objectAndKey[0],
-        key = objectAndKey[1];
-    return delete obj[key];
-}
 &nbsp;
-function get(obj, key, def) {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof key === 'undefined') {
-<span class="cstat-no" title="statement not covered" >        return obj;</span>
-    }
-    key = parts(key);
-    for (var i = 0, l = key.length; i &lt; l; i++) {
-        var part = key[i];
-        if (!(part in obj)) return def;
-        obj = obj[part]
-    }
-    return obj
-}
 &nbsp;
 /** @mixin dotaccess */
 var dotaccess = module.exports = {
-    dot_set: set,
-    dot_get: get,
-    dot_del: unset
+&nbsp;
+    /**
+     * Set it
+     * @param obj
+     * @param key
+     * @param value
+     * @param overwrite
+     */
+    dot_set: function (obj, key, value, overwrite) {
+        var objectAndKey = lookup(obj, key),
+            obj = objectAndKey[0],
+            key = objectAndKey[1];
+        if (overwrite || !(key in obj)) obj[key] = value
+    },
+&nbsp;
+    /**
+     * Get it
+     * @param obj
+     * @param key
+     * @param def
+     * @returns {*}
+     */
+    dot_get: function (obj, key, def) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof key === 'undefined') {
+<span class="cstat-no" title="statement not covered" >            return obj;</span>
+        }
+        key = parts(key);
+        for (var i = 0, l = key.length; i &lt; l; i++) {
+            var part = key[i];
+            if (!(part in obj)) return def;
+            obj = obj[part]
+        }
+        return obj
+    },
+&nbsp;
+    /**
+     * Delete it
+     * @param obj
+     * @param key
+     * @returns {boolean}
+     */
+    dot_del: function (obj, key) {
+        var objectAndKey = lookup(obj, key),
+            obj = objectAndKey[0],
+            key = objectAndKey[1];
+        return delete obj[key];
+    }
 };
 &nbsp;</pre></td></tr>
 </table></pre>
