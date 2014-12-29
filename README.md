@@ -24,6 +24,7 @@ radic
 - github
 - bitbucket
 - ui
+- cli
   
   
 ## How to use

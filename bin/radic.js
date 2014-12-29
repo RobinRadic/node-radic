@@ -1,30 +1,33 @@
 #!/usr/bin/env node
+var radic = require('../lib'),
+   cli = radic.cli;
 
 
-var radic = require('../lib');
 
-var config = new radic.Config('test');
+cli.command('version OR version :when :type')
+    .description('Shows current version')
+    .usage('asdfasdf')
+    .method(function (cmd) {
+        if (typeof cmd.type === 'undefined') {
+            console.log(radic.app.version);
+        } else {
+            var when = cmd.when === 'next' ? 1 : 0; // next or current
+            when = cmd.when === 'previous' ? -1 : when; // previous or keep
 
+            var part = cmd.type === 'minor' ? 1 : 2; // minor or patch
+            part = cmd.type === 'major' ? 0 : part; // major or keep
 
-function testConfig() {
-    config.set('b.a.c', 'ovessr', true);
-
-    var b = config.get('b.a.c');
-    console.log('b.a.c', b);
-
-    config.del('b.a.c', true);
-
-    b = config.get('b.a.c');
-    console.log('b.a.c', b);
-
-
-    b = config.get('b');
-    console.log('b', b);
-
-    config.clear(true);
+            console.log(parseInt(radic.app.version.split('.')[part]) + when);
+        }
+    });
 
 
-    b = config.get('b');
-    console.log('b', b);
-}
+cli.log.ok('asdf');
+cli.log('ok', 'asdf2');
+cli.log('ok');
+cli.debug('asdf');
+
+cli.usage('radic [command] --optionals');
+cli.parse(process.argv);
+
 
