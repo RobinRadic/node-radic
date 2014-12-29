@@ -20,8 +20,6 @@ navigation:
         link: /node-radic/api.html
       - name: radic
         link: /node-radic/module-radic.html
-      - name: radic/cli
-        link: /node-radic/cli.html
   - name: Classes
     link: "#"
     icon: fa fa-mortar-board
@@ -40,12 +38,6 @@ navigation:
         link: /node-radic/git.html
       - name: util
         link: /node-radic/util.html
-  - name: Mixins
-    link: "#"
-    icon: fa fa-mortar-board
-    children:
-      - name: dotaccess
-        link: /node-radic/dotaccess.html
 
 ---
 <style>
@@ -320,9 +312,6 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -333,10 +322,12 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">16</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -357,6 +348,7 @@ navigation:
 <span class="cline-any cline-yes">77</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">28</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -390,13 +382,11 @@ function lookup(obj, key) {
 }
 &nbsp;
 &nbsp;
-&nbsp;
-&nbsp;
-/** @mixin dotaccess */
 var dotaccess = module.exports = {
 &nbsp;
     /**
      * Set it
+     * @memberOf util
      * @param obj
      * @param key
      * @param value
@@ -411,6 +401,7 @@ var dotaccess = module.exports = {
 &nbsp;
     /**
      * Get it
+     * @memberOf util
      * @param obj
      * @param key
      * @param def
@@ -431,6 +422,7 @@ var dotaccess = module.exports = {
 &nbsp;
     /**
      * Delete it
+     * @memberOf util
      * @param obj
      * @param key
      * @returns {boolean}
