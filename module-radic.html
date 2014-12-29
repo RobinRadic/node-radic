@@ -16,6 +16,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: cli/table
+        link: /node-radic/table.html
       - name: git/api
         link: /node-radic/api.html
       - name: radic
@@ -30,6 +32,8 @@ navigation:
         link: /node-radic/DB.html
       - name: Model
         link: /node-radic/Model.html
+      - name: Table
+        link: /node-radic/table-Table.html
   - name: Namespaces
     link: "#"
     icon: fa fa-mortar-board
@@ -45,7 +49,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="api.html">git/api</a></li><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="table.html">cli/table</a></li><li><a href="api.html">git/api</a></li><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="table-Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -186,6 +190,70 @@ navigation:
 
         
             
+<h4 class="name" id="cli"><span class="type-signature">&lt;static> </span>cli<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Cli functions</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="cli.html">cli</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
 <h4 class="name" id="Config"><span class="type-signature">&lt;static> </span>Config<span class="type-signature"></span></h4>
 
 
@@ -244,6 +312,13 @@ navigation:
 </dl>
 
 
+
+
+
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var radic = require('radic'),
+    config = new radic.Config('myconf');{% endhighlight %}
 
 
 
@@ -311,6 +386,13 @@ navigation:
 
 
 
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var radic = require('radic'),
+    db = new radic.DB('fileDB2');{% endhighlight %}
+
+
+
 
         
             
@@ -375,6 +457,20 @@ navigation:
 
 
 
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var radic = require('radic'),
+    git = radic.git;
+
+git.init(function(err, output){ console.log(err, output); });
+git.getApi('bitbucket').user.repos(null, function(err, data){
+     data.forEach(function(repo){
+         console.log(repo.id);
+     });
+});{% endhighlight %}
+
+
+
 
         
             
@@ -384,7 +480,7 @@ navigation:
 
 
 <div class="description">
-    <p>Utility functions</p>
+    <p>Utility functions. Extends the native nodejs utilities module.</p>
 </div>
 
 
@@ -436,6 +532,16 @@ navigation:
 </dl>
 
 
+
+
+
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var radic = require('radic'),
+    util = radic.util;
+
+util.inspect(util);
+var value = util.dot_get(obj, 'path.to.value', 'default');{% endhighlight %}
 
 
 

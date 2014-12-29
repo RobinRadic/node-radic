@@ -16,6 +16,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: cli/table
+        link: /node-radic/table.html
       - name: git/api
         link: /node-radic/api.html
       - name: radic
@@ -30,6 +32,8 @@ navigation:
         link: /node-radic/DB.html
       - name: Model
         link: /node-radic/Model.html
+      - name: Table
+        link: /node-radic/table-Table.html
   - name: Namespaces
     link: "#"
     icon: fa fa-mortar-board
@@ -45,7 +49,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="api.html">git/api</a></li><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="table.html">cli/table</a></li><li><a href="api.html">git/api</a></li><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="table-Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -55,57 +59,96 @@ navigation:
 
     
             {% highlight javascript %}
-            /**
- * Exports all objects for external libraries to use.
- * @module radic
- * @type {exports.exec}
- */
-
-var exec = require('child_process').exec,
-    path = require('path'),
-
-    async = require('async'),
-    fs = require('fs-extra'),
+            var exec = require('child_process').exec,
     _ = require('lodash'),
+    os = require('os'),
+    api = require('./api'),
+    app = require('../app'),
+    util = require('../util'),
+    config = app.config;
 
-    app = require('./app'),
-    util = require('./util'),
-    Config = require('./config');
+function createCallback(callback) {
+    return function (error, stdout, stderr) {
+        if (error !== null) {
+            callback(error, stderr);
+        }
+        callback(null, stdout);
+    }
+}
 
-
-
-module.exports = {
-    /** Application data */
-    app: app,
-
-    /**
-     * Utility functions
-     * @see {@link util}
-     */
-    util: util,
-
-    /**
-     * Git tools
-     * @see {@link git}
-     */
-    git: require('./git'),
-
-
-    cli: require('./cli'),
-
-    /**
-     * The database class
-     * @see {@link DB}
-     */
-    DB: require('./db'),
-
-    /**
-     * The config class
-     * @see {@link Config}
-     */
-    Config: Config
+/**
+ * @namespace git
+ * @requires api
+ */
+var git = {
+    config: config.get('git')
 };
 
+module.exports = git;
+
+/**
+ * Get an API object for the given provider
+ * @param {string} provider - The provider (bitbucket or github)
+ * @returns {api}
+ * @memberOf git
+ */
+git.getApi = function (provider) {
+    return api(provider);
+};
+
+/**
+ * Initializes git in the current directory
+ * @param cb
+ */
+git.init = function init(cb) {
+    exec('git init', createCallback(cb));
+};
+
+/**
+ * Adds all files
+ * @param cb
+ */
+git.addAll = function commit(cb) {
+    exec('git add -A', createCallback(cb));
+};
+
+/**
+ *
+ * @param message
+ * @param cb
+ */
+git.commit = function commit(message, cb) {
+    exec('git commit -m "' + message + '"', createCallback(cb));
+};
+
+/**
+ * Pushes the commits
+ * @param remote
+ * @param branch
+ * @param cb
+ */
+git.push = function push(remote, branch, cb) {
+    exec('git push -u "' + remote + '" "' + branch + '"', createCallback(cb));
+};
+
+/**
+ *
+ * @type {{add: Function}}
+ */
+git.remote = {
+    add: function (type, url, cb) {
+        exec('git remote add ' + type + ' ' + url, createCallback(cb));
+    }
+};
+
+/**
+ * Checkout a branch
+ * @param branchName
+ * @param cb
+ */
+git.checkout = function(branchName, cb){
+    exec('git checkout ' + branchName, createCallback(cb));
+};
 
             {% endhighlight %}
 
