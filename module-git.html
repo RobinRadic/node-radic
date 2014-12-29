@@ -57,59 +57,88 @@ navigation:
 
 
 
+
+<section>
+
+<header>
     
-            {% highlight javascript %}
-            /** @module radic/db */
-var path = require('path'),
+</header>
 
-    _ = require('lodash'),
-    Datastore = require('nedb'),
+<article>
+    <div class="container-overview">
+    
+        
 
-    util = require('../util'),
-    Model = require('./model'),
-    app = require('../app');
-
-/**
- * Database object. Creates and manages database files, models etc.
- *
- * @param name
- * @param options
- * @constructor
- */
-function DB(name, options){
-    options = options || {};
-    this.defaults = {
-        path: path.join(app.path, 'stores'),
-        name: name,
-        ext: '.db',
-        onLoaded: function(){}
-    };
-    this.options = _.extend({}, this.defaults, options);
-    this._models = {};
-    this._db = new Datastore(path.join(this.options.path, this.options.name + this.options.ext));
-    this._db.loadDatabase(this.options.onLoaded);
-}
-DB.Model = Model;
-module.exports = DB;
-
-// Get or set models
-DB.prototype.model = function(name, schema){
-    if(util.defined(schema)){
-        return this._models[name] = new Model(name, schema, this._db);
-    } else if(this.hasModel(name)) {
-        return this._models[name];
-    } else {
-        throw new Error('Could not get model "' + name + '".')
-    }
-};
+        
 
 
-DB.prototype.hasModel = function(name){
-    return util.defined(this._models[name]);
-};
+<dl class="details">
 
-            {% endhighlight %}
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+        <h3 class="subsection-title">Namespaces</h3>
+
+        <dl>
+            <dt><a href="module-git-git.html">git</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

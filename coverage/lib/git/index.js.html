@@ -16,6 +16,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: git
+        link: /node-radic/module-git.html
       - name: radic
         link: /node-radic/module-radic.html
       - name: radic/cli
@@ -36,6 +38,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: git
+        link: /node-radic/module-git-git.html
       - name: util
         link: /node-radic/module-util-util.html
 
@@ -212,12 +216,12 @@ navigation:
 
 </style>
     <link rel="stylesheet" href="../../prettify.css">
-<div class="coverage-header low">
+<div class="coverage-header medium">
     <div>
-        Statements: <span class="metric">47.83% <small>(11 / 23)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">50% <small>(11 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">0% <small>(0 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">47.83% <small>(11 / 23)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">50% <small>(11 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">lib/git/</a> &#187; index.js</div>
@@ -275,7 +279,11 @@ navigation:
 49
 50
 51
-52</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+52
+53
+54
+55</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -292,18 +300,12 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -318,6 +320,14 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -326,7 +336,8 @@ navigation:
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var exec = require('child_process').exec,
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/** @module git */
+var exec = require('child_process').exec,
     _ = require('lodash'),
     os = require('os'),
     api = require('./api'),
@@ -343,9 +354,11 @@ navigation:
     }
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function git() {</span>
-<span class="cstat-no" title="statement not covered" >    git.config = config.get('git');</span>
-}
+/** @namespace */
+var git = {
+    config: config.get('git')
+};
+&nbsp;
 module.exports = git;
 &nbsp;
 git.getApi = <span class="fstat-no" title="function not covered" >function (provider) {</span>

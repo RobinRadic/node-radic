@@ -16,6 +16,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: git
+        link: /node-radic/module-git.html
       - name: radic
         link: /node-radic/module-radic.html
       - name: radic/cli
@@ -36,6 +38,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: git
+        link: /node-radic/module-git-git.html
       - name: util
         link: /node-radic/module-util-util.html
 
@@ -260,7 +264,11 @@ navigation:
 34
 35
 36
-37</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+37
+38
+39
+40
+41</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -280,6 +288,10 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -323,6 +335,10 @@ module.exports = {
     git: require('./git'),
     cli: require('./cli'),
 &nbsp;
+    /**
+     * The database class
+     * @see {@link DB}
+     */
     DB: require('./db'),
 &nbsp;
     /**
