@@ -1,6 +1,6 @@
 {
   "name": "radic",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "The core library and application for many of my node applications.",
   "main": "index.js",
   "scripts": {
