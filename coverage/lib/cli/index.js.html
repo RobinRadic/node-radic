@@ -384,7 +384,43 @@ navigation:
 154
 155
 156
-157</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -554,6 +590,24 @@ navigation:
 &nbsp;
 /**
  * @namespace cli
+ * @example
+ * #!/usr/bin/env node
+ * var radic = require('../lib'),
+ *     cli = radic.cli;
+ *
+ * cli.command('version OR version :type')
+ *    .description('Shows current version')
+ *    .usage('radic version minor', 'shows version')
+ *    .method(function (cmd) {
+ *        if (typeof cmd.type === 'undefined') {
+ *            cli.writeln(radic.app.version);
+ *        } else {
+ *            cli.log.ok('Yeah we done that');
+ *            cli.log.debug('But this aswell');
+ *        }
+ *    });
+ *
+ * cli.parse(process.argv);
  */
 var cli = {
     _commands: [],
