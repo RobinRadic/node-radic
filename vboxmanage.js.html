@@ -61,79 +61,78 @@ navigation:
 
     
             {% highlight javascript %}
-            var path = require('path'),
+            var _ = require('lodash'),
+    util = require('./util'),
+    exec = require('child_process').exec,
+    sh = require('./sh');
 
-    _ = require('lodash'),
-    Datastore = require('nedb'),
 
-    util = require('../util'),
-    Model = require('./model'),
-    app = require('../app');
-
-/**
- * Database object. Creates and manages database files, models etc.
- *
- * @class
- * @param {string} name - The name of the database (and file)
- * @param {object} [options] - Database options
- * @constructor
- * @example
- * var db = new require('radic').DB('myfileDB4', {
- *     path: 'HOMEDIR/.radic/stores',
- *     ext: '.db',
- *     onLoaded: function(){}
- * });;
- *
- */
-function DB(name, options){
-    options = options || {};
-    this.defaults = {
-        path: path.join(app.path, 'stores'),
-        name: name,
-        ext: '.db',
-        onLoaded: function(){}
-    };
-    this.options = _.extend({}, this.defaults, options);
-    this._models = {};
-    this._db = new Datastore(path.join(this.options.path, this.options.name + this.options.ext));
-    this._db.loadDatabase(this.options.onLoaded);
+function createExecString(args){
+    var cmd = 'VBoxManage';
+    _.forEach(args, function(arg, i){
+        if(typeof arg === 'string'){
+            cmd += ' ' + JSON.stringify(arg);
+        } else if(typeof arg === 'number'){
+            cmd += ' ' + arg;
+        } else if(typeof arg === 'object'){
+            _.forEach(arg, function(opt, optk){
+                if(typeof opt === 'boolean') {
+                    cmd += ' --' + optk;
+                } else {
+                    cmd += ' --' + optk + ' ' + JSON.stringify(opt);
+                }
+            });
+        }
+    });
+    //console.log(cmd);
+    return cmd;
 }
 
 /**
- * The Model class
- * @see {@link Model}
- * @type {Model|exports}
+ * @namespace vboxmanage
+ * @returns {object} result - An object containing `code` and `stdout`
  */
-DB.Model = Model;
-module.exports = DB;
+function vboxmanage(){
+    return sh.execSync(createExecString(_.toArray(arguments)));
+}
+module.exports = vboxmanage;
 
-/**
- * Get or define a model
- * @param {string} name - The name of the model
- * @param {object} schema - The model schema. Uses schema-inspector
- * @returns {Model}
- * @throws Error
- * @see {@link http://atinux.github.io/schema-inspector|Schema inspector documentation}
- * @see {@link Model} for examples
- */
-DB.prototype.model = function(name, schema){
-    if(util.defined(schema)){
-        return this._models[name] = new Model(name, schema, this._db);
-    } else if(this.hasModel(name)) {
-        return this._models[name];
-    } else {
-        throw new Error('Could not get model "' + name + '".')
+vboxmanage.async = function(){
+    var args = _.toArray(arguments);
+    var callback;
+    _.forEach(args, function(arg, i){
+        if( typeof arg === 'function' &amp;&amp; args.length === (i + 1) ){
+            callback = arg;
+        }
+    });
+    if(typeof callback !== 'function'){
+        throw new Error('vboxmanage.async requires a callback')
     }
+    exec(createExecString(args), function(err, stdout, stderr){
+        callback(err, stdout);
+    });
+
 };
 
-/**
- * Checks if a model with the given name has been defined
- * @param {string} name - The name for the model
- * @returns {boolean} - Returns true if model is defined, otherwise false
- */
-DB.prototype.hasModel = function(name){
-    return util.defined(this._models[name]);
-};
+/*
+var result = vboxmanage('createvm', {
+    name: 'vboxmanagetest',
+    register: true,
+    basefolder: require('path').resolve(__dirname, '..', 'test')
+});
+console.log(result.stdout);
+console.log(result.code);
+
+
+
+var result2 = vboxmanage('unregistervm', 'vboxmanagetest', {
+    delete: true
+});
+console.log(result2.stdout);
+console.log(result2.code);
+
+//util.print(util.inspect(result));
+*/
 
             {% endhighlight %}
 

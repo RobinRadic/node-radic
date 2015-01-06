@@ -38,8 +38,12 @@ navigation:
         link: /node-radic/cli.html
       - name: git
         link: /node-radic/git.html
+      - name: net
+        link: /node-radic/net.html
       - name: util
         link: /node-radic/util.html
+      - name: vboxmanage
+        link: /node-radic/vboxmanage.html
 
 ---
 
@@ -49,26 +53,33 @@ navigation:
 [![Goto repository](http://img.shields.io/badge/goto-repository-orange.svg)](https://github.com/robinradic/node-radic)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](http://radic.mit-license.org)
 
+
 ### Overview
 `radic` is the core library and application for many of my node applications.
  
 - It exports a variety of objects, classes and instances for external use.   
 - `radic` is also a stand-alone application which manages global configuration and such.
   
+
   
-#### Library classes that can be instantieted in external applications 
-- config
-- db
-- git
-- utilities
+#### Documentation
+You can check [the documentation here](http://robin.radic.nl/node-radic)
   
-  
-#### Helper objects/functions that can be called in external applications
-- config (global `radic` configuration)
-- github
-- bitbucket
-- ui
-- cli
+    
+    
+#### Included functionality
+
+| Module | Description |
+|:-------|:------------|
+| [config](docs/Config.html) | persitent file based configuration `config.get('a.b.c'); config.set('a.b', 'c'); config.set('a', { b: 'c' });` |
+| [db](docs/DB.html) | file based database. Uses models/schemas with validation |
+| [git](docs/git.html) | local commands like add, commit etc. also includes API for github/bitbucket |
+| util | extends the core util functionality with extras |
+| ui | .. |
+| cli | cli commands, output, input etc |
+| net | network functionality, like downloading |
+| sh | shell exec, execsync, execlist etc |
+| vboxmanage | virtual box manager api |
   
   
 ### How to use
@@ -108,10 +119,6 @@ var radic = require('radic'),
 var config = new Config('config', { /** options */ });
 var db = new DB('name');
 {% endhighlight %}
-  
-#### Documentation
-You can check [the documentation here](http://robin.radic.nl/node-radic)
-  
   
 ### License
 Copyright 2014 Robin Radic 

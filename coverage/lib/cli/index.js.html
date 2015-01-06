@@ -38,8 +38,12 @@ navigation:
         link: /node-radic/cli.html
       - name: git
         link: /node-radic/git.html
+      - name: net
+        link: /node-radic/net.html
       - name: util
         link: /node-radic/util.html
+      - name: vboxmanage
+        link: /node-radic/vboxmanage.html
 
 ---
 <style>
@@ -404,7 +408,8 @@ navigation:
 176
 177
 178
-179</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+179
+180</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -438,6 +443,7 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -619,7 +625,8 @@ var cli = {
     _commands: [],
     _usage: 'app [command] --optional=value',
     _logFile: false,
-    enableDebug: true
+    enableDebug: true,
+    autoexit: false
 };
 module.exports = cli;
 &nbsp;
@@ -722,7 +729,7 @@ var outputs = {
     warn: ["yellow", "! "],
     debug: ["blue", "＃"],
     error: ["red", "✖ "],
-    fatal: ["red", "☠ FATAL ERROR ☠"]
+    fatal: ["red", "✖✖ "]
 };
 cli.log = <span class="fstat-no" title="function not covered" >function(){</span>
 <span class="cstat-no" title="statement not covered" >    var args = _.toArray(arguments);</span>

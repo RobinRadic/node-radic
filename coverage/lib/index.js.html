@@ -38,8 +38,12 @@ navigation:
         link: /node-radic/cli.html
       - name: git
         link: /node-radic/git.html
+      - name: net
+        link: /node-radic/net.html
       - name: util
         link: /node-radic/util.html
+      - name: vboxmanage
+        link: /node-radic/vboxmanage.html
 
 ---
 <style>
@@ -304,7 +308,27 @@ navigation:
 76
 77
 78
-79</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -324,6 +348,26 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -435,11 +479,31 @@ module.exports = {
 &nbsp;
 &nbsp;
     /**
+     * Shell interaction
+     * @see {@link sh}
+     */
+    sh: require('./sh'),
+&nbsp;
+&nbsp;
+    /**
      * Cli functions
      * @see {@link cli}
      *
      */
     cli: require('./cli'),
+&nbsp;
+    /**
+     *  VirtualBox manager api
+     *  @see {@link vboxmanage}
+     */
+    vboxmanage: require('./vboxmanage'),
+&nbsp;
+    /**
+     * Network functions
+     * @see {@link net}
+     */
+    net: require('./net'),
+&nbsp;
 &nbsp;
     /**
      * The database class

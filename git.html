@@ -38,8 +38,12 @@ navigation:
         link: /node-radic/cli.html
       - name: git
         link: /node-radic/git.html
+      - name: net
+        link: /node-radic/net.html
       - name: util
         link: /node-radic/util.html
+      - name: vboxmanage
+        link: /node-radic/vboxmanage.html
 
 ---
 
@@ -47,7 +51,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -59,19 +63,12 @@ navigation:
 <section>
 
 <header>
-    <div class="portlet-title">
-        <div class="caption">
-            
-                <i class="fa fa-puzzle-piece fa-2x font-red-flamingo"></i>
-                <h2 class="caption-subject bold font-red-flamingo uppercase" style="display: inline-flex;">
-                    
-                        git
-                    </h2>
-                    
-                </h2>
-            
-        </div>
-    </div>
+    
+        <h2>
+        git
+        </h2>
+        
+    
 </header>
 
 <article>
@@ -154,8 +151,7 @@ navigation:
     <ul>
         <li>
             
-<span class="label bg-blue-hoki label-sm">Object</span></span>
-
+<span class="param-type">Object</span>
 
 
         </li>
@@ -215,14 +211,14 @@ navigation:
             
 
     
-    <hr class="hr-top-margin">
-    <h4 class="name" id="addAll"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>addAll<span class="signature">(cb)</span><span class="type-signature"></span></h4>
+
+    <h4 class="name" id="addAll"><span class="type-signature">&lt;static> </span>addAll<span class="signature">(cb)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="note note-info">
+<div class="description">
     <p>Adds all files</p>
 </div>
 
@@ -237,7 +233,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
+<table class="params">
     <thead>
     <tr>
         
@@ -259,11 +255,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    cb
-                    </code>
-                </td>
+                <td class="name"><code>cb</code></td>
             
 
             <td class="type">
@@ -280,7 +272,6 @@ navigation:
     
     </tbody>
 </table>
-
 
 
 
@@ -340,14 +331,14 @@ navigation:
             
 
     
-    <hr class="hr-top-margin">
-    <h4 class="name" id="checkout"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>checkout<span class="signature">(branchName, cb)</span><span class="type-signature"></span></h4>
+
+    <h4 class="name" id="checkout"><span class="type-signature">&lt;static> </span>checkout<span class="signature">(branchName, cb)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="note note-info">
+<div class="description">
     <p>Checkout a branch</p>
 </div>
 
@@ -362,7 +353,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
+<table class="params">
     <thead>
     <tr>
         
@@ -384,11 +375,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    branchName
-                    </code>
-                </td>
+                <td class="name"><code>branchName</code></td>
             
 
             <td class="type">
@@ -406,11 +393,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    cb
-                    </code>
-                </td>
+                <td class="name"><code>cb</code></td>
             
 
             <td class="type">
@@ -427,7 +410,6 @@ navigation:
     
     </tbody>
 </table>
-
 
 
 
@@ -487,8 +469,8 @@ navigation:
             
 
     
-    <hr class="hr-top-margin">
-    <h4 class="name" id="commit"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>commit<span class="signature">(message, cb)</span><span class="type-signature"></span></h4>
+
+    <h4 class="name" id="commit"><span class="type-signature">&lt;static> </span>commit<span class="signature">(message, cb)</span><span class="type-signature"></span></h4>
 
     
 
@@ -505,7 +487,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
+<table class="params">
     <thead>
     <tr>
         
@@ -527,11 +509,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    message
-                    </code>
-                </td>
+                <td class="name"><code>message</code></td>
             
 
             <td class="type">
@@ -549,11 +527,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    cb
-                    </code>
-                </td>
+                <td class="name"><code>cb</code></td>
             
 
             <td class="type">
@@ -570,7 +544,6 @@ navigation:
     
     </tbody>
 </table>
-
 
 
 
@@ -630,14 +603,14 @@ navigation:
             
 
     
-    <hr class="hr-top-margin">
-    <h4 class="name" id="getApi"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>getApi<span class="signature">(provider)</span><span class="type-signature"> &rarr; {api}</span></h4>
+
+    <h4 class="name" id="getApi"><span class="type-signature">&lt;static> </span>getApi<span class="signature">(provider)</span><span class="type-signature"> &rarr; {api}</span></h4>
 
     
 
 
 
-<div class="note note-info">
+<div class="description">
     <p>Get an API object for the given provider</p>
 </div>
 
@@ -652,7 +625,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
+<table class="params">
     <thead>
     <tr>
         
@@ -674,18 +647,13 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    provider
-                    </code>
-                </td>
+                <td class="name"><code>provider</code></td>
             
 
             <td class="type">
             
                 
-<span class="label bg-green-jungle label-sm">string</span></span>
-
+<span class="param-type">string</span>
 
 
             
@@ -701,7 +669,6 @@ navigation:
     
     </tbody>
 </table>
-
 
 
 
@@ -765,8 +732,7 @@ navigation:
     </dt>
     <dd>
         
-<span class="label bg-grey-gallery label-sm">api</span></span>
-
+<span class="param-type">api</span>
 
 
     </dd>
@@ -780,14 +746,14 @@ navigation:
             
 
     
-    <hr class="hr-top-margin">
-    <h4 class="name" id="init"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>init<span class="signature">(cb)</span><span class="type-signature"></span></h4>
+
+    <h4 class="name" id="init"><span class="type-signature">&lt;static> </span>init<span class="signature">(cb)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="note note-info">
+<div class="description">
     <p>Initializes git in the current directory</p>
 </div>
 
@@ -802,7 +768,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
+<table class="params">
     <thead>
     <tr>
         
@@ -824,11 +790,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    cb
-                    </code>
-                </td>
+                <td class="name"><code>cb</code></td>
             
 
             <td class="type">
@@ -845,7 +807,6 @@ navigation:
     
     </tbody>
 </table>
-
 
 
 
@@ -905,14 +866,14 @@ navigation:
             
 
     
-    <hr class="hr-top-margin">
-    <h4 class="name" id="push"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>push<span class="signature">(remote, branch, cb)</span><span class="type-signature"></span></h4>
+
+    <h4 class="name" id="push"><span class="type-signature">&lt;static> </span>push<span class="signature">(remote, branch, cb)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="note note-info">
+<div class="description">
     <p>Pushes the commits</p>
 </div>
 
@@ -927,7 +888,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
+<table class="params">
     <thead>
     <tr>
         
@@ -949,11 +910,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    remote
-                    </code>
-                </td>
+                <td class="name"><code>remote</code></td>
             
 
             <td class="type">
@@ -971,11 +928,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    branch
-                    </code>
-                </td>
+                <td class="name"><code>branch</code></td>
             
 
             <td class="type">
@@ -993,11 +946,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    cb
-                    </code>
-                </td>
+                <td class="name"><code>cb</code></td>
             
 
             <td class="type">
@@ -1014,7 +963,6 @@ navigation:
     
     </tbody>
 </table>
-
 
 
 

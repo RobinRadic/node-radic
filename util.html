@@ -38,8 +38,12 @@ navigation:
         link: /node-radic/cli.html
       - name: git
         link: /node-radic/git.html
+      - name: net
+        link: /node-radic/net.html
       - name: util
         link: /node-radic/util.html
+      - name: vboxmanage
+        link: /node-radic/vboxmanage.html
 
 ---
 
@@ -47,7 +51,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -59,19 +63,12 @@ navigation:
 <section>
 
 <header>
-    <div class="portlet-title">
-        <div class="caption">
-            
-                <i class="fa fa-puzzle-piece fa-2x font-red-flamingo"></i>
-                <h2 class="caption-subject bold font-red-flamingo uppercase" style="display: inline-flex;">
-                    
-                        util
-                    </h2>
-                    
-                </h2>
-            
-        </div>
-    </div>
+    
+        <h2>
+        util
+        </h2>
+        
+    
 </header>
 
 <article>
@@ -141,14 +138,14 @@ navigation:
             
 
     
-    <hr class="hr-top-margin">
-    <h4 class="name" id="dot_del"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>dot_del<span class="signature">(obj, key)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    <h4 class="name" id="dot_del"><span class="type-signature">&lt;static> </span>dot_del<span class="signature">(obj, key)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
 
 
 
-<div class="note note-info">
+<div class="description">
     <p>Delete it</p>
 </div>
 
@@ -163,7 +160,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
+<table class="params">
     <thead>
     <tr>
         
@@ -185,11 +182,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    obj
-                    </code>
-                </td>
+                <td class="name"><code>obj</code></td>
             
 
             <td class="type">
@@ -207,11 +200,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    key
-                    </code>
-                </td>
+                <td class="name"><code>key</code></td>
             
 
             <td class="type">
@@ -228,7 +217,6 @@ navigation:
     
     </tbody>
 </table>
-
 
 
 
@@ -292,8 +280,7 @@ navigation:
     </dt>
     <dd>
         
-<span class="label bg-yellow-casablanca label-sm">boolean</span></span>
-
+<span class="param-type">boolean</span>
 
 
     </dd>
@@ -307,14 +294,14 @@ navigation:
             
 
     
-    <hr class="hr-top-margin">
-    <h4 class="name" id="dot_get"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>dot_get<span class="signature">(obj, key, def)</span><span class="type-signature"> &rarr; {*}</span></h4>
+
+    <h4 class="name" id="dot_get"><span class="type-signature">&lt;static> </span>dot_get<span class="signature">(obj, key, def)</span><span class="type-signature"> &rarr; {*}</span></h4>
 
     
 
 
 
-<div class="note note-info">
+<div class="description">
     <p>Get it</p>
 </div>
 
@@ -329,7 +316,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
+<table class="params">
     <thead>
     <tr>
         
@@ -351,11 +338,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    obj
-                    </code>
-                </td>
+                <td class="name"><code>obj</code></td>
             
 
             <td class="type">
@@ -373,11 +356,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    key
-                    </code>
-                </td>
+                <td class="name"><code>key</code></td>
             
 
             <td class="type">
@@ -395,11 +374,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    def
-                    </code>
-                </td>
+                <td class="name"><code>def</code></td>
             
 
             <td class="type">
@@ -416,7 +391,6 @@ navigation:
     
     </tbody>
 </table>
-
 
 
 
@@ -480,8 +454,7 @@ navigation:
     </dt>
     <dd>
         
-<span class="label bg-grey-gallery label-sm">*</span></span>
-
+<span class="param-type">*</span>
 
 
     </dd>
@@ -495,14 +468,14 @@ navigation:
             
 
     
-    <hr class="hr-top-margin">
-    <h4 class="name" id="dot_set"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>dot_set<span class="signature">(obj, key, value, overwrite)</span><span class="type-signature"></span></h4>
+
+    <h4 class="name" id="dot_set"><span class="type-signature">&lt;static> </span>dot_set<span class="signature">(obj, key, value, overwrite)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="note note-info">
+<div class="description">
     <p>Set it</p>
 </div>
 
@@ -517,7 +490,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
+<table class="params">
     <thead>
     <tr>
         
@@ -539,11 +512,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    obj
-                    </code>
-                </td>
+                <td class="name"><code>obj</code></td>
             
 
             <td class="type">
@@ -561,11 +530,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    key
-                    </code>
-                </td>
+                <td class="name"><code>key</code></td>
             
 
             <td class="type">
@@ -583,11 +548,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    value
-                    </code>
-                </td>
+                <td class="name"><code>value</code></td>
             
 
             <td class="type">
@@ -605,11 +566,7 @@ navigation:
 
         <tr>
             
-                <td class="name">
-                    <code class="font-red-thunderbird">
-                    overwrite
-                    </code>
-                </td>
+                <td class="name"><code>overwrite</code></td>
             
 
             <td class="type">
@@ -626,7 +583,6 @@ navigation:
     
     </tbody>
 </table>
-
 
 
 

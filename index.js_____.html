@@ -38,8 +38,12 @@ navigation:
         link: /node-radic/cli.html
       - name: git
         link: /node-radic/git.html
+      - name: net
+        link: /node-radic/net.html
       - name: util
         link: /node-radic/util.html
+      - name: vboxmanage
+        link: /node-radic/vboxmanage.html
 
 ---
 
@@ -47,7 +51,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -57,26 +61,68 @@ navigation:
 
     
             {% highlight javascript %}
-            'use strict';
-var _util = require('util'),
-    path = require('path'),
-    os = require('os'),
-
-    fs = require('fs-extra'),
-    chalk = require('chalk'),
+            var Download = require('./download'),
+    progress = require('download-status'),
     _ = require('lodash'),
-    ini = require('ini');
+    path = require('path'),
+    async = require('async'),
+    util = require('../util');
+
+
+function _download(url, destDir, opts, callback) {
+    var download = new Download(_.merge({extract: false, strip: 1, mode: '755'}, opts))
+        .dest(path.resolve(destDir))
+        .get(url)
+        .use(progress());
+
+    download.run(function (err, files, stream) {
+        if (err) {
+            throw err;
+        }
+
+        if (typeof callback === 'function') {
+            callback(err, files, stream);
+        }
+    });
+}
 
 
 /**
- * @namespace
+ * @namespace net
  */
-var util = {};
-_util._extend(util, _util);
-module.exports = util;
+var net = module.exports;
+var ll = console.log;
 
-_.extend(util, require('./general'));
-_.extend(util, require('./dotaccess'));
+net.download = function (url, destDir, opts, callback) {
+
+    if(typeof callback === 'undefined'){
+        callback = opts;
+        opts = {};
+    }
+    //console.log(path.resolve(path.dirname(dest)));
+    //console.log(path.basename(dest));
+    // https://github.com/request/request#requestoptions-callback
+
+    /*
+    For some reason async.each doesnt work as it should.
+     */
+    if (_.isArray(url)) {
+        var falls = [];
+        _.forEach(url, function (link, i) {
+            falls.push(function(next){
+                _download(link, destDir, opts, function () {
+                    next();
+                });
+            })
+        });
+        async.waterfall(falls, function (err) {
+            if (err) throw err;
+            callback(err);
+        });
+    } else {
+        _download(url, destDir, opts, callback);
+    }
+};
 
             {% endhighlight %}
 
