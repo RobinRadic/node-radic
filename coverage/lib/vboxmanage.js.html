@@ -400,7 +400,9 @@ navigation:
 166
 167
 168
-169</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+169
+170
+171</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -432,6 +434,8 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -574,16 +578,16 @@ navigation:
     sh = require('./sh');
 &nbsp;
 &nbsp;
-<span class="fstat-no" title="function not covered" >function createExecString(args){</span>
+<span class="fstat-no" title="function not covered" >function createExecString(args) {</span>
 <span class="cstat-no" title="statement not covered" >    var cmd = 'VBoxManage';</span>
-<span class="cstat-no" title="statement not covered" >    _.forEach(args, <span class="fstat-no" title="function not covered" >function(arg, i){</span></span>
-<span class="cstat-no" title="statement not covered" >        if(typeof arg === 'string'){</span>
+<span class="cstat-no" title="statement not covered" >    _.forEach(args, <span class="fstat-no" title="function not covered" >function (arg, i) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (typeof arg === 'string') {</span>
 <span class="cstat-no" title="statement not covered" >            cmd += ' ' + JSON.stringify(arg);</span>
-        } else <span class="cstat-no" title="statement not covered" >if(typeof arg === 'number'){</span>
+        } else <span class="cstat-no" title="statement not covered" >if (typeof arg === 'number') {</span>
 <span class="cstat-no" title="statement not covered" >            cmd += ' ' + arg;</span>
-        } else <span class="cstat-no" title="statement not covered" >if(typeof arg === 'object'){</span>
-<span class="cstat-no" title="statement not covered" >            _.forEach(arg, <span class="fstat-no" title="function not covered" >function(opt, optk){</span></span>
-<span class="cstat-no" title="statement not covered" >                if(typeof opt === 'boolean') {</span>
+        } else <span class="cstat-no" title="statement not covered" >if (typeof arg === 'object') {</span>
+<span class="cstat-no" title="statement not covered" >            _.forEach(arg, <span class="fstat-no" title="function not covered" >function (opt, optk) {</span></span>
+<span class="cstat-no" title="statement not covered" >                if (typeof opt === 'boolean') {</span>
 <span class="cstat-no" title="statement not covered" >                    cmd += ' --' + optk;</span>
                 } else {
 <span class="cstat-no" title="statement not covered" >                    cmd += ' --' + optk + ' ' + JSON.stringify(opt);</span>
@@ -598,7 +602,7 @@ navigation:
 /**
  * @returns {object} result - An object containing `code` and `stdout`
  */
-<span class="fstat-no" title="function not covered" >function _vboxmanage(){</span>
+<span class="fstat-no" title="function not covered" >function _vboxmanage() {</span>
 <span class="cstat-no" title="statement not covered" >    return sh.execSync(createExecString(_.toArray(arguments)));</span>
 }
 &nbsp;
@@ -610,89 +614,91 @@ navigation:
  * var radic = require('radic'),
  *     vm = radic.vboxmanage,
  *     async = require('async');
- async.waterfall([
- function (next) {
-            vm.async('createvm', {
-                name: ops.name,
-                ostype: 'Debian_64',
-                basefolder: path.resolve(process.cwd()),
-                register: true
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('modifyvm', ops.name, {
-                pae: 'on',
-                cpus: 6,
-                memory: 4100,
-                boot1: 'dvd',
-                boot2: 'disk',
-                boot3: 'none',
-                boot4: 'none',
-                vram: 12,
-                rtcuseutc: 'on'
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('storagectl', ops.name, {
-                name: 'IDE Controller',
-                add: 'ide',
-                controller: 'PIIX4',
-                hostiocache: 'on'
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('storageattach', ops.name, {
-                storagectl: 'IDE Controller',
-                port: 1,
-                device: 0,
-                type: 'dvddrive',
-                medium: path.resolve(process.cwd(), ops.dvddrive)
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('storagectl', ops.name, {
-                name: 'SATA Controller',
-                add: 'sata',
-                controller: 'IntelAhci',
-                sataportcount: 1,
-                hostiocache: 'off'
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('createhd', {
-                filename: path.resolve(process.cwd(), ops.hd),
-                size: ops.hd_size
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('storageattach', ops.name, {
-                storagectl: 'SATA Controller',
-                port: 0,
-                device: 0,
-                type: 'hdd',
-                medium: path.resolve(process.cwd(), ops.hd)
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('controlvm', ops.name, 'nic1', 'bridged', config.get('network_interface'), function (err, stdout) {
-                next(err)
-            });
-        }
- ], callback)
+async.waterfall([
+    function (next) {
+        vm.async('createvm', {
+            name: ops.name,
+            ostype: 'Debian_64',
+            basefolder: path.resolve(process.cwd()),
+            register: true
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('modifyvm', ops.name, {
+            pae: 'on',
+            cpus: 6,
+            memory: 4100,
+            boot1: 'dvd',
+            boot2: 'disk',
+            boot3: 'none',
+            boot4: 'none',
+            vram: 12,
+            rtcuseutc: 'on'
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('storagectl', ops.name, {
+            name: 'IDE Controller',
+            add: 'ide',
+            controller: 'PIIX4',
+            hostiocache: 'on'
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('storageattach', ops.name, {
+            storagectl: 'IDE Controller',
+            port: 1,
+            device: 0,
+            type: 'dvddrive',
+            medium: path.resolve(process.cwd(), ops.dvddrive)
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('storagectl', ops.name, {
+            name: 'SATA Controller',
+            add: 'sata',
+            controller: 'IntelAhci',
+            sataportcount: 1,
+            hostiocache: 'off'
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('createhd', {
+            filename: path.resolve(process.cwd(), ops.hd),
+            size: ops.hd_size
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('storageattach', ops.name, {
+            storagectl: 'SATA Controller',
+            port: 0,
+            device: 0,
+            type: 'hdd',
+            medium: path.resolve(process.cwd(), ops.hd)
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('controlvm', ops.name, 'nic1', 'bridged', config.get('network_interface'), function (err, stdout) {
+            next(err)
+        });
+    }
+], function(err, res){
+    // do something
+})
  */
 var vboxmanage = module.exports = _vboxmanage;
 &nbsp;
@@ -700,42 +706,42 @@ var vboxmanage = module.exports = _vboxmanage;
 /**
  * Execute async
  */
-vboxmanage.async = <span class="fstat-no" title="function not covered" >function(){</span>
+vboxmanage.async = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >    var args = _.toArray(arguments);</span>
 <span class="cstat-no" title="statement not covered" >    var callback;</span>
-<span class="cstat-no" title="statement not covered" >    _.forEach(args, <span class="fstat-no" title="function not covered" >function(arg, i){</span></span>
-<span class="cstat-no" title="statement not covered" >        if( typeof arg === 'function' &amp;&amp; args.length === (i + 1) ){</span>
+<span class="cstat-no" title="statement not covered" >    _.forEach(args, <span class="fstat-no" title="function not covered" >function (arg, i) {</span></span>
+<span class="cstat-no" title="statement not covered" >        if (typeof arg === 'function' &amp;&amp; args.length === (i + 1)) {</span>
 <span class="cstat-no" title="statement not covered" >            callback = arg;</span>
         }
     });
-<span class="cstat-no" title="statement not covered" >    if(typeof callback !== 'function'){</span>
+<span class="cstat-no" title="statement not covered" >    if (typeof callback !== 'function') {</span>
 <span class="cstat-no" title="statement not covered" >        throw new Error('vboxmanage.async requires a callback')</span>
     }
-<span class="cstat-no" title="statement not covered" >    exec(createExecString(args), <span class="fstat-no" title="function not covered" >function(err, stdout, stderr){</span></span>
+<span class="cstat-no" title="statement not covered" >    exec(createExecString(args), <span class="fstat-no" title="function not covered" >function (err, stdout, stderr) {</span></span>
 <span class="cstat-no" title="statement not covered" >        callback(err, stdout);</span>
     });
 &nbsp;
 };
 &nbsp;
 /*
-var result = vboxmanage('createvm', {
-    name: 'vboxmanagetest',
-    register: true,
-    basefolder: require('path').resolve(__dirname, '..', 'test')
-});
-console.log(result.stdout);
-console.log(result.code);
+ var result = vboxmanage('createvm', {
+ name: 'vboxmanagetest',
+ register: true,
+ basefolder: require('path').resolve(__dirname, '..', 'test')
+ });
+ console.log(result.stdout);
+ console.log(result.code);
 &nbsp;
 &nbsp;
 &nbsp;
-var result2 = vboxmanage('unregistervm', 'vboxmanagetest', {
-    delete: true
-});
-console.log(result2.stdout);
-console.log(result2.code);
+ var result2 = vboxmanage('unregistervm', 'vboxmanagetest', {
+ delete: true
+ });
+ console.log(result2.stdout);
+ console.log(result2.code);
 &nbsp;
-//util.print(util.inspect(result));
-*/
+ //util.print(util.inspect(result));
+ */
 &nbsp;</pre></td></tr>
 </table></pre>
 </div>

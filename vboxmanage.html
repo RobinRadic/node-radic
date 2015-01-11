@@ -130,89 +130,91 @@ navigation:
     {% highlight javascript %}var radic = require('radic'),
     vm = radic.vboxmanage,
     async = require('async');
- async.waterfall([
- function (next) {
-            vm.async('createvm', {
-                name: ops.name,
-                ostype: 'Debian_64',
-                basefolder: path.resolve(process.cwd()),
-                register: true
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('modifyvm', ops.name, {
-                pae: 'on',
-                cpus: 6,
-                memory: 4100,
-                boot1: 'dvd',
-                boot2: 'disk',
-                boot3: 'none',
-                boot4: 'none',
-                vram: 12,
-                rtcuseutc: 'on'
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('storagectl', ops.name, {
-                name: 'IDE Controller',
-                add: 'ide',
-                controller: 'PIIX4',
-                hostiocache: 'on'
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('storageattach', ops.name, {
-                storagectl: 'IDE Controller',
-                port: 1,
-                device: 0,
-                type: 'dvddrive',
-                medium: path.resolve(process.cwd(), ops.dvddrive)
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('storagectl', ops.name, {
-                name: 'SATA Controller',
-                add: 'sata',
-                controller: 'IntelAhci',
-                sataportcount: 1,
-                hostiocache: 'off'
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('createhd', {
-                filename: path.resolve(process.cwd(), ops.hd),
-                size: ops.hd_size
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('storageattach', ops.name, {
-                storagectl: 'SATA Controller',
-                port: 0,
-                device: 0,
-                type: 'hdd',
-                medium: path.resolve(process.cwd(), ops.hd)
-            }, function (err, stdout) {
-                next(err)
-            });
-        },
- function (next) {
-            vm.async('controlvm', ops.name, 'nic1', 'bridged', config.get('network_interface'), function (err, stdout) {
-                next(err)
-            });
-        }
- ], callback){% endhighlight %}
+async.waterfall([
+    function (next) {
+        vm.async('createvm', {
+            name: ops.name,
+            ostype: 'Debian_64',
+            basefolder: path.resolve(process.cwd()),
+            register: true
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('modifyvm', ops.name, {
+            pae: 'on',
+            cpus: 6,
+            memory: 4100,
+            boot1: 'dvd',
+            boot2: 'disk',
+            boot3: 'none',
+            boot4: 'none',
+            vram: 12,
+            rtcuseutc: 'on'
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('storagectl', ops.name, {
+            name: 'IDE Controller',
+            add: 'ide',
+            controller: 'PIIX4',
+            hostiocache: 'on'
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('storageattach', ops.name, {
+            storagectl: 'IDE Controller',
+            port: 1,
+            device: 0,
+            type: 'dvddrive',
+            medium: path.resolve(process.cwd(), ops.dvddrive)
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('storagectl', ops.name, {
+            name: 'SATA Controller',
+            add: 'sata',
+            controller: 'IntelAhci',
+            sataportcount: 1,
+            hostiocache: 'off'
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('createhd', {
+            filename: path.resolve(process.cwd(), ops.hd),
+            size: ops.hd_size
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('storageattach', ops.name, {
+            storagectl: 'SATA Controller',
+            port: 0,
+            device: 0,
+            type: 'hdd',
+            medium: path.resolve(process.cwd(), ops.hd)
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('controlvm', ops.name, 'nic1', 'bridged', config.get('network_interface'), function (err, stdout) {
+            next(err)
+        });
+    }
+], function(err, res){
+    // do something
+}){% endhighlight %}
 
 
         
