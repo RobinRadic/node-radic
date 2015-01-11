@@ -40,6 +40,8 @@ navigation:
         link: /node-radic/git.html
       - name: net
         link: /node-radic/net.html
+      - name: sh
+        link: /node-radic/sh.html
       - name: util
         link: /node-radic/util.html
       - name: vboxmanage
@@ -292,7 +294,17 @@ navigation:
 60
 61
 62
-63</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -323,6 +335,16 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -386,6 +408,16 @@ navigation:
 var net = module.exports;
 var ll = console.log;
 &nbsp;
+&nbsp;
+/**
+ * Download one or more files, with progressbar
+ * @see {@link https://github.com/request/request#requestoptions-callback} Possible options accepted by the request module
+ *
+ * @param {string|array} url - Either a URL or an array of URL's
+ * @param {string} destDir - Path to destination directory
+ * @param {object|function} opts - Options or callback
+ * @param {function} [callback] - Callback
+ */
 net.download = <span class="fstat-no" title="function not covered" >function (url, destDir, opts, callback) {</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if(typeof callback === 'undefined'){</span>

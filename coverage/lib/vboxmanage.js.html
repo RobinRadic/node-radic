@@ -40,6 +40,8 @@ navigation:
         link: /node-radic/git.html
       - name: net
         link: /node-radic/net.html
+      - name: sh
+        link: /node-radic/sh.html
       - name: util
         link: /node-radic/util.html
       - name: vboxmanage
@@ -302,7 +304,16 @@ navigation:
 70
 71
 72
-73</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -336,7 +347,16 @@ navigation:
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -408,8 +428,17 @@ navigation:
 <span class="fstat-no" title="function not covered" >function vboxmanage(){</span>
 <span class="cstat-no" title="statement not covered" >    return sh.execSync(createExecString(_.toArray(arguments)));</span>
 }
+&nbsp;
+/**
+ *
+ * @type {vboxmanage}
+ */
 module.exports = vboxmanage;
 &nbsp;
+&nbsp;
+/**
+ * Execute async
+ */
 vboxmanage.async = <span class="fstat-no" title="function not covered" >function(){</span>
 <span class="cstat-no" title="statement not covered" >    var args = _.toArray(arguments);</span>
 <span class="cstat-no" title="statement not covered" >    var callback;</span>

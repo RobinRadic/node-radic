@@ -63,75 +63,125 @@ navigation:
 
     
             {% highlight javascript %}
-            function parts(key) {
-    if (Array.isArray(key)) return key;
-    return key.split('.')
-}
+            /**
+ * @namespace sh
+ * @type {exports}
+ */
+var sh = require('execSync'),
+    _ = require('lodash'),
 
-function lookup(obj, key) {
-    key = parts(key);
-    var lastKey = key.pop();
-    for (var i = 0, l = key.length; i &lt; l; i++) {
-        var part = key[i];
-        if (!(part in obj)) obj[part] = {};
-        obj = obj[part];
-        if (!obj) throw new Error('dotaccess: incompatible value in ' + part)
+    path = require('path'),
+    exec = require('child_process').exec,
+    spawn = require('child_process').spawn,
+    util = require('./util');
+
+/**
+ * Execute a command
+ *
+ * @param command
+ * @param args
+ * @param ops
+ * @param callback
+ * @returns {*}
+ */
+exports.exec = function (command, args, ops, callback) {
+
+    if (typeof args == 'function') {
+        callback = args;
+        args = [];
+        ops = {};
+    } else if (!(args instanceof Array)) {
+        callback = ops;
+        ops = args;
+        args = [];
     }
-    return [obj, lastKey];
-}
 
 
-var dotaccess = module.exports = {
-
-    /**
-     * Set it
-     * @memberOf util
-     * @param obj
-     * @param key
-     * @param value
-     * @param overwrite
-     */
-    dot_set: function (obj, key, value, overwrite) {
-        var objectAndKey = lookup(obj, key),
-            obj = objectAndKey[0],
-            key = objectAndKey[1];
-        if (overwrite || !(key in obj)) obj[key] = value
-    },
-
-    /**
-     * Get it
-     * @memberOf util
-     * @param obj
-     * @param key
-     * @param def
-     * @returns {*}
-     */
-    dot_get: function (obj, key, def) {
-        if (typeof key === 'undefined') {
-            return obj;
-        }
-        key = parts(key);
-        for (var i = 0, l = key.length; i &lt; l; i++) {
-            var part = key[i];
-            if (!(part in obj)) return def;
-            obj = obj[part]
-        }
-        return obj
-    },
-
-    /**
-     * Delete it
-     * @memberOf util
-     * @param obj
-     * @param key
-     * @returns {boolean}
-     */
-    dot_del: function (obj, key) {
-        var objectAndKey = lookup(obj, key),
-            obj = objectAndKey[0],
-            key = objectAndKey[1];
-        return delete obj[key];
+    if (typeof ops == 'function') {
+        callback = ops;
+        ops = {};
     }
+
+    //no callbacks? THEY MUST EXIST!!!!
+    if (!callback) callback = ops.callback || ops;
+
+    var callbacks = {};
+
+    if (typeof callback != 'function') {
+        callbacks = callback;
+    }
+
+    if (!callbacks.error) callbacks.error = function () {
+    };
+    if (!callbacks.exit) callbacks.exit = function () {
+    };
+    if (!callbacks.data) callbacks.data = function () {
+    };
+
+
+    var procOps = {
+        cwd: ops.cwd,
+        env: ops.env,
+        customFds: ops.customFds
+    };
+
+
+    var proc = spawn(command, ops.args || args, procOps), errors = [], buffer = [];
+
+    proc.stdout.on('data', function (data) {
+        buffer.push(data);
+
+        callbacks.data(data);
+    });
+
+    proc.stderr.on('data', function (data) {
+        errors.push(data);
+
+        callbacks.error(data);
+    });
+
+    proc.on('exit', function (code) {
+
+        if (typeof callback == 'function') {
+            callback(errors.length ? errors.join(' ') : false, buffer.length ? buffer.join(' ') : false);
+        } else if (callbacks.exit) {
+            callbacks.exit(code);
+        }
+    });
+
+    return proc;
+
+};
+
+/**
+ * Execute a command on the command line, synchronously
+ * @returns {object} - Result of the execution.
+ * @example
+ * var result = radic.sh.execSync('echo $USER; echo some_err 1>&amp;2; exit 1');
+ * console.log('return code ' + result.code);
+ * console.log('stdout + stderr ' + result.stdout);
+ */
+exports.execSync = function () {
+    return sh.exec.apply(sh, _.toArray(arguments))
+};
+
+exports.execList = function (list) {
+    var a = ['asdf', 'sdfsdf', {sadf: 'sdf'}, 'sadf'];
+};
+
+/**
+ * Similair to execSync, but instead does not capture output, only the exit code
+ * @param cmd
+ * @param exitOnlyOnError
+ * @returns {int} exitcode
+ */
+exports.run = function (cmd, exitOnlyOnError) {
+    return sh.run(cmd + exitOnlyOnError === true ? '1>&amp;2; exit 1' : '');
+
+};
+
+exports.s = function () {
+
 };
 
             {% endhighlight %}

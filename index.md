@@ -40,6 +40,8 @@ navigation:
         link: /node-radic/git.html
       - name: net
         link: /node-radic/net.html
+      - name: sh
+        link: /node-radic/sh.html
       - name: util
         link: /node-radic/util.html
       - name: vboxmanage
@@ -72,15 +74,15 @@ You can check [the documentation here](http://robin.radic.nl/node-radic)
 
 | Module | Description |
 |:-------|:------------|
-| [config](docs/Config.html) | persitent file based configuration `config.get('a.b.c'); config.set('a.b', 'c'); config.set('a', { b: 'c' });` |
-| [db](docs/DB.html) | file based database. Uses models/schemas with validation |
-| [git](docs/git.html) | local commands like add, commit etc. also includes API for github/bitbucket |
-| util | extends the core util functionality with extras |
-| ui | .. |
-| cli | cli commands, output, input etc |
-| net | network functionality, like downloading |
-| sh | shell exec, execsync, execlist etc |
-| vboxmanage | virtual box manager api |
+| [config](http://robin.radic.nl/node-radic/Config.html) | persitent file based configuration `config.get('a.b.c'); config.set('a.b', 'c'); config.set('a', { b: 'c' });` |
+| [db](http://robin.radic.nl/node-radic/DB.html) | file based database. Uses models/schemas with validation |
+| [git](http://robin.radic.nl/node-radic/git.html) | local commands like add, commit etc. also includes API for github/bitbucket |
+| [util](http://robin.radic.nl/node-radic/util.html) | extends the core util functionality with extras |
+| [ui](http://robin.radic.nl/node-radic/ui.html) | .. |
+| [cli](http://robin.radic.nl/node-radic/cli.html) | cli commands, output, input etc |
+| [net](http://robin.radic.nl/node-radic/net.html) | network functionality, like downloading |
+| [sh](http://robin.radic.nl/node-radic/sh.html) | shell exec, execsync, execlist etc |
+| [vboxmanage](http://robin.radic.nl/node-radic/vboxmanage.html) | virtual box manager api |
   
   
 ### How to use

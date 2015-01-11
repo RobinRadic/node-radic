@@ -40,6 +40,8 @@ navigation:
         link: /node-radic/git.html
       - name: net
         link: /node-radic/net.html
+      - name: sh
+        link: /node-radic/sh.html
       - name: util
         link: /node-radic/util.html
       - name: vboxmanage
@@ -323,7 +325,47 @@ navigation:
 91
 92
 93
-94</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -400,8 +442,12 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -413,10 +459,24 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var sh = require('execSync'),
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @namespace sh
+ * @type {exports}
+ */
+var sh = require('execSync'),
     _ = require('lodash'),
 &nbsp;
     path = require('path'),
@@ -424,6 +484,15 @@ navigation:
     spawn = require('child_process').spawn,
     util = require('./util');
 &nbsp;
+/**
+ * Execute a command
+ *
+ * @param command
+ * @param args
+ * @param ops
+ * @param callback
+ * @returns {*}
+ */
 exports.exec = <span class="fstat-no" title="function not covered" >function (command, args, ops, callback) {</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (typeof args == 'function') {</span>
@@ -493,6 +562,14 @@ exports.exec = <span class="fstat-no" title="function not covered" >function (co
 &nbsp;
 };
 &nbsp;
+/**
+ * Execute a command on the command line, synchronously
+ * @returns {object} - Result of the execution.
+ * @example
+ * var result = radic.sh.execSync('echo $USER; echo some_err 1&gt;&amp;2; exit 1');
+ * console.log('return code ' + result.code);
+ * console.log('stdout + stderr ' + result.stdout);
+ */
 exports.execSync = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >    return sh.exec.apply(sh, _.toArray(arguments))</span>
 };
@@ -501,6 +578,12 @@ exports.execList = <span class="fstat-no" title="function not covered" >function
 <span class="cstat-no" title="statement not covered" >    var a = ['asdf', 'sdfsdf', {sadf: 'sdf'}, 'sadf'];</span>
 };
 &nbsp;
+/**
+ * Similair to execSync, but instead does not capture output, only the exit code
+ * @param cmd
+ * @param exitOnlyOnError
+ * @returns {int} exitcode
+ */
 exports.run = <span class="fstat-no" title="function not covered" >function (cmd, exitOnlyOnError) {</span>
 <span class="cstat-no" title="statement not covered" >    return sh.run(cmd + exitOnlyOnError === true ? '1&gt;&amp;2; exit 1' : '');</span>
 &nbsp;
