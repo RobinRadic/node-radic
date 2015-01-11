@@ -53,7 +53,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#_vboxmanage">_vboxmanage</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -65,12 +65,19 @@ navigation:
 <section>
 
 <header>
-    
-        <h2>
-        Model
-        </h2>
-        
-    
+    <div class="portlet-title">
+        <div class="caption">
+            
+                <i class="fa fa-puzzle-piece fa-2x font-red-flamingo"></i>
+                <h2 class="caption-subject bold font-red-flamingo uppercase" style="display: inline-flex;">
+                    
+                        Model
+                    </h2>
+                    
+                </h2>
+            
+        </div>
+    </div>
 </header>
 
 <article>
@@ -79,16 +86,16 @@ navigation:
         
 
     
-    <h2>Constructor</h2>
+    <h3>Constructor</h3>
+    
+    <hr class="hr-top-margin">
+    <h4 class="name" id="Model"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>new Model<span class="signature">(name, schema, db)</span><span class="type-signature"></span></h4>
+
     
 
-    <h4 class="name" id="Model"><span class="type-signature"></span>new Model<span class="signature">(name, schema, db)</span><span class="type-signature"></span></h4>
-
-    
 
 
-
-<div class="description">
+<div class="note note-info">
     <p>The Model class</p>
 </div>
 
@@ -103,7 +110,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -125,7 +132,11 @@ navigation:
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    name
+                    </code>
+                </td>
             
 
             <td class="type">
@@ -143,7 +154,11 @@ navigation:
 
         <tr>
             
-                <td class="name"><code>schema</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    schema
+                    </code>
+                </td>
             
 
             <td class="type">
@@ -161,7 +176,11 @@ navigation:
 
         <tr>
             
-                <td class="name"><code>db</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    db
+                    </code>
+                </td>
             
 
             <td class="type">
@@ -178,6 +197,7 @@ navigation:
     
     </tbody>
 </table>
+
 
 
 
@@ -285,14 +305,14 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
             
 
     
-
-    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(data, callback)</span><span class="type-signature"></span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="create"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>create<span class="signature">(data, callback)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Create a document/record</p>
 </div>
 
@@ -307,7 +327,7 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -329,13 +349,18 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>data</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    data
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="label bg-blue-hoki label-sm">object</span></span>
+
 
 
             
@@ -352,13 +377,18 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>callback</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    callback
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="Model.html#createCallback">Model~createCallback</a></span>
+<span class="label bg-grey-gallery label-sm"><a href="Model.html#createCallback">Model~createCallback</a></span></span>
+
 
 
             
@@ -374,6 +404,7 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
     
     </tbody>
 </table>
+
 
 
 
@@ -433,14 +464,14 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
             
 
     
-
-    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">(id, callback)</span><span class="type-signature"></span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="remove"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>remove<span class="signature">(id, callback)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Remove a document/record</p>
 </div>
 
@@ -455,7 +486,7 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -477,13 +508,18 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    id
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
+
 
 
             
@@ -500,13 +536,18 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>callback</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    callback
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="Model.html#removeCallback">Model~removeCallback</a></span>
+<span class="label bg-grey-gallery label-sm"><a href="Model.html#removeCallback">Model~removeCallback</a></span></span>
+
 
 
             
@@ -522,6 +563,7 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
     
     </tbody>
 </table>
+
 
 
 
@@ -587,8 +629,8 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
                 
 
     
-
-    <h4 class="name" id="createCallback"><span class="type-signature"></span>createCallback<span class="signature">(error, newDoc)</span><span class="type-signature"></span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="createCallback"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>createCallback<span class="signature">(error, newDoc)</span><span class="type-signature"></span></h4>
 
     
 
@@ -605,7 +647,7 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -627,22 +669,27 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>error</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    error
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="label bg-yellow-casablanca label-sm">boolean</span></span>
 |
 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
 |
 
-<span class="param-type">undefined</span>
+<span class="label bg-grey-gallery label-sm">undefined</span></span>
 |
 
-<span class="param-type">null</span>
+<span class="label bg-grey-gallery label-sm">null</span></span>
+
 
 
             
@@ -659,13 +706,18 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>newDoc</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    newDoc
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="label bg-blue-hoki label-sm">object</span></span>
+
 
 
             
@@ -681,6 +733,7 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
     
     </tbody>
 </table>
+
 
 
 
@@ -740,8 +793,8 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
                 
 
     
-
-    <h4 class="name" id="removeCallback"><span class="type-signature"></span>removeCallback<span class="signature">(error)</span><span class="type-signature"></span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="removeCallback"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>removeCallback<span class="signature">(error)</span><span class="type-signature"></span></h4>
 
     
 
@@ -758,7 +811,7 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -780,22 +833,27 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>error</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    error
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="label bg-yellow-casablanca label-sm">boolean</span></span>
 |
 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
 |
 
-<span class="param-type">undefined</span>
+<span class="label bg-grey-gallery label-sm">undefined</span></span>
 |
 
-<span class="param-type">null</span>
+<span class="label bg-grey-gallery label-sm">null</span></span>
+
 
 
             
@@ -811,6 +869,7 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
     
     </tbody>
 </table>
+
 
 
 

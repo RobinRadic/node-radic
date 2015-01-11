@@ -53,7 +53,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#_vboxmanage">_vboxmanage</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -65,12 +65,19 @@ navigation:
 <section>
 
 <header>
-    
-        <h2>
-        Config
-        </h2>
-        
-    
+    <div class="portlet-title">
+        <div class="caption">
+            
+                <i class="fa fa-puzzle-piece fa-2x font-red-flamingo"></i>
+                <h2 class="caption-subject bold font-red-flamingo uppercase" style="display: inline-flex;">
+                    
+                        Config
+                    </h2>
+                    
+                </h2>
+            
+        </div>
+    </div>
 </header>
 
 <article>
@@ -79,16 +86,16 @@ navigation:
         
 
     
-    <h2>Constructor</h2>
+    <h3>Constructor</h3>
+    
+    <hr class="hr-top-margin">
+    <h4 class="name" id="Config"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>new Config<span class="signature">(name, <span class="optional">options</span>)</span><span class="type-signature"></span></h4>
+
     
 
-    <h4 class="name" id="Config"><span class="type-signature"></span>new Config<span class="signature">(name, <span class="optional">options</span>)</span><span class="type-signature"></span></h4>
-
-    
 
 
-
-<div class="description">
+<div class="note note-info">
     <p>Configuration</p>
 </div>
 
@@ -103,7 +110,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -127,13 +134,18 @@ navigation:
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    name
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
+
 
 
             
@@ -158,13 +170,18 @@ navigation:
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name">
+                    <code class="font-red-pink">
+                    options
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="label bg-blue-hoki label-sm">object</span></span>
+
 
 
             
@@ -190,6 +207,7 @@ navigation:
     
     </tbody>
 </table>
+
 
 
 
@@ -287,14 +305,14 @@ config.set('save2', 'i will be saved asynchronised', function(){
             
 
     
-
-    <h4 class="name" id="clear"><span class="type-signature"></span>clear<span class="signature">(<span class="optional">save</span>)</span><span class="type-signature"> &rarr; {<a href="Config.html">Config</a>}</span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="clear"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>clear<span class="signature">(<span class="optional">save</span>)</span><span class="type-signature"> &rarr; {<a href="Config.html">Config</a>}</span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Clears out the whole configuration.</p>
 </div>
 
@@ -309,7 +327,7 @@ config.set('save2', 'i will be saved asynchronised', function(){
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -333,16 +351,21 @@ config.set('save2', 'i will be saved asynchronised', function(){
 
         <tr>
             
-                <td class="name"><code>save</code></td>
+                <td class="name">
+                    <code class="font-red-pink">
+                    save
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="label bg-yellow-casablanca label-sm">boolean</span></span>
 |
 
-<span class="param-type">function</span>
+<span class="label bg-red-thunderbird label-sm">function</span></span>
+
 
 
             
@@ -368,6 +391,7 @@ config.set('save2', 'i will be saved asynchronised', function(){
     
     </tbody>
 </table>
+
 
 
 
@@ -431,7 +455,8 @@ config.set('save2', 'i will be saved asynchronised', function(){
     </dt>
     <dd>
         
-<span class="param-type"><a href="Config.html">Config</a></span>
+<span class="label bg-grey-gallery label-sm"><a href="Config.html">Config</a></span></span>
+
 
 
     </dd>
@@ -445,14 +470,14 @@ config.set('save2', 'i will be saved asynchronised', function(){
             
 
     
-
-    <h4 class="name" id="del"><span class="type-signature"></span>del<span class="signature">(path, <span class="optional">save</span>)</span><span class="type-signature"> &rarr; {<a href="Config.html">Config</a>}</span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="del"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>del<span class="signature">(path, <span class="optional">save</span>)</span><span class="type-signature"> &rarr; {<a href="Config.html">Config</a>}</span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Deletes a configuration item.</p>
 </div>
 
@@ -467,7 +492,7 @@ config.set('save2', 'i will be saved asynchronised', function(){
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -491,13 +516,18 @@ config.set('save2', 'i will be saved asynchronised', function(){
 
         <tr>
             
-                <td class="name"><code>path</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    path
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
+
 
 
             
@@ -522,16 +552,21 @@ config.set('save2', 'i will be saved asynchronised', function(){
 
         <tr>
             
-                <td class="name"><code>save</code></td>
+                <td class="name">
+                    <code class="font-red-pink">
+                    save
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="label bg-yellow-casablanca label-sm">boolean</span></span>
 |
 
-<span class="param-type">function</span>
+<span class="label bg-red-thunderbird label-sm">function</span></span>
+
 
 
             
@@ -557,6 +592,7 @@ config.set('save2', 'i will be saved asynchronised', function(){
     
     </tbody>
 </table>
+
 
 
 
@@ -620,7 +656,8 @@ config.set('save2', 'i will be saved asynchronised', function(){
     </dt>
     <dd>
         
-<span class="param-type"><a href="Config.html">Config</a></span>
+<span class="label bg-grey-gallery label-sm"><a href="Config.html">Config</a></span></span>
+
 
 
     </dd>
@@ -634,14 +671,14 @@ config.set('save2', 'i will be saved asynchronised', function(){
             
 
     
-
-    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(path, <span class="optional">defaults</span>)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="get"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>get<span class="signature">(path, <span class="optional">defaults</span>)</span><span class="type-signature"> &rarr; {*}</span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Get a configuration item.</p>
 </div>
 
@@ -656,7 +693,7 @@ config.set('save2', 'i will be saved asynchronised', function(){
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -680,13 +717,18 @@ config.set('save2', 'i will be saved asynchronised', function(){
 
         <tr>
             
-                <td class="name"><code>path</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    path
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
+
 
 
             
@@ -711,13 +753,18 @@ config.set('save2', 'i will be saved asynchronised', function(){
 
         <tr>
             
-                <td class="name"><code>defaults</code></td>
+                <td class="name">
+                    <code class="font-red-pink">
+                    defaults
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="label bg-purple-wisteria label-sm">any</span></span>
+
 
 
             
@@ -748,6 +795,7 @@ config.set('save2', 'i will be saved asynchronised', function(){
 
 
 
+
 <dl class="details">
 
     
@@ -806,7 +854,8 @@ config.set('save2', 'i will be saved asynchronised', function(){
     </dt>
     <dd>
         
-<span class="param-type">*</span>
+<span class="label bg-grey-gallery label-sm">*</span></span>
+
 
 
     </dd>
@@ -820,14 +869,14 @@ config.set('save2', 'i will be saved asynchronised', function(){
             
 
     
-
-    <h4 class="name" id="save"><span class="type-signature"></span>save<span class="signature">(<span class="optional">callback</span>)</span><span class="type-signature"> &rarr; {<a href="Config.html">Config</a>}</span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="save"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>save<span class="signature">(<span class="optional">callback</span>)</span><span class="type-signature"> &rarr; {<a href="Config.html">Config</a>}</span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Save the current configuration to file.</p>
 </div>
 
@@ -842,7 +891,7 @@ config.set('save2', 'i will be saved asynchronised', function(){
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -866,13 +915,18 @@ config.set('save2', 'i will be saved asynchronised', function(){
 
         <tr>
             
-                <td class="name"><code>callback</code></td>
+                <td class="name">
+                    <code class="font-red-pink">
+                    callback
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="label bg-red-thunderbird label-sm">function</span></span>
+
 
 
             
@@ -903,6 +957,7 @@ config.set('save2', 'i will be saved asynchronised', function(){
 
 
 
+
 <dl class="details">
 
     
@@ -961,7 +1016,8 @@ config.set('save2', 'i will be saved asynchronised', function(){
     </dt>
     <dd>
         
-<span class="param-type"><a href="Config.html">Config</a></span>
+<span class="label bg-grey-gallery label-sm"><a href="Config.html">Config</a></span></span>
+
 
 
     </dd>
@@ -975,14 +1031,14 @@ config.set('save2', 'i will be saved asynchronised', function(){
             
 
     
-
-    <h4 class="name" id="set"><span class="type-signature"></span>set<span class="signature">(path, value, <span class="optional">save</span>)</span><span class="type-signature"></span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="set"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>set<span class="signature">(path, value, <span class="optional">save</span>)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Set a configuration value</p>
 </div>
 
@@ -997,7 +1053,7 @@ config.set('save2', 'i will be saved asynchronised', function(){
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -1021,13 +1077,18 @@ config.set('save2', 'i will be saved asynchronised', function(){
 
         <tr>
             
-                <td class="name"><code>path</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    path
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
+
 
 
             
@@ -1052,13 +1113,18 @@ config.set('save2', 'i will be saved asynchronised', function(){
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    value
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="label bg-purple-wisteria label-sm">any</span></span>
+
 
 
             
@@ -1083,16 +1149,21 @@ config.set('save2', 'i will be saved asynchronised', function(){
 
         <tr>
             
-                <td class="name"><code>save</code></td>
+                <td class="name">
+                    <code class="font-red-pink">
+                    save
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">boolean</span>
+<span class="label bg-yellow-casablanca label-sm">boolean</span></span>
 |
 
-<span class="param-type">function</span>
+<span class="label bg-red-thunderbird label-sm">function</span></span>
+
 
 
             
@@ -1118,6 +1189,7 @@ config.set('save2', 'i will be saved asynchronised', function(){
     
     </tbody>
 </table>
+
 
 
 

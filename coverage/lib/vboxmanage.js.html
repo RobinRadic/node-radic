@@ -312,8 +312,7 @@ navigation:
 78
 79
 80
-81
-82</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+81</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -338,7 +337,6 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -422,18 +420,17 @@ navigation:
 }
 &nbsp;
 /**
- * @namespace vboxmanage
  * @returns {object} result - An object containing `code` and `stdout`
  */
-<span class="fstat-no" title="function not covered" >function vboxmanage(){</span>
+<span class="fstat-no" title="function not covered" >function _vboxmanage(){</span>
 <span class="cstat-no" title="statement not covered" >    return sh.execSync(createExecString(_.toArray(arguments)));</span>
 }
 &nbsp;
 /**
  *
- * @type {vboxmanage}
+ * @namespace vboxmanage
  */
-module.exports = vboxmanage;
+var vboxmanage = module.exports = _vboxmanage;
 &nbsp;
 &nbsp;
 /**

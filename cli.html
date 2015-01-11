@@ -53,7 +53,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#_vboxmanage">_vboxmanage</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -65,12 +65,19 @@ navigation:
 <section>
 
 <header>
-    
-        <h2>
-        cli
-        </h2>
-        
-    
+    <div class="portlet-title">
+        <div class="caption">
+            
+                <i class="fa fa-puzzle-piece fa-2x font-red-flamingo"></i>
+                <h2 class="caption-subject bold font-red-flamingo uppercase" style="display: inline-flex;">
+                    
+                        cli
+                    </h2>
+                    
+                </h2>
+            
+        </div>
+    </div>
 </header>
 
 <article>
@@ -162,14 +169,14 @@ cli.parse(process.argv);{% endhighlight %}
             
 
     
-
-    <h4 class="name" id="command"><span class="type-signature">&lt;static> </span>command<span class="signature">(expr)</span><span class="type-signature"> &rarr; {Command}</span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="command"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>command<span class="signature">(expr)</span><span class="type-signature"> &rarr; {Command}</span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Create a new Command</p>
 </div>
 
@@ -184,7 +191,7 @@ cli.parse(process.argv);{% endhighlight %}
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -206,7 +213,11 @@ cli.parse(process.argv);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>expr</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    expr
+                    </code>
+                </td>
             
 
             <td class="type">
@@ -223,6 +234,7 @@ cli.parse(process.argv);{% endhighlight %}
     
     </tbody>
 </table>
+
 
 
 
@@ -286,7 +298,8 @@ cli.parse(process.argv);{% endhighlight %}
     </dt>
     <dd>
         
-<span class="param-type">Command</span>
+<span class="label bg-grey-gallery label-sm">Command</span></span>
+
 
 
     </dd>
@@ -300,14 +313,14 @@ cli.parse(process.argv);{% endhighlight %}
             
 
     
-
-    <h4 class="name" id="parse"><span class="type-signature">&lt;static> </span>parse<span class="signature">(argv)</span><span class="type-signature"></span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="parse"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>parse<span class="signature">(argv)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Parse an array of parameters and trigger the right command.</p>
 </div>
 
@@ -322,7 +335,7 @@ cli.parse(process.argv);{% endhighlight %}
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -344,7 +357,11 @@ cli.parse(process.argv);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>argv</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    argv
+                    </code>
+                </td>
             
 
             <td class="type">
@@ -361,6 +378,7 @@ cli.parse(process.argv);{% endhighlight %}
     
     </tbody>
 </table>
+
 
 
 
@@ -420,14 +438,14 @@ cli.parse(process.argv);{% endhighlight %}
             
 
     
-
-    <h4 class="name" id="table"><span class="type-signature">&lt;static> </span>table<span class="signature">(<span class="optional">style</span>, <span class="optional">design</span>, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {<a href="Table.html">Table</a>}</span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="table"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>table<span class="signature">(<span class="optional">style</span>, <span class="optional">design</span>, <span class="optional">options</span>)</span><span class="type-signature"> &rarr; {<a href="Table.html">Table</a>}</span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Create a table from pre-defined styles</p>
 </div>
 
@@ -442,7 +460,7 @@ cli.parse(process.argv);{% endhighlight %}
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -468,13 +486,18 @@ cli.parse(process.argv);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>style</code></td>
+                <td class="name">
+                    <code class="font-red-pink">
+                    style
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
+
 
 
             
@@ -507,13 +530,18 @@ cli.parse(process.argv);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>design</code></td>
+                <td class="name">
+                    <code class="font-red-pink">
+                    design
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
+
 
 
             
@@ -546,13 +574,18 @@ cli.parse(process.argv);{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name">
+                    <code class="font-red-pink">
+                    options
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="label bg-blue-hoki label-sm">object</span></span>
+
 
 
             
@@ -582,6 +615,7 @@ cli.parse(process.argv);{% endhighlight %}
     
     </tbody>
 </table>
+
 
 
 
@@ -652,7 +686,8 @@ cli.parse(process.argv);{% endhighlight %}
     </dt>
     <dd>
         
-<span class="param-type"><a href="Table.html">Table</a></span>
+<span class="label bg-grey-gallery label-sm"><a href="Table.html">Table</a></span></span>
+
 
 
     </dd>
@@ -673,14 +708,14 @@ cli.table('default', 'borderless');{% endhighlight %}
             
 
     
-
-    <h4 class="name" id="usage"><span class="type-signature">&lt;static> </span>usage<span class="signature">(msg)</span><span class="type-signature"></span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="usage"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature">&lt;static> </span>usage<span class="signature">(msg)</span><span class="type-signature"></span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Set the help usage message</p>
 </div>
 
@@ -695,7 +730,7 @@ cli.table('default', 'borderless');{% endhighlight %}
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -717,7 +752,11 @@ cli.table('default', 'borderless');{% endhighlight %}
 
         <tr>
             
-                <td class="name"><code>msg</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    msg
+                    </code>
+                </td>
             
 
             <td class="type">
@@ -734,6 +773,7 @@ cli.table('default', 'borderless');{% endhighlight %}
     
     </tbody>
 </table>
+
 
 
 

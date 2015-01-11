@@ -53,7 +53,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#_vboxmanage">_vboxmanage</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -65,12 +65,19 @@ navigation:
 <section>
 
 <header>
-    
-        <h2>
-        DB
-        </h2>
-        
-    
+    <div class="portlet-title">
+        <div class="caption">
+            
+                <i class="fa fa-puzzle-piece fa-2x font-red-flamingo"></i>
+                <h2 class="caption-subject bold font-red-flamingo uppercase" style="display: inline-flex;">
+                    
+                        DB
+                    </h2>
+                    
+                </h2>
+            
+        </div>
+    </div>
 </header>
 
 <article>
@@ -79,16 +86,16 @@ navigation:
         
 
     
-    <h2>Constructor</h2>
+    <h3>Constructor</h3>
+    
+    <hr class="hr-top-margin">
+    <h4 class="name" id="DB"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>new DB<span class="signature">(name, <span class="optional">options</span>)</span><span class="type-signature"></span></h4>
+
     
 
-    <h4 class="name" id="DB"><span class="type-signature"></span>new DB<span class="signature">(name, <span class="optional">options</span>)</span><span class="type-signature"></span></h4>
-
-    
 
 
-
-<div class="description">
+<div class="note note-info">
     <p>Database object. Creates and manages database files, models etc.</p>
 </div>
 
@@ -103,7 +110,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -127,13 +134,18 @@ navigation:
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    name
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
+
 
 
             
@@ -158,13 +170,18 @@ navigation:
 
         <tr>
             
-                <td class="name"><code>options</code></td>
+                <td class="name">
+                    <code class="font-red-pink">
+                    options
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="label bg-blue-hoki label-sm">object</span></span>
+
 
 
             
@@ -190,6 +207,7 @@ navigation:
     
     </tbody>
 </table>
+
 
 
 
@@ -288,10 +306,11 @@ navigation:
     <ul>
         <li>
             
-<span class="param-type"><a href="Model.html">Model</a></span>
+<span class="label bg-grey-gallery label-sm"><a href="Model.html">Model</a></span></span>
 |
 
-<span class="param-type">exports</span>
+<span class="label bg-grey-gallery label-sm">exports</span></span>
+
 
 
         </li>
@@ -358,14 +377,14 @@ navigation:
             
 
     
-
-    <h4 class="name" id="hasModel"><span class="type-signature"></span>hasModel<span class="signature">(name)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="hasModel"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>hasModel<span class="signature">(name)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Checks if a model with the given name has been defined</p>
 </div>
 
@@ -380,7 +399,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -402,13 +421,18 @@ navigation:
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    name
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
+
 
 
             
@@ -424,6 +448,7 @@ navigation:
     
     </tbody>
 </table>
+
 
 
 
@@ -493,7 +518,8 @@ navigation:
     </dt>
     <dd>
         
-<span class="param-type">boolean</span>
+<span class="label bg-yellow-casablanca label-sm">boolean</span></span>
+
 
 
     </dd>
@@ -507,14 +533,14 @@ navigation:
             
 
     
-
-    <h4 class="name" id="model"><span class="type-signature"></span>model<span class="signature">(name, schema)</span><span class="type-signature"> &rarr; {<a href="Model.html">Model</a>}</span></h4>
+    <hr class="hr-top-margin">
+    <h4 class="name" id="model"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature"></span>model<span class="signature">(name, schema)</span><span class="type-signature"> &rarr; {<a href="Model.html">Model</a>}</span></h4>
 
     
 
 
 
-<div class="description">
+<div class="note note-info">
     <p>Get or define a model</p>
 </div>
 
@@ -529,7 +555,7 @@ navigation:
     <h5>Parameters:</h5>
     
 
-<table class="params">
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
     <thead>
     <tr>
         
@@ -551,13 +577,18 @@ navigation:
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    name
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="label bg-green-jungle label-sm">string</span></span>
+
 
 
             
@@ -574,13 +605,18 @@ navigation:
 
         <tr>
             
-                <td class="name"><code>schema</code></td>
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    schema
+                    </code>
+                </td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="label bg-blue-hoki label-sm">object</span></span>
+
 
 
             
@@ -596,6 +632,7 @@ navigation:
     
     </tbody>
 </table>
+
 
 
 
@@ -680,7 +717,8 @@ navigation:
     </dt>
     <dd>
         
-<span class="param-type"><a href="Model.html">Model</a></span>
+<span class="label bg-grey-gallery label-sm"><a href="Model.html">Model</a></span></span>
+
 
 
     </dd>
