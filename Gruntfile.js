@@ -12,8 +12,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         radic_jsdoc: {
             docs: {
-                options: {
-                }
+
             }
         },
         radic_coverage: {
@@ -37,12 +36,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('docs:api', function(){
-        grunt.task.run(['radic_jsdoc:docs'])
-    });
-    grunt.registerTask('docs:cover', function(){
-        grunt.task.run(['radic_coverage:docs'])
-    });
     grunt.registerTask('publish', ['radic_jsdoc:docs', 'radic_coverage:docs', 'radic_ghpages_publish:docs']);
 
 };

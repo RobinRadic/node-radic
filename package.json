@@ -9,6 +9,7 @@
   "bin": {
     "radic": "bin/radic.js"
   },
+  "engine": "node >= 0.11.0",
   "license": "MIT",
   "author": {
     "name": "Robin Radic",
@@ -28,6 +29,8 @@
     "colors": "^1.0.3",
     "crema": "0.1.x",
     "disposable": "0.0.x",
+    "download": "^3.3.0",
+    "download-status": "^2.1.0",
     "dsync": "0.0.x",
     "eventemitter2": "^0.4.14",
     "execSync": "^1.0.2",
