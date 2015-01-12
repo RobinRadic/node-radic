@@ -102,7 +102,9 @@ npm install --save radic
 radic -h
 {% endhighlight %}
   
-#### Implementing `radic` in an external application
+#### Quick overview of functionality
+Check [the full documentation](http://robin.radic.nl/node-radic)
+
 {% highlight javascript %}
 var radic = require('radic'),
     // Classes
@@ -110,6 +112,7 @@ var radic = require('radic'),
     DB = radic.DB,
     
     // Stand-alone helpers
+    cli = radic.cli,
     git = radic.git,
     util = radic.util,
     
@@ -122,7 +125,149 @@ var radic = require('radic'),
 var config = new Config('config', { /** options */ });
 var db = new DB('name');
 {% endhighlight %}
+
+##### Config
+{% highlight javascript %}
+var radic = require('radic'),
+    Config = radic.Config,
+    config = new Config('config', { /** options */ });
+    
+var abc = config.get('a.b.c'); 
+config.set('a.b', 'c'); 
+config.set('a', { b: 'c' }, true); // saves the modified configuration to file
+config.del('a.b');
+config.clear();
+config.save(); // or this
+{% endhighlight %}
   
+  
+##### Cli
+{% highlight javascript %}
+#!/usr/bin/env node
+var radic = require('radic'),
+    cli = radic.cli;
+
+cli.command('version OR version :type')
+    .description('Shows current version')
+    .usage('radic version minor', 'shows version')
+    .method(function (cmd) {
+        cli.log.info(cli.red.bold('1.0.0'));
+    });
+    
+cli.parse(process.argv);
+{% endhighlight %}
+  
+  
+##### SH
+{% highlight javascript %}
+var radic = require('radic');
+var result;
+
+// Synchronous exec
+result = radic.sh.execSync('apt-cache search mono | grep develop');
+console.log(result.code); console.log(result.stdout);
+
+// Inline scripts
+
+result = radic.sh.inlineScript('echo "hai"\n\
+echo "bai" \n\
+echo "draai"');
+console.log(result.code);
+console.log(result.stdout);
+
+result = radic.sh.inlineScript(function(){/*
+       echo "hai"
+       echo "bai"
+       echo "draai"
+       #apt-cache search mono
+*/});
+console.log(result.code);
+console.log(result.stdout);
+{% endhighlight %}
+  
+  
+##### Net
+{% highlight javascript %}
+var radic = require('radic');
+radic.net.download('http://download.gigabyte.ru/driver/mb_driver_marvell_bootdisk_w7w8.exe', __dirname, { /* options */ }, function(){
+    // optional callback to make function execute asynchronously
+});
+{% endhighlight %}
+  
+  
+##### Vboxmanage
+{% highlight javascript %}
+var radic = require('radic'),
+    vm = radic.vboxmanage,
+    async = require('async');
+    
+async.waterfall([
+    function (next) {
+        vm.async('createvm', {
+            name: ops.name,
+            ostype: 'Debian_64',
+            basefolder: path.resolve(process.cwd()),
+            register: true
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('modifyvm', ops.name, {
+            pae: 'on',
+            cpus: 6,
+            memory: 4100,
+            boot1: 'dvd',
+            boot2: 'disk',
+            boot3: 'none',
+            boot4: 'none',
+            vram: 12,
+            rtcuseutc: 'on'
+        }, function (err, stdout) {
+            next(err)
+        });
+    },
+    function (next) {
+        vm.async('storagectl', ops.name, {
+            name: 'IDE Controller',
+            add: 'ide',
+            controller: 'PIIX4',
+            hostiocache: 'on'
+        }, function (err, stdout) {
+            next(err)
+        });
+    }
+], function(err, res){
+    // do something
+});
+{% endhighlight %}
+  
+  
+##### DB
+File based database 
+
+{% highlight javascript %}
+var db = new require('radic').DB('myfileDB4', {
+    path: 'HOMEDIR/.radic/stores',
+    ext: '.db',
+    onLoaded: function(){}
+});
+
+var user = db.model('user', {
+    type: 'object',
+    properties: {
+        username: { type: 'string', eq: 'ipsum' },
+        email: { type: 'string', eq: 'ipsum' },
+        password: {
+            type: 'array',
+            items: { type: 'number' }
+        }
+    }
+});
+{% endhighlight %}
+
+  
+
 ### License
 Copyright 2014 Robin Radic 
 
