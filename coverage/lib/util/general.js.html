@@ -276,7 +276,13 @@ navigation:
 42
 43
 44
-45</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+45
+46
+47
+48
+49
+50
+51</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -296,6 +302,12 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -342,6 +354,12 @@ exports.log = <span class="fstat-no" title="function not covered" >function () {
 <span class="cstat-no" title="statement not covered" >    console.log.apply(console, args);</span>
 };
 &nbsp;
+/**
+ * Get the full path to the user home directory
+ *
+ * @memberOf util
+ * @returns {string} path - Path to the user home directory
+ */
 exports.getUserHomeDir = function () {
     return process.env.HOME || <span class="branch-1 cbranch-no" title="branch not covered" >process.env.HOMEPATH </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >process.env.USERPROFILE;</span>
 };
