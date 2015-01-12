@@ -468,6 +468,229 @@ console.log('stdout + stderr ' + result.stdout);{% endhighlight %}
 
     
     <hr class="hr-top-margin">
+    <h4 class="name font-yellow-gold" id="inlineScript"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;static> </span>inlineScript<span class="signature">(script, <span class="optional">asyncCallback</span>)</span><span class="type-signature"> &rarr; {*}</span></h4>
+
+    
+
+
+
+<div class="note note-info">
+    <p>Execute an inline bash script</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    script
+                    </code>
+                </td>
+            
+
+            <td class="type">
+            
+                
+<span class="label bg-green-jungle label-sm">string</span></span>
+|
+
+<span class="label bg-red-thunderbird label-sm">function</span></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>the inline script</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name">
+                    <code class="font-red-pink">
+                    asyncCallback
+                    </code>
+                </td>
+            
+
+            <td class="type">
+            
+                
+<span class="label bg-red-thunderbird label-sm">function</span></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If provided, the function will execute asynchronously</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="label bg-grey-gallery label-sm">*</span></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var result;
+
+result = radic.sh.inlineScript('echo "hai"\n\
+echo "bai" \n\
+echo "draai"');
+console.log(result.code);
+console.log(result.stdout);
+
+
+result = radic.sh.inlineScript(function(){/*
+       echo "hai"
+       echo "bai"
+       echo "draai"
+       #apt-cache search mono
+\/});
+console.log(result.code);
+console.log(result.stdout);{% endhighlight %}
+
+
+
+
+        
+            
+
+    
+    <hr class="hr-top-margin">
     <h4 class="name font-yellow-gold" id="run"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;static> </span>run<span class="signature">(cmd, exitOnlyOnError)</span><span class="type-signature"> &rarr; {int}</span></h4>
 
     
