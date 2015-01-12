@@ -1,23 +1,27 @@
 {
   "name": "radic",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Usefull general modules. Cli helper/tools, file based DB with models, validation, schemas. Utility functions. Downloader. Virtualbox vm vboxmanage. Inline shell bash scripts.",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec"
   },
-    "tags": [
-        "radic",
-        "cli",
-        "db",
-        "config",
-        "file db",
-        "file config",
-        "download",
-        "sh", "exec", "bash", "inline scripts",
-        "virtualbox", "vm", "vboxmanage"
-
-    ],
+  "tags": [
+    "radic",
+    "cli",
+    "db",
+    "config",
+    "file db",
+    "file config",
+    "download",
+    "sh",
+    "exec",
+    "bash",
+    "inline scripts",
+    "virtualbox",
+    "vm",
+    "vboxmanage"
+  ],
   "bin": {
     "radic": "bin/radic.js"
   },
