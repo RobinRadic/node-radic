@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var radic = require('../lib'),
-   cli = radic.cli;
+    cli = radic.cli;
 
 cli.command('version OR version :type')
     .description('Shows current version')
@@ -14,6 +14,28 @@ cli.command('version OR version :type')
         }
     });
 
+cli.command('test')
+    .description('test')
+    .usage('test')
+    .method(function (cmd) {
+        var result;
+
+        result = radic.sh.inlineScript('echo "hai"\n\
+        echo "bai" \n\
+        echo "draai"');
+        console.log(result.code);
+        console.log(result.stdout);
+
+
+        result = radic.sh.inlineScript(function(){/*
+        echo "hai"
+        echo "bai"
+        echo "draai"
+        #apt-cache search mono
+        */});
+        console.log(result.code);
+        console.log(result.stdout);
+    });
 cli.parse(process.argv);
 
 
