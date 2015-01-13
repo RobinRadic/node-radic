@@ -9,17 +9,25 @@ var path = require('path'),
     assert = chai.assert,
     should = chai.should(),
 
-    chaiConfig = require('./../helpers/config'),
+    chaiConfig = require('./helpers/config'),
 
     sinon = require('sinon'),
     EventEmitter = require('eventemitter2').EventEmitter,
 
-    radic = require('../../lib/index');
+    radic = require('../lib'),
+    git = radic.git;
 
 
 describe('git', function () {
 
-
+    describe('command line', function(){
+        it('executes commands', function(){
+            var result = git('version');
+            expect(result.code).to.equal(0, 'The command should return the exit code 0');
+            assert.isString(result.stdout);
+        });
+    });
+/*
     describe('api', function () {
 
         function testApi(provider) {
@@ -41,4 +49,5 @@ describe('git', function () {
        // testApi('bitbucket');
 
     });
+    */
 });

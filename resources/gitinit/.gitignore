@@ -1,0 +1,13 @@
+/node_modules
+/bower_components
+/composer
+/vendor
+/.idea/
+/docs
+/coverage
+/npm-debug.log
+/.yo-rc.json
+/istanbul-radic-report
+/html-report
+/jsdoctheme
+/.tmp
