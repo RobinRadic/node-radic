@@ -107,6 +107,13 @@ var cli = {
 };
 module.exports = cli;
 
+/**
+ * Integrates all chalk styles into the cli object, making it possible to use chalk functions using `cli`
+ * @memberOf cli
+ * @type {string[]}
+ * @example
+ * cli.writeln(cli.bold('This is bold ') + cli.blue.bgGreen.bold('Chainable as if it is chalk'));
+ */
 var chalkStyles = ['reset', 'bold', 'dim', 'italic', 'underline', 'inverse', 'hidden', 'strikethrough', 'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'gray', 'bgBlack', 'bgRed', 'bgGreen', 'bgYellow', 'bgBlue', 'bgMagenta', 'bgCyan', 'bgWhite'];
 _.each(chalkStyles, function(style){
     cli[style] = chalk[style];
@@ -175,7 +182,7 @@ cli.title = function(msg){
 
 cli.subtitle = function(str){
     cli._subtitles.push(str);
-}
+};
 /**
  * Parse an array of parameters and trigger the right command.
  * @param argv
@@ -239,6 +246,10 @@ cli.parse = function (argv) {
     }
 };
 
+/**
+ * Stops/halts
+ * @param exitCode
+ */
 cli.exit = function(exitCode){
     if(util.defined(exitCode) === false) exitCode = 1;
     process.exit(exitCode);
@@ -254,6 +265,18 @@ var outputs = {
     error: ["red", "✖ "],
     fatal: ["red", "✖✖ "]
 };
+
+/**
+ * Writes a log message to the terminal
+ * @example
+ * cli.log('Haaai'); // equals cli.log.info
+ * cli.log.ok('Haaai');
+ * cli.log.info('Haaai');
+ * cli.log.warn('Haaai');
+ * cli.log.debug('Haaai'); // only shows if cli.debug is true
+ * cli.log.error('Haaai');
+ * cli.log.fatal('Haaai'); // Will also exit (cli.exit) the process
+ */
 cli.log = function(){
     var args = _.toArray(arguments);
     var level, msg;
@@ -261,12 +284,27 @@ cli.log = function(){
     msg = args.length == 1 ? args[0] : args[1];
     cli.log[level](msg);
 };
+
+/**
+ * Equals cli.log.debug('');
+ * @param msg
+ */
 cli.debug = function(msg){
     cli.log('debug', msg);
 };
+
+/**
+ * Writes a string in the terminal
+ * @param msg
+ */
 cli.write = function(msg){
     util.print(msg);
 };
+
+/**
+ * Writes a string in the terminal followed by a newline
+ * @param msg
+ */
 cli.writeln = function(msg){
     cli.write(msg + "\n");
 };
