@@ -26,6 +26,7 @@ describe('DB', function () {
     after(function(){
         fs.unlinkSync(path.join(dbPath, dbName + '.database'));
         fs.unlinkSync(path.join(dbPath, dbName + '.db'));
+
     });
     describe('create', function () {
         function testFile(filePath, cb){
