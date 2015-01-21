@@ -77,16 +77,15 @@ navigation:
 ----commands
 ------index.js
 ------mycmd1.js
-------mycmd2.js</code></pre><p><strong>bin/myclicmd.js</strong>
-{% highlight javascript %}
-var radic = require('radic'),
-    cli = radic.cli;</p>
-<p>require('../src/commands')(cli);
-cli.title('  |  ' + cli.green.bold('myclicmd title') + '  | ' + cli.yellow('v1.0.5') + ' |');</p>
-<p>cli.usage('myclicmd [command] ' + cli.gray('[[subcommands]]'));
-cli.parse(process.argv);
-{% endhighlight %}</p>
-<p><strong>src/commands/index.js</strong>
+------mycmd2.js</code></pre><p><strong>bin/myclicmd.js</strong></p>
+<pre class="prettyprint source lang-javascript"><code>var radic = require('radic'),
+    cli = radic.cli;
+
+require('../src/commands')(cli);
+cli.title('  |  ' + cli.green.bold('myclicmd title') + '  | ' + cli.yellow('v1.0.5') + ' |');
+
+cli.usage('myclicmd [command] ' + cli.gray('[[subcommands]]'));
+cli.parse(process.argv);</code></pre><p><strong>src/commands/index.js</strong>
 {% highlight javascript %}
 var radic = require('radic'),
     util = radic.util,
