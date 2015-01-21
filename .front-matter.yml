@@ -31,7 +31,4 @@ navigation:
       - name: Binwraps
         link: /node-radic/tutorials/binwraps.html
 
-      - name: General
-        link: /node-radic/tutorials
-
 ---

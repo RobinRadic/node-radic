@@ -24,8 +24,6 @@ navigation:
         link: /node-radic/tutorials/config-db.html
       - name: Binwraps
         link: /node-radic/tutorials/binwraps.html
-      - name: General
-        link: /node-radic/tutorials
   - name: Modules
     link: "#"
     icon: fa fa-mortar-board
@@ -78,12 +76,15 @@ navigation:
 - `radic` is also a stand-alone application which manages global configuration and such.
   
   
+## How to use
+
 ### Documentation
-You can check [the documentation here](http://robin.radic.nl/node-radic)
+- [Detailed documentation](http://robin.radic.nl/node-radic)
+- [Tutorials and examples](http://robin.radic.nl/node-radic/tutorial-radic.html)
+- [Test coverage](http://robin.radic.nl/node-radic/coverage/)
   
-### How to use
   
-#### Installation
+### Installation
 {% highlight bash %}
 # Globally install radic for using radic command line tools
 sudo npm install -g radic
@@ -93,10 +94,8 @@ npm install --save radic
 {% endhighlight %}
   
   
-#### Quick overview of functionality
-- [Detailed documentation](http://robin.radic.nl/node-radic)
-- [Tutorials and examples](http://robin.radic.nl/node-radic/tutorial-radic.html)
-- [Test coverage](http://robin.radic.nl/node-radic/coverage/)
+  
+### Overview
   
 | Module | Description |
 |:-------|:------------|
@@ -110,6 +109,8 @@ npm install --save radic
 | [sh](http://robin.radic.nl/node-radic/sh.html) | shell exec, execsync, execlist etc |
 | [binwraps](http://robin.radic.nl/node-radic/binwraps.html) | wraps cli commands in a nice coat. |
   
+  
+### Basic usage
   
 ##### Config
 {% highlight javascript %}

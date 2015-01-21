@@ -24,8 +24,6 @@ navigation:
         link: /node-radic/tutorials/config-db.html
       - name: Binwraps
         link: /node-radic/tutorials/binwraps.html
-      - name: General
-        link: /node-radic/tutorials
   - name: Modules
     link: "#"
     icon: fa fa-mortar-board
