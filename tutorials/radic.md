@@ -57,15 +57,16 @@ I recommend using the method below to create commands. This is also utilized in 
 
 
 When using the following structure, with a little code it's possible to let all commands in the `src/commands` directory auto-register.
-```
---bin   
-----myclicmd.js  
---src  
-----commands
-------index.js
-------mycmd1.js
-------mycmd2.js
-```
+
+**Directory structure**
+..bin   
+....myclicmd.js  
+..src  
+....commands  
+......index.js  
+......mycmd1.js  
+......mycmd2.js  
+
 
 **bin/myclicmd.js**
 {% highlight javascript %}
