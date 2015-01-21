@@ -13,7 +13,7 @@ navigation:
     link: /node-radic/coverage
     icon: fa fa-code
   - name: Tutorials
-    link: /node-radic/tutorial-radic.html
+    link: /node-radic/tutorials
     icon: fa fa-info
   - name: Modules
     link: "#"
