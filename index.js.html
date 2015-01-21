@@ -156,7 +156,7 @@ cli.table = function (style, design, options) {
 
 /**
  * Create a new Command
- * @param expr
+ * @param {string} expr - The commmand expression
  * @memberOf cli
  * @returns {Command}
  */
@@ -166,7 +166,7 @@ cli.command = function (expr) {
 
 /**
  * Set the help usage message
- * @param msg
+ * @param {string} msg - The message to write
  */
 cli.usage = function(msg){
     cli._usage = msg;
@@ -174,7 +174,7 @@ cli.usage = function(msg){
 
 /**
  * Set the title, displayed in help
- * @param msg
+ * @param {string} msg - The message to write
  */
 cli.title = function(msg){
     cli._title = msg;
@@ -183,9 +183,12 @@ cli.title = function(msg){
 cli.subtitle = function(str){
     cli._subtitles.push(str);
 };
+
 /**
  * Parse an array of parameters and trigger the right command.
- * @param argv
+ * @param {array} argv - The command line arguments to parse
+ * @example
+ * cli.parse(process.argv);
  */
 cli.parse = function (argv) {
     cli._commands.forEach(function (command) {
@@ -248,7 +251,7 @@ cli.parse = function (argv) {
 
 /**
  * Stops/halts
- * @param exitCode
+ * @param {int} [exitCode=0] - Exitcode to exit with
  */
 cli.exit = function(exitCode){
     if(util.defined(exitCode) === false) exitCode = 1;
@@ -287,7 +290,7 @@ cli.log = function(){
 
 /**
  * Equals cli.log.debug('');
- * @param msg
+ * @param {string} msg - The message to write
  */
 cli.debug = function(msg){
     cli.log('debug', msg);
@@ -295,7 +298,7 @@ cli.debug = function(msg){
 
 /**
  * Writes a string in the terminal
- * @param msg
+ * @param {string} msg - The message to write
  */
 cli.write = function(msg){
     util.print(msg);
@@ -303,7 +306,7 @@ cli.write = function(msg){
 
 /**
  * Writes a string in the terminal followed by a newline
- * @param msg
+ * @param {string} msg - The message to write
  */
 cli.writeln = function(msg){
     cli.write(msg + "\n");

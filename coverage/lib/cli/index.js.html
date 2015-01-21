@@ -497,7 +497,10 @@ navigation:
 265
 266
 267
-268</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+268
+269
+270
+271</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -618,6 +621,9 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -859,7 +865,7 @@ cli.table = <span class="fstat-no" title="function not covered" >function (style
 &nbsp;
 /**
  * Create a new Command
- * @param expr
+ * @param {string} expr - The commmand expression
  * @memberOf cli
  * @returns {Command}
  */
@@ -869,7 +875,7 @@ cli.command = <span class="fstat-no" title="function not covered" >function (exp
 &nbsp;
 /**
  * Set the help usage message
- * @param msg
+ * @param {string} msg - The message to write
  */
 cli.usage = <span class="fstat-no" title="function not covered" >function(msg){</span>
 <span class="cstat-no" title="statement not covered" >    cli._usage = msg;</span>
@@ -877,7 +883,7 @@ cli.usage = <span class="fstat-no" title="function not covered" >function(msg){<
 &nbsp;
 /**
  * Set the title, displayed in help
- * @param msg
+ * @param {string} msg - The message to write
  */
 cli.title = <span class="fstat-no" title="function not covered" >function(msg){</span>
 <span class="cstat-no" title="statement not covered" >    cli._title = msg;</span>
@@ -886,9 +892,12 @@ cli.title = <span class="fstat-no" title="function not covered" >function(msg){<
 cli.subtitle = <span class="fstat-no" title="function not covered" >function(str){</span>
 <span class="cstat-no" title="statement not covered" >    cli._subtitles.push(str);</span>
 };
+&nbsp;
 /**
  * Parse an array of parameters and trigger the right command.
- * @param argv
+ * @param {array} argv - The command line arguments to parse
+ * @example
+ * cli.parse(process.argv);
  */
 cli.parse = <span class="fstat-no" title="function not covered" >function (argv) {</span>
 <span class="cstat-no" title="statement not covered" >    cli._commands.forEach(<span class="fstat-no" title="function not covered" >function (command) {</span></span>
@@ -951,7 +960,7 @@ cli.parse = <span class="fstat-no" title="function not covered" >function (argv)
 &nbsp;
 /**
  * Stops/halts
- * @param exitCode
+ * @param {int} [exitCode=0] - Exitcode to exit with
  */
 cli.exit = <span class="fstat-no" title="function not covered" >function(exitCode){</span>
 <span class="cstat-no" title="statement not covered" >    if(util.defined(exitCode) === false) <span class="cstat-no" title="statement not covered" >exitCode = 1;</span></span>
@@ -990,7 +999,7 @@ cli.log = <span class="fstat-no" title="function not covered" >function(){</span
 &nbsp;
 /**
  * Equals cli.log.debug('');
- * @param msg
+ * @param {string} msg - The message to write
  */
 cli.debug = <span class="fstat-no" title="function not covered" >function(msg){</span>
 <span class="cstat-no" title="statement not covered" >    cli.log('debug', msg);</span>
@@ -998,7 +1007,7 @@ cli.debug = <span class="fstat-no" title="function not covered" >function(msg){<
 &nbsp;
 /**
  * Writes a string in the terminal
- * @param msg
+ * @param {string} msg - The message to write
  */
 cli.write = <span class="fstat-no" title="function not covered" >function(msg){</span>
 <span class="cstat-no" title="statement not covered" >    util.print(msg);</span>
@@ -1006,7 +1015,7 @@ cli.write = <span class="fstat-no" title="function not covered" >function(msg){<
 &nbsp;
 /**
  * Writes a string in the terminal followed by a newline
- * @param msg
+ * @param {string} msg - The message to write
  */
 cli.writeln = <span class="fstat-no" title="function not covered" >function(msg){</span>
 <span class="cstat-no" title="statement not covered" >    cli.write(msg + "\n");</span>
