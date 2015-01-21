@@ -346,13 +346,19 @@ navigation:
 112
 113
 114
-115</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+115
+116
+117
+118</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -506,6 +512,9 @@ var commands = [
  * }, function(){
  *      // callllback
  * });
+ *
+ * var commands = binwraps.getCommands();
+ * binwraps[ commands[0] ]('arg', { weed: 'bad' }); // just an example..
  */
 var binwraps = module.exports = {};
 &nbsp;

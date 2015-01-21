@@ -147,7 +147,10 @@ vbox('createvm', {
   register: true
 }, function(){
      // callllback
-});{% endhighlight %}
+});
+
+var commands = binwraps.getCommands();
+binwraps[ commands[0] ]('arg', { weed: 'bad' }); // just an example..{% endhighlight %}
 
 
         
