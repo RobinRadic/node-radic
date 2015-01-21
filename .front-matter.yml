@@ -16,7 +16,22 @@ navigation:
     icon: fa fa-code
 
   - name: Tutorials
-    link: /node-radic/tutorials
+    link: #
     icon: fa fa-info
+    children:
+      - name: General
+        link: /node-radic/tutorials
+
+      - name: Cli & Commands
+        link: /node-radic/tutorials/cli.html
+
+      - name: Config & DB
+        link: /node-radic/tutorials/config-db.html
+
+      - name: Binwraps
+        link: /node-radic/tutorials/binwraps.html
+
+      - name: General
+        link: /node-radic/tutorials
 
 ---
