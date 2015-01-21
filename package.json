@@ -1,6 +1,6 @@
 {
   "name": "radic",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Usefull general modules. Cli helper/tools, file based DB with models, validation, schemas. Utility functions. Downloader. Virtualbox vm vboxmanage. Inline shell bash scripts.",
   "main": "index.js",
   "scripts": {
