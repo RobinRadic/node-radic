@@ -61,78 +61,89 @@ navigation:
 
     
             {% highlight javascript %}
-            var Download = require('./download'),
-    progress = require('download-status'),
-    _ = require('lodash'),
-    path = require('path'),
-    async = require('async'),
-    util = require('../util');
+            var _ = require('lodash'),
+    util = require('./util'),
+    exec = require('child_process').exec,
+    sh = require('./sh');
 
 
-function _download(url, destDir, opts, callback) {
-    var download = new Download(_.merge({extract: false, strip: 1, mode: '755'}, opts))
-        .dest(path.resolve(destDir))
-        .get(url)
-        .use(progress());
-
-    download.run(function (err, files, stream) {
-        if (err) {
-            throw err;
-        }
-
-        if (typeof callback === 'function') {
-            callback(err, files, stream);
-        }
-    });
-}
-
+var commands = [
+    'zip',
+    '7z',
+    'ifconfig',
+    'git',
+    'lsblk',
+    'apt-cache',
+    'composer',
+    'unzip',
+    'blkid',
+    'lvm',
+    'gzip',
+    'vagrant',
+    'VBoxManage'
+];
 
 /**
- * @namespace net
+ * @namespace binwraps
  */
-var net = module.exports;
-var ll = console.log;
-
+var bw = module.exports;
 
 /**
- * Download one or more files, with progressbar
- * @see {@link https://github.com/request/request#requestoptions-callback} Possible options accepted by the request module
- *
- * @param {string|array} url - Either a URL or an array of URL's
- * @param {string} destDir - Path to destination directory
- * @param {object|function} opts - Options or callback
- * @param {function} [callback] - Callback
+ * If true, executing a binwrapped function will be executed synchronously, without the need to use the 'xxxSync' function.
+ * @type {boolean}
  */
-net.download = function (url, destDir, opts, callback) {
+bw.autoSyncExec = true;
 
-    if(typeof callback === 'undefined'){
-        callback = opts;
-        opts = {};
-    }
-    //console.log(path.resolve(path.dirname(dest)));
-    //console.log(path.basename(dest));
-    // https://github.com/request/request#requestoptions-callback
 
-    /*
-    For some reason async.each doesnt work as it should.
-     */
-    if (_.isArray(url)) {
-        var falls = [];
-        _.forEach(url, function (link, i) {
-            falls.push(function(next){
-                _download(link, destDir, opts, function () {
-                    next();
-                });
-            })
+bw.sudo = {};
+bw.sudo.autoSyncExec = true;
+
+var createBinWrap = function (key, cmd){
+    var self = this;
+    this[key + 'Sync'] = function(){
+        var cm = util.createExecString(cmd, _.toArray(arguments));
+        console.log('cm', cm);
+        return sh.execSync(cm);
+    };
+    this[key] = function(){
+        if(self.autoSyncExec == true){
+            return self[key + 'Sync'].apply(self, arguments);
+        }
+        var args = _.toArray(arguments);
+        var callback;
+        _.forEach(args, function (arg, i) {
+            if (typeof arg === 'function' &amp;&amp; args.length === (i + 1)) {
+                callback = arg;
+            }
         });
-        async.waterfall(falls, function (err) {
-            if (err) throw err;
-            callback(err);
+        if (typeof callback !== 'function') {
+            throw new Error(cmd + ' requires a callback')
+        }
+        exec(util.createExecString(cmd, args), function (err, stdout, stderr) {
+            callback(err, stdout);
         });
-    } else {
-        _download(url, destDir, opts, callback);
-    }
+    };
+
+
 };
+
+/**
+ * Creates a new binwrapped object
+ * @param cmd
+ */
+bw.createBinWrap = function(cmd){
+    createBinWrap.call(bw, cmd, cmd);
+    createBinWrap.call(bw.sudo, cmd, 'sudo ' + cmd);
+};
+
+commands.forEach(function(cmd){
+    bw.createBinWrap(cmd);
+});
+
+
+//console.log(bw.sudo.blkid().stdout);
+
+//console.log(bw);
 
             {% endhighlight %}
 

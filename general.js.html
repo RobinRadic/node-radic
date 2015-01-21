@@ -34,6 +34,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
       - name: cli
         link: /node-radic/cli.html
       - name: git
@@ -42,10 +44,6 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
-      - name: util
-        link: /node-radic/util.html
-      - name: vboxmanage
-        link: /node-radic/vboxmanage.html
 
 ---
 
@@ -53,7 +51,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#_vboxmanage">_vboxmanage</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#rdir">rdir</a></li><li><a href="global.html#todir">todir</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -66,7 +64,6 @@ navigation:
             var _ = require('lodash'),
 
     chalk = require('chalk');
-
 
 
 var general = module.exports = {
@@ -100,6 +97,32 @@ var general = module.exports = {
 
     defined: function (val) {
         return typeof val !== 'undefined';
+    },
+
+
+    createExecString: function (cmd, args) {
+        console.log('cmd', cmd, 'args', args);
+        _.forEach(args, function (arg, i) {
+            if (typeof arg === 'string') {
+                cmd += ' ' + JSON.stringify(arg);
+            } else if (typeof arg === 'number') {
+                cmd += ' ' + arg;
+            } else if (typeof arg === 'object') {
+                _.forEach(arg, function (opt, optk) {
+                    var dashes = '--'; // --orphan
+                    if(optk.length === 1){  // -m
+                        dashes = '-';
+                    }
+                    if (typeof opt === 'boolean') {
+                        cmd += ' ' + dashes + optk;
+                    } else {
+                        cmd += ' ' + dashes + optk + ' ' + JSON.stringify(opt);
+                    }
+                });
+            }
+        });
+        //console.log(cmd);
+        return cmd;
     },
 
 // util/string

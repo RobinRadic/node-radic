@@ -1,0 +1,219 @@
+---
+layout: page
+title: Node Radic
+minify_content: false
+navigation:
+  - name: Home
+    link: /
+    icon: fa fa-home
+  - name: Overview
+    link: /node-radic
+    icon: fa fa-dashboard
+  - name: Coverage
+    link: /node-radic/coverage
+    icon: fa fa-code
+  - name: Modules
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: radic
+        link: /node-radic/module-radic.html
+  - name: Classes
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: Config
+        link: /node-radic/Config.html
+      - name: DB
+        link: /node-radic/DB.html
+      - name: Model
+        link: /node-radic/Model.html
+      - name: Table
+        link: /node-radic/Table.html
+  - name: Namespaces
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
+      - name: cli
+        link: /node-radic/cli.html
+      - name: git
+        link: /node-radic/git.html
+      - name: net
+        link: /node-radic/net.html
+      - name: sh
+        link: /node-radic/sh.html
+
+---
+
+<link type="text/css" rel="stylesheet" href="styles/jsdoc-radic.css">
+
+
+<ul class="nav nav-tabs hide">
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#rdir">rdir</a></li><li><a href="global.html#todir">todir</a></li></ul></li>
+</ul>
+
+<div id="main">
+    
+
+
+
+    
+            {% highlight javascript %}
+            var app = require('../../app'),
+    _ = require('lodash'),
+    async = require('async'),
+    util = require('../../util'),
+    git = require('../../git'),
+    resources = require('../../resources'),
+    config = app.config;
+/**
+ * @param {cli} cli
+ */
+module.exports = function (cli) {
+
+    cli.command('init:git')
+        .description('Fast repository creation')
+        .usage({'init:git': 'Starts an interactive git repository creation process'})
+
+        .method(function (cmd) {
+            var prompts = {
+                generate: {
+                    name: 'generate',
+                    type: 'checkbox',
+                    message: 'Which files should i generate?',
+                    choices: resources.fileList('gitinit'),
+                    default: resources.fileList('gitinit')
+                },
+                add: {
+                    name: 'add',
+                    type: 'confirm',
+                    message: 'Git add all?',
+                    default: true
+                },
+                commit: {
+                    name: 'commit',
+                    type: 'confirm',
+                    message: 'Commit?',
+                    default: true
+                },
+                commitMessage: {
+                    name: 'commitMessage',
+                    type: 'input',
+                    message: 'Commit message',
+                    default: 'Initial commit'
+                },
+                remote: {
+                    name: 'remote',
+                    type: 'list',
+                    message: 'Do you want to define/create a remote?',
+                    choices: ['create', 'add', 'skip'],
+                    default: 'create'
+                },
+                remoteProvider: {
+                    name: 'remoteProvider',
+                    type: 'list',
+                    message: 'Remote provider',
+                    choices: ['github', 'bitbucket'],
+                    default: 'github'
+                },
+                remoteOwner: {
+                    name: 'remoteOwner',
+                    type: 'input',
+                    message: 'Remote owner/user',
+                    default: 'Initial commit'
+                },
+                remoteRepo: {
+                    name: 'remoteRepo',
+                    type: 'input',
+                    message: 'Repository name',
+                    default: path.basename(process.cwd())
+                },
+                push: {
+                    name: 'push',
+                    type: 'confirm',
+                    message: 'Do you want to push to remote?',
+                    default: true
+                }
+            };
+            var answers = {};
+            async.waterfall([
+                function(next){
+                    cli.prompt([prompts.generate, prompts.add, prompts.commit], function(opts){
+                        _.merge(answers, opts);
+                        next();
+                    })
+                },
+                function(next){
+                    var proms = [];
+                    if(answers.commit === true){
+                        proms.push(prompts.commitMessage);
+                    }
+                    proms.push(prompts.remote);
+                    cli.prompt(proms, function(opts){
+                        _.merge(answers, opts);
+                        next();
+                    })
+                },
+                function(next){
+                    if(answers.remote === 'skip') return next();
+                    cli.prompt([prompts.remoteProvider], function(opts){
+                        _.merge(answers, opts);
+                        next();
+                    })
+                },
+                function(next){
+                    if(answers.remote === 'skip') return next();
+                    prompts.remoteOwner.default = config.get('credentials.' + answers.remoteProvider + '.username');
+                    cli.prompt([prompts.remoteOwner, prompts.remoteRepo, prompts.push], function(opts){
+                        _.merge(answers, opts);
+                        next();
+                    })
+                }
+            ], function(err, opts){
+                if(err) throw new Error(err);
+                git('init');
+                answers.generate.forEach(function(fileName){
+                    resources.copy('gitinit/' + fileName, fileName);
+                    cli.log.info('Generated file: ' + fileName);
+                });
+                if(answers.add === true) {
+                    git('add', { A: true });
+                    cli.log('Added all files to git')
+                }
+                if(answers.commit === true) {
+                    git('commit', { m: answers.commitMessage })
+                    cli.log('Created a commit with message "' + answers.commitMessage + '"');
+                }
+                if(answers.remote !== 'skip'){
+                    var url = (answers.remoteProvider === 'github' ? 'https://github.com' : 'https://bitbucket.org') + "/:owner/:repo";
+                    url = url.replace(':owner', answers.remoteOwner).replace(':repo', answers.remoteRepo);
+                    git('remote', 'add', 'origin', url);
+                    cli.log('Added remote origin ' + url);
+                    if(answers.remote === 'create'){
+                        var api = git.getApi(answers.remoteProvider);
+
+                        api.repos.post('sdf', 'asdf', function(err, res){
+                            console.log(err, res);
+                        })
+                    }
+                    if(answers.push === true){
+                        git('push', { u: 'origin master'});
+                    }
+                }
+                cli.log.ok('Done!')
+            })
+
+        });
+
+
+};
+
+            {% endhighlight %}
+
+
+
+
+
+</div>

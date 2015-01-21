@@ -34,6 +34,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
       - name: cli
         link: /node-radic/cli.html
       - name: git
@@ -42,10 +44,6 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
-      - name: util
-        link: /node-radic/util.html
-      - name: vboxmanage
-        link: /node-radic/vboxmanage.html
 
 ---
 <style>
@@ -222,10 +220,10 @@ navigation:
     <link rel="stylesheet" href="../../prettify.css">
 <div class="coverage-header low">
     <div>
-        Statements: <span class="metric">21.05% <small>(4 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">11.11% <small>(1 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">33.33% <small>(2 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">21.05% <small>(4 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">11.76% <small>(4 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">5.26% <small>(1 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">22.22% <small>(2 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">11.76% <small>(4 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">lib/util/</a> &#187; general.js</div>
@@ -286,8 +284,32 @@ navigation:
 52
 53
 54
-55</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -318,11 +340,37 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -343,7 +391,6 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var _ = require('lodash'),
 &nbsp;
     chalk = require('chalk');
-&nbsp;
 &nbsp;
 &nbsp;
 var general = module.exports = {
@@ -377,6 +424,32 @@ var general = module.exports = {
 &nbsp;
     defined: function (val) {
         return typeof val !== 'undefined';
+    },
+&nbsp;
+&nbsp;
+    createExecString: <span class="fstat-no" title="function not covered" >function (cmd, args) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log('cmd', cmd, 'args', args);</span>
+<span class="cstat-no" title="statement not covered" >        _.forEach(args, <span class="fstat-no" title="function not covered" >function (arg, i) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (typeof arg === 'string') {</span>
+<span class="cstat-no" title="statement not covered" >                cmd += ' ' + JSON.stringify(arg);</span>
+            } else <span class="cstat-no" title="statement not covered" >if (typeof arg === 'number') {</span>
+<span class="cstat-no" title="statement not covered" >                cmd += ' ' + arg;</span>
+            } else <span class="cstat-no" title="statement not covered" >if (typeof arg === 'object') {</span>
+<span class="cstat-no" title="statement not covered" >                _.forEach(arg, <span class="fstat-no" title="function not covered" >function (opt, optk) {</span></span>
+<span class="cstat-no" title="statement not covered" >                    var dashes = '--'; </span>// --orphan
+<span class="cstat-no" title="statement not covered" >                    if(optk.length === 1){  // -m</span>
+<span class="cstat-no" title="statement not covered" >                        dashes = '-';</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    if (typeof opt === 'boolean') {</span>
+<span class="cstat-no" title="statement not covered" >                        cmd += ' ' + dashes + optk;</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        cmd += ' ' + dashes + optk + ' ' + JSON.stringify(opt);</span>
+                    }
+                });
+            }
+        });
+        //console.log(cmd);
+<span class="cstat-no" title="statement not covered" >        return cmd;</span>
     },
 &nbsp;
 // util/string

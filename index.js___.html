@@ -34,6 +34,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
       - name: cli
         link: /node-radic/cli.html
       - name: git
@@ -42,10 +44,6 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
-      - name: util
-        link: /node-radic/util.html
-      - name: vboxmanage
-        link: /node-radic/vboxmanage.html
 
 ---
 
@@ -53,7 +51,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#_vboxmanage">_vboxmanage</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#rdir">rdir</a></li><li><a href="global.html#todir">todir</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -66,9 +64,9 @@ navigation:
             var exec = require('child_process').exec,
     _ = require('lodash'),
     os = require('os'),
-    api = require('./api'),
     app = require('../app'),
     util = require('../util'),
+    sh = require('../sh'),
     config = app.config;
 
 function createCallback(callback) {
@@ -80,15 +78,31 @@ function createCallback(callback) {
     }
 }
 
+
+
 /**
+ * Git command line api and github/bitbucket api.
+ *
  * @namespace git
- * @requires api
+ * @returns {object} result - An object containing `code` as exitcode, `stdout` for output
+ * @example
+ // Simple command line api, basicly the same as vboxmanage. utilises util.createExecString
+ // Commands are executed synchronously
+ console.log(git('init').stdout);
+ console.log(git('add', { A: true }).stdout);
+ console.log(git('status').stdout);
+ console.log(git('commit', { m: 'Testing 123'}).stdout);
+ console.log(git('status').stdout);
+ console.log(git('remote', 'add', 'origin', 'https://github.com/test/test').stdout);
  */
-var git = {
-    config: config.get('git')
+var git = function git() {
+    return sh.execSync(util.createExecString('git', _.toArray(arguments)));
 };
 
 module.exports = git;
+
+
+git.config = config.get('git');
 
 /**
  * Get an API object for the given provider
@@ -97,61 +111,7 @@ module.exports = git;
  * @memberOf git
  */
 git.getApi = function (provider) {
-    return api(provider);
-};
-
-/**
- * Initializes git in the current directory
- * @param cb
- */
-git.init = function init(cb) {
-    exec('git init', createCallback(cb));
-};
-
-/**
- * Adds all files
- * @param cb
- */
-git.addAll = function commit(cb) {
-    exec('git add -A', createCallback(cb));
-};
-
-/**
- *
- * @param message
- * @param cb
- */
-git.commit = function commit(message, cb) {
-    exec('git commit -m "' + message + '"', createCallback(cb));
-};
-
-/**
- * Pushes the commits
- * @param remote
- * @param branch
- * @param cb
- */
-git.push = function push(remote, branch, cb) {
-    exec('git push -u "' + remote + '" "' + branch + '"', createCallback(cb));
-};
-
-/**
- *
- * @type {{add: Function}}
- */
-git.remote = {
-    add: function (type, url, cb) {
-        exec('git remote add ' + type + ' ' + url, createCallback(cb));
-    }
-};
-
-/**
- * Checkout a branch
- * @param branchName
- * @param cb
- */
-git.checkout = function(branchName, cb){
-    exec('git checkout ' + branchName, createCallback(cb));
+    return require('./' + provider);
 };
 
             {% endhighlight %}

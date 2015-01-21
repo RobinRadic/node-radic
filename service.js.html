@@ -1,0 +1,181 @@
+---
+layout: page
+title: Node Radic
+minify_content: false
+navigation:
+  - name: Home
+    link: /
+    icon: fa fa-home
+  - name: Overview
+    link: /node-radic
+    icon: fa fa-dashboard
+  - name: Coverage
+    link: /node-radic/coverage
+    icon: fa fa-code
+  - name: Modules
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: radic
+        link: /node-radic/module-radic.html
+  - name: Classes
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: Config
+        link: /node-radic/Config.html
+      - name: DB
+        link: /node-radic/DB.html
+      - name: Model
+        link: /node-radic/Model.html
+      - name: Table
+        link: /node-radic/Table.html
+  - name: Namespaces
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
+      - name: cli
+        link: /node-radic/cli.html
+      - name: git
+        link: /node-radic/git.html
+      - name: net
+        link: /node-radic/net.html
+      - name: sh
+        link: /node-radic/sh.html
+
+---
+
+<link type="text/css" rel="stylesheet" href="styles/jsdoc-radic.css">
+
+
+<ul class="nav nav-tabs hide">
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#rdir">rdir</a></li><li><a href="global.html#todir">todir</a></li></ul></li>
+</ul>
+
+<div id="main">
+    
+
+
+
+    
+            {% highlight javascript %}
+            var radic = require('../'),
+    path = require('path'),
+    sh = require('../sh'),
+    util = require('../util'),
+    pm2 = require('pm2');
+
+
+/**
+ * @param {cli} cli
+ */
+module.exports = function (cli) {
+
+    var tree = cli.tree('#' + cli.green.bold('Available services information') + '\n' +
+    '##monitor              - Monitors hardware/software on this machine. Is required for monitor-dashboard and remote connections\n' +
+    '##monitor-dashboard    - Starts a local web-server (http://localhost:4200/) that reads the system performance\n' +
+    '##services-dashboard   - Starts a local web-server (http://0.0.0.0:9000/) that can be used to control radic services\n');
+
+    cli.command('service OR service :command OR service :name :command')
+        .description('Manage radic services')
+        .usage({
+            'service [command] ': '[list|kill]',
+            'service [name] [command] \n ': 'name:     [all|monitor|process-dashboard|monitor-dashboard]\n' +
+                                            'command:  [stop|restart|delete|reload|reload-gracefull|describe]'
+        })
+        .optional('')
+        .custom("\n" + tree)
+        .method(function (cmd) {
+            if(util.defined(cmd.name) === false &amp;&amp; util.defined(cmd.command)){
+                switch(cmd.command){
+                    case "kill":
+                        process.argv[2] = 'kill';
+                        require('../../node_modules/.bin/pm2');
+                        break;
+                    case "list":
+                        process.argv[2] = 'list';
+                        require('../../node_modules/.bin/pm2');
+                        break;
+
+                }
+            } else if(util.defined(cmd.name) &amp;&amp; util.defined(cmd.command)) {
+                switch (cmd.name) {
+                    case "all":                     proc('all', cmd.command); break;
+                    case "monitor":                 proc('monitor', cmd.command, srvPath('monitor.js')); break;
+                    case "monitor-dashboard":       proc('monitor-dashboard', cmd.command, srvPath('monitor-dashboard.js')); break;
+                    case "services-dashboard":       proc('services-dashboard', cmd.command, srvPath('services-dashboard.js')); break;
+                }
+            }
+
+        });
+
+    function srvPath(srvpath) {
+        return path.resolve(__dirname, '../..', 'srv', srvpath);
+    }
+    function rootPath(rootpath){
+        return path.resolve(__dirname, '../..', rootpath);
+    }
+
+    function pm2action(cmd, name, cb){
+        pm2.connect(function (err) {
+            pm2[cmd](name, function (err, proc) {
+                if (err) throw new Error('err');
+                if(proc.success === true){
+                    cli.log.ok(cmd + ' ' + name + ' success');
+                } else {
+                    cli.log.warn(cmd + ' ' + name + ' not successfull');
+                    console.log(proc);
+                }
+                cli.exit();
+            });
+        });
+    }
+    function proc(name, action, scriptPath){
+        switch(action){
+            case "start":
+                if(util.defined(scriptPath) === false) return;
+                pm2.connect(function (err) {
+                    pm2.start(scriptPath, {name: name}, function (err, proc) {
+                        if (err) throw new Error('err');
+                        if(proc.success === true){
+                            cli.log.ok(name + ' ' + action + ' success');
+                        } else {
+                            //cli.log.warn(name + ' ' + action + ' not successfull');
+                        }
+                        cli.exit();
+                    });
+                });
+                break;
+            case "restart":
+                pm2action('restart', name);
+                break;
+            case "stop":
+                pm2action('stop', name);
+                break;
+            case "delete":
+                pm2action('delete', name);
+                break;
+            case "reload":
+                pm2action('reload', name);
+                break;
+            case "reload-gracefull":
+                pm2action('gracefulReload', name);
+                break;
+            case "describe":
+                pm2action('describe', name);
+                break;
+
+        }
+    }
+
+}
+
+            {% endhighlight %}
+
+
+
+
+
+</div>

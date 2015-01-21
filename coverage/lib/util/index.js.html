@@ -34,6 +34,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
       - name: cli
         link: /node-radic/cli.html
       - name: git
@@ -42,10 +44,6 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
-      - name: util
-        link: /node-radic/util.html
-      - name: vboxmanage
-        link: /node-radic/vboxmanage.html
 
 ---
 <style>
@@ -249,14 +247,8 @@ navigation:
 15
 16
 17
-18
-19
-20
-21</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+18</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -268,8 +260,8 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
@@ -283,15 +275,12 @@ var _util = require('util'),
     ini = require('ini');
 &nbsp;
 &nbsp;
-/**
- * @namespace
- */
-var util = {};
+var util = module.exports;
 _util._extend(util, _util);
-module.exports = util;
 &nbsp;
 _.extend(util, require('./general'));
 _.extend(util, require('./dotaccess'));
+util.requireDirectory = require('./require-directory');
 &nbsp;</pre></td></tr>
 </table></pre>
 </div>

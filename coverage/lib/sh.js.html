@@ -34,6 +34,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
       - name: cli
         link: /node-radic/cli.html
       - name: git
@@ -42,10 +44,6 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
-      - name: util
-        link: /node-radic/util.html
-      - name: vboxmanage
-        link: /node-radic/vboxmanage.html
 
 ---
 <style>
@@ -222,10 +220,10 @@ navigation:
     <link rel="stylesheet" href="../prettify.css">
 <div class="coverage-header low">
     <div>
-        Statements: <span class="metric">14% <small>(7 / 50)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">15.69% <small>(8 / 51)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">0% <small>(0 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">0% <small>(0 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">15.22% <small>(7 / 46)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">17.02% <small>(8 / 47)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">lib/</a> &#187; sh.js</div>
@@ -387,7 +385,8 @@ navigation:
 153
 154
 155
-156</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+156
+157</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -416,6 +415,7 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -571,7 +571,8 @@ var sh = module.exports;
  * @param callback
  * @returns {*}
  */
-sh.exec = <span class="fstat-no" title="function not covered" >function (command, args, ops, callback) {</span>
+sh.exec = exec;
+sh.exec2= <span class="fstat-no" title="function not covered" >function (command, args, ops, callback) {</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (typeof args == 'function') {</span>
 <span class="cstat-no" title="statement not covered" >        callback = args;</span>

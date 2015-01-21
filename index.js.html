@@ -34,6 +34,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
       - name: cli
         link: /node-radic/cli.html
       - name: git
@@ -42,10 +44,6 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
-      - name: util
-        link: /node-radic/util.html
-      - name: vboxmanage
-        link: /node-radic/vboxmanage.html
 
 ---
 
@@ -53,7 +51,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#_vboxmanage">_vboxmanage</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#rdir">rdir</a></li><li><a href="global.html#todir">todir</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -73,7 +71,9 @@ navigation:
 
     celeri = require('./_celeri'),
     Command = require('./command'),
-    Table = require('./table');
+    Table = require('./table'),
+
+    inquirer = require('inquirer');
 
 /**
  * @namespace cli
@@ -99,8 +99,10 @@ navigation:
 var cli = {
     _commands: [],
     _usage: 'app [command] --optional=value',
+    _title: '',
+    _subtitles: [],
     _logFile: false,
-    enableDebug: true,
+    enableDebug: false,
     autoexit: false
 };
 module.exports = cli;
@@ -109,6 +111,25 @@ var chalkStyles = ['reset', 'bold', 'dim', 'italic', 'underline', 'inverse', 'hi
 _.each(chalkStyles, function(style){
     cli[style] = chalk[style];
 });
+
+
+
+var art = require('ascii-art');
+cli.art = art;
+cli.art.fontPath = path.resolve(__dirname, 'art-fonts');
+
+cli.header = function(string, callback){
+    art.font(string, 'Basic', 'red', callback)
+};
+
+/**
+ * Generate a tree
+ * @param str
+ * @returns {str} tree - The generated tree
+ */
+cli.tree = function(str){
+    return require('ascii-tree').generate(str);
+}
 
 /**
  * Create a table from pre-defined styles
@@ -145,6 +166,17 @@ cli.usage = function(msg){
 };
 
 /**
+ * Set the title, displayed in help
+ * @param msg
+ */
+cli.title = function(msg){
+    cli._title = msg;
+};
+
+cli.subtitle = function(str){
+    cli._subtitles.push(str);
+}
+/**
  * Parse an array of parameters and trigger the right command.
  * @param argv
  */
@@ -153,13 +185,14 @@ cli.parse = function (argv) {
 
         var option = {
             command: command.command,
-            description: command.description,
+            description: cli.bold.cyan(command.description),
             optional: command.optional
         };
 
         if (typeof(command.usage) == 'object') {
             var table = cli
                 .table('default', 'default')
+                .percWidth([33, 66], 100)
                 .head('Command', 'Description');
             //.percWidth([33, 66], 100);
 
@@ -168,8 +201,8 @@ cli.parse = function (argv) {
             _.each(command.usage, function (val, key) {
                 table.push([key, val]);
             });
-
-            option.usage = "\n" + 'parameters: ' + "[required] {optional}\n" + table.toString();
+            //"\n" + 'parameters: ' + "[required] {optional}\n" +
+            option.usage = "\n" + table.toString();
         }
         else if (typeof(command.usage) == 'string') {
             option.usage = command.usage;
@@ -182,10 +215,18 @@ cli.parse = function (argv) {
             });
             option.usage += "\n\n" + cli.bold('Optional flags') + ":\n" + optionalTable.toString();
         }
+
+        if(typeof command.custom === 'string'){
+            option.usage += '\n' + command.custom;
+        }
+
         celeri.option(option, command.method);
 
 
     }.bind(this));
+
+    celeri.title(cli._title);
+    celeri.subtitles(cli._subtitles);
 
     //console.log(utils.logSymbols.warn + 'asdf');
     celeri.usage(cli._usage);
@@ -197,6 +238,13 @@ cli.parse = function (argv) {
         process.exit(1);
     }
 };
+
+cli.exit = function(exitCode){
+    if(util.defined(exitCode) === false) exitCode = 1;
+    process.exit(exitCode);
+};
+
+cli.prompt = inquirer.prompt;
 
 var outputs = {
     ok: ["green", "√ "],

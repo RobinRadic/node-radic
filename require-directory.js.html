@@ -1,0 +1,179 @@
+---
+layout: page
+title: Node Radic
+minify_content: false
+navigation:
+  - name: Home
+    link: /
+    icon: fa fa-home
+  - name: Overview
+    link: /node-radic
+    icon: fa fa-dashboard
+  - name: Coverage
+    link: /node-radic/coverage
+    icon: fa fa-code
+  - name: Modules
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: radic
+        link: /node-radic/module-radic.html
+  - name: Classes
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: Config
+        link: /node-radic/Config.html
+      - name: DB
+        link: /node-radic/DB.html
+      - name: Model
+        link: /node-radic/Model.html
+      - name: Table
+        link: /node-radic/Table.html
+  - name: Namespaces
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
+      - name: cli
+        link: /node-radic/cli.html
+      - name: git
+        link: /node-radic/git.html
+      - name: net
+        link: /node-radic/net.html
+      - name: sh
+        link: /node-radic/sh.html
+
+---
+
+<link type="text/css" rel="stylesheet" href="styles/jsdoc-radic.css">
+
+
+<ul class="nav nav-tabs hide">
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#rdir">rdir</a></li><li><a href="global.html#todir">todir</a></li></ul></li>
+</ul>
+
+<div id="main">
+    
+
+
+
+    
+            {% highlight javascript %}
+            (function () {
+    'use strict';
+
+    var _ = require('lodash'),
+        fs = require('fs'),
+        join = require('path').join,
+        resolve = require('path').resolve,
+        dirname = require('path').dirname,
+        defaultOptions = {
+            extensions: ['js', 'json', 'coffee'],
+            recurse: true,
+            rename: function (name) {
+                return name;
+            },
+            visit: function (obj) {
+                return obj;
+            }
+        };
+
+
+    /**
+     * @memberOf util
+     * @param m
+     * @param path
+     * @param options
+     * @returns {{}}
+     */
+    function requireDirectory(m, path, options) {
+        var retval = {},
+            includeFile = null;
+
+        // path is optional
+        if (path &amp;&amp; !options &amp;&amp; !_.isString(path)) {
+            options = path;
+            path = null;
+        }
+
+        // default options
+        options = _.defaults(options || {}, defaultOptions);
+
+        // if no path was passed in, assume the equivelant of __dirname from caller
+        // otherwise, resolve path relative to the equivalent of __dirname
+        if (!path) {
+            path = dirname(m.filename);
+        } else {
+            path = resolve(dirname(m.filename), path);
+        }
+
+        includeFile = function (path, filename) {
+            // verify file has valid extension
+            if (!new RegExp('\\.(' + options.extensions.join('|') + ')$', 'i').test(filename)) {
+                return false;
+            }
+
+            // if options.include is a RegExp, evaluate it and make sure the path passes
+            if (options.include &amp;&amp; options.include instanceof RegExp &amp;&amp; !options.include.test(path)) {
+                return false;
+            }
+
+            // if options.include is a function, evaluate it and make sure the path passes
+            if (options.include &amp;&amp; _.isFunction(options.include) &amp;&amp; !options.include(path, filename)) {
+                return false;
+            }
+
+            // if options.exclude is a RegExp, evaluate it and make sure the path doesn't pass
+            if (options.exclude &amp;&amp; options.exclude instanceof RegExp &amp;&amp; options.exclude.test(path)) {
+                return false;
+            }
+
+            // if options.exclude is a function, evaluate it and make sure the path doesn't pass
+            if (options.exclude &amp;&amp; _.isFunction(options.exclude) &amp;&amp; options.exclude(path, filename)) {
+                return false;
+            }
+
+            return true;
+        };
+
+        // get the path of each file in specified directory, append to current tree node, recurse
+        path = resolve(path);
+        fs.readdirSync(path).forEach(function (filename) {
+            var joined = join(path, filename),
+                files,
+                key,
+                obj;
+            if (fs.statSync(joined).isDirectory() &amp;&amp; options.recurse) {
+                files = requireDirectory(m, joined, options); // this node is a directory; recurse
+                if (Object.keys(files).length) { // exclude empty directories
+                    retval[options.rename(filename, joined, filename)] = files;
+                }
+            } else {
+                if (joined !== m.filename &amp;&amp; includeFile(joined, filename)) {
+                    key = filename.substring(0, filename.lastIndexOf('.')); // hash node key shouldn't include file extension
+                    obj = m.require(joined);
+                    retval[options.rename(key, joined, filename)] = options.visit(obj, joined, filename) || obj;
+                }
+            }
+        });
+        return retval;
+    }
+
+    /**
+     * @memberOf util
+     * @type {requireDirectory}
+     */
+    module.exports = requireDirectory;
+    module.exports.defaults = defaultOptions;
+
+}());
+
+            {% endhighlight %}
+
+
+
+
+
+</div>

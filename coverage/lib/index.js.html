@@ -34,6 +34,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
       - name: cli
         link: /node-radic/cli.html
       - name: git
@@ -42,10 +44,6 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
-      - name: util
-        link: /node-radic/util.html
-      - name: vboxmanage
-        link: /node-radic/vboxmanage.html
 
 ---
 <style>
@@ -330,7 +328,31 @@ navigation:
 96
 97
 98
-99</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -349,7 +371,13 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -439,17 +467,13 @@ var exec = require('child_process').exec,
 &nbsp;
     async = require('async'),
     fs = require('fs-extra'),
-    _ = require('lodash'),
-&nbsp;
-    app = require('./app'),
-    util = require('./util'),
-    Config = require('./config');
+    _ = require('lodash');
 &nbsp;
 &nbsp;
 &nbsp;
 module.exports = {
     /** Application data */
-    app: app,
+    app: require('./app'),
 &nbsp;
     /**
      * Utility functions. Extends the native nodejs utilities module.
@@ -461,7 +485,28 @@ module.exports = {
      * util.inspect(util);
      * var value = util.dot_get(obj, 'path.to.value', 'default');
      */
-    util: util,
+    util: require('./util'),
+&nbsp;
+    /**
+     * Command wrapper. Wraps terminal commands.
+     * @example
+     * var radic = require('radic'),
+     *     gzip = radic.binwraps.gzipSync,  // Each command has async and sync methods.
+     *     zip = radic.binwraps.zip,        // Async command, just the binary name
+     *     vagrant = radic.binwraps.vagrantSync;
+     *
+     * // Easily create wrappers for other commands
+     * radic.binwrap.createBinWrap('yum');
+     * var yum = radic.binwrap.yum,
+     *     yumSync = radic.binwrap.yumSync;
+     *
+     * var result = vagrant('init');
+     * console.log('Vagrant ran synchronously, returned exit code: ' + result.code + ' and output: ' + result.stdout);
+     *
+     * gzip({ c: true, d: true, suffix: 'myunpacked_'}, 'filename');
+     * // equals gzip -c -d --suffix "myunpacked_" filename
+     */
+    binwraps: require('./binwraps'),
 &nbsp;
     /**
      * Git tools
@@ -479,13 +524,11 @@ module.exports = {
      */
     git: require('./git'),
 &nbsp;
-&nbsp;
     /**
      * Shell interaction
      * @see {@link sh}
      */
     sh: require('./sh'),
-&nbsp;
 &nbsp;
     /**
      * Cli functions
@@ -496,7 +539,8 @@ module.exports = {
 &nbsp;
     /**
      *  VirtualBox manager api
-     *  @see {@link vboxmanage}
+     *  @see {@link binwraps}
+     *  @deprecated
      */
     vboxmanage: require('./vboxmanage'),
 &nbsp;
@@ -505,7 +549,6 @@ module.exports = {
      * @see {@link net}
      */
     net: require('./net'),
-&nbsp;
 &nbsp;
     /**
      * The database class
@@ -523,7 +566,7 @@ module.exports = {
      * var radic = require('radic'),
      *     config = new radic.Config('myconf');
      */
-    Config: Config
+    Config: require('./config')
 };
 &nbsp;
 &nbsp;</pre></td></tr>

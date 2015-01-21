@@ -34,6 +34,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
       - name: cli
         link: /node-radic/cli.html
       - name: git
@@ -42,10 +44,6 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
-      - name: util
-        link: /node-radic/util.html
-      - name: vboxmanage
-        link: /node-radic/vboxmanage.html
 
 ---
 
@@ -53,7 +51,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#_vboxmanage">_vboxmanage</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#rdir">rdir</a></li><li><a href="global.html#todir">todir</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -74,17 +72,13 @@ var exec = require('child_process').exec,
 
     async = require('async'),
     fs = require('fs-extra'),
-    _ = require('lodash'),
-
-    app = require('./app'),
-    util = require('./util'),
-    Config = require('./config');
+    _ = require('lodash');
 
 
 
 module.exports = {
     /** Application data */
-    app: app,
+    app: require('./app'),
 
     /**
      * Utility functions. Extends the native nodejs utilities module.
@@ -96,7 +90,28 @@ module.exports = {
      * util.inspect(util);
      * var value = util.dot_get(obj, 'path.to.value', 'default');
      */
-    util: util,
+    util: require('./util'),
+
+    /**
+     * Command wrapper. Wraps terminal commands.
+     * @example
+     * var radic = require('radic'),
+     *     gzip = radic.binwraps.gzipSync,  // Each command has async and sync methods.
+     *     zip = radic.binwraps.zip,        // Async command, just the binary name
+     *     vagrant = radic.binwraps.vagrantSync;
+     *
+     * // Easily create wrappers for other commands
+     * radic.binwrap.createBinWrap('yum');
+     * var yum = radic.binwrap.yum,
+     *     yumSync = radic.binwrap.yumSync;
+     *
+     * var result = vagrant('init');
+     * console.log('Vagrant ran synchronously, returned exit code: ' + result.code + ' and output: ' + result.stdout);
+     *
+     * gzip({ c: true, d: true, suffix: 'myunpacked_'}, 'filename');
+     * // equals gzip -c -d --suffix "myunpacked_" filename
+     */
+    binwraps: require('./binwraps'),
 
     /**
      * Git tools
@@ -114,13 +129,11 @@ module.exports = {
      */
     git: require('./git'),
 
-
     /**
      * Shell interaction
      * @see {@link sh}
      */
     sh: require('./sh'),
-
 
     /**
      * Cli functions
@@ -131,7 +144,8 @@ module.exports = {
 
     /**
      *  VirtualBox manager api
-     *  @see {@link vboxmanage}
+     *  @see {@link binwraps}
+     *  @deprecated
      */
     vboxmanage: require('./vboxmanage'),
 
@@ -140,7 +154,6 @@ module.exports = {
      * @see {@link net}
      */
     net: require('./net'),
-
 
     /**
      * The database class
@@ -158,7 +171,7 @@ module.exports = {
      * var radic = require('radic'),
      *     config = new radic.Config('myconf');
      */
-    Config: Config
+    Config: require('./config')
 };
 
 
