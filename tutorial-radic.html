@@ -12,6 +12,9 @@ navigation:
   - name: Coverage
     link: /node-radic/coverage
     icon: fa fa-code
+  - name: Tutorials
+    link: /node-radic/tutorial-radic.html
+    icon: fa fa-info
   - name: Modules
     link: "#"
     icon: fa fa-mortar-board
@@ -66,8 +69,64 @@ navigation:
 </header>
 
 <article>
-    <h2>Using node-radic</h2><p>{% highlight javascript %}
-var radic = require('radic');
+    <h4>Creating a CLI application</h4><p>I recommend using the method below to create commands. This is also utilized in <code>node-radic</code> itself.</p>
+<p>When using the following structure, with a little code it's possible to let all commands in the <code>src/commands</code> directory auto-register.</p>
+<pre class="prettyprint source"><code>--bin
+----myclicmd.js
+--src
+----commands
+------index.js
+------mycmd1.js
+------mycmd2.js</code></pre><p><strong>bin/myclicmd.js</strong>
+{% highlight javascript %}</p>
+<h1>!/usr/bin/env node</h1><p>var radic = require('radic'),
+    cli = radic.cli;</p>
+<p>require('../src/commands')(cli);
+cli.title('  |  ' + cli.green.bold('myclicmd title') + '  | ' + cli.yellow(radic.app.version) + ' |');</p>
+<p>cli.usage('myclicmd [command] ' + cli.gray('[[subcommands]]'));
+cli.parse(process.argv);
+{% endhighlight %}</p>
+<p><strong>src/commands/index.js</strong>
+{% highlight javascript %}
+var radic = require('radic'),
+    util = radic.util,
+    requireDirectory = util.requireDirectory;</p>
+<p>// This will recursively require all javascript files in the current directory and below
+module.exports = function (cli) {
+    requireDirectory(module, {
+        visit: function (obj) {
+            obj(cli);
+        }
+    });
+};
+{% endhighlight %}</p>
+<p><strong>src/commands/mycmd1.js</strong>
+{% highlight javascript %}
+module.exports = function (cli) {</p>
+<pre class="prettyprint source"><code>cli.command('resources OR resources :action')
+    .description('Copy/edit/link resource files to customise generated files.')
+    .usage({
+        'resources info': 'Displays the current resources configuration and status',
+        'resources copy': 'Copies the default resources to a directory you specify.',
+        'resources link': 'Marks a directory you specify as file resource.'
+    })
+    .method(function (cmd) {
+        if (typeof cmd.action === 'undefined') {
+            cli.log.fatal('Not enough arguments, config requires an action');
+        } else {
+            switch (cmd.action) {
+                case &quot;copy&quot;:
+                    cli.log('Not yet implemented');
+                    break;
+                case &quot;link&quot;:
+                    cli.log('Not yet implemented');
+                    break;
+                case &quot;info&quot;:
+                    cli.log.ok('Configuration cleared');
+                    break;
+            }
+        }
+    });</code></pre><p>};
 {% endhighlight %}</p>
 </article>
 

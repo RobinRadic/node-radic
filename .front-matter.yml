@@ -15,4 +15,8 @@ navigation:
     link: /node-radic/coverage
     icon: fa fa-code
 
+  - name: Tutorials
+    link: /node-radic/tutorial-radic.html
+    icon: fa fa-info
+
 ---

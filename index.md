@@ -12,6 +12,9 @@ navigation:
   - name: Coverage
     link: /node-radic/coverage
     icon: fa fa-code
+  - name: Tutorials
+    link: /node-radic/tutorial-radic.html
+    icon: fa fa-info
   - name: Modules
     link: "#"
     icon: fa fa-mortar-board
@@ -80,8 +83,9 @@ npm install --save radic
   
   
 #### Quick overview of functionality
-[Detailed documentation](http://robin.radic.nl/node-radic)
-[Test coverage](http://robin.radic.nl/node-radic/coverage/)
+- [Detailed documentation](http://robin.radic.nl/node-radic)
+- [Tutorials and examples](http://robin.radic.nl/node-radic/tutorial-radic.html)
+- [Test coverage](http://robin.radic.nl/node-radic/coverage/)
   
 | Module | Description |
 |:-------|:------------|

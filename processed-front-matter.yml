@@ -11,6 +11,9 @@ navigation:
   - name: Coverage
     link: /node-radic/coverage
     icon: fa fa-code
+  - name: Tutorials
+    link: /node-radic/tutorial-radic.html
+    icon: fa fa-info
   - name: Modules
     link: "#"
     icon: fa fa-mortar-board
