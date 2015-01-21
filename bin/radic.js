@@ -9,14 +9,3 @@ cli.title('  |  ' + cli.green.bold('radic') + '  | ' + cli.yellow(radic.app.vers
 cli.usage('radic [command] ' + cli.gray('[[subcommands]]'));
 cli.parse(process.argv);
 
-
-
-sh.exec('VBoxManage createvm --name MyVM --register --basefolder ' + path.resolve(__dirname, '../myvm'));
-
-radic.vboxmanage('createvm', {
-    name: 'MyVM',
-    register: true,
-    basefolder: path.resolve(__dirname, '../myvm')
-});
-
-

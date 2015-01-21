@@ -43,7 +43,7 @@ npm install --save radic
 | [cli](http://robin.radic.nl/node-radic/cli.html) | cli commands, output, input etc |
 | [net](http://robin.radic.nl/node-radic/net.html) | network functionality, like downloading |
 | [sh](http://robin.radic.nl/node-radic/sh.html) | shell exec, execsync, execlist etc |
-| [vboxmanage](http://robin.radic.nl/node-radic/vboxmanage.html) | virtual box manager api |
+| [binwraps](http://robin.radic.nl/node-radic/binwraps.html) | wraps cli commands in a nice coat. |
   
   
 ##### Config
@@ -115,51 +115,36 @@ radic.net.download('http://download.gigabyte.ru/driver/mb_driver_marvell_bootdis
 ```
   
   
-##### Vboxmanage
+##### Binwraps
 ```javascript
-var radic = require('radic'),
-    vm = radic.vboxmanage,
-    async = require('async');
-    
-async.waterfall([
-    function (next) {
-        vm.async('createvm', {
-            name: ops.name,
-            ostype: 'Debian_64',
-            basefolder: path.resolve(process.cwd()),
-            register: true
-        }, function (err, stdout) {
-            next(err)
-        });
-    },
-    function (next) {
-        vm.async('modifyvm', ops.name, {
-            pae: 'on',
-            cpus: 6,
-            memory: 4100,
-            boot1: 'dvd',
-            boot2: 'disk',
-            boot3: 'none',
-            boot4: 'none',
-            vram: 12,
-            rtcuseutc: 'on'
-        }, function (err, stdout) {
-            next(err)
-        });
-    },
-    function (next) {
-        vm.async('storagectl', ops.name, {
-            name: 'IDE Controller',
-            add: 'ide',
-            controller: 'PIIX4',
-            hostiocache: 'on'
-        }, function (err, stdout) {
-            next(err)
-        });
-    }
-], function(err, res){
-    // do something
+var radic = require('radic');    
+var binwraps = radic.binwraps;
+
+binwraps.createBinWrap('VBoxManage');
+     
+var vbox = binwraps.vboxmanage;
+var result = vbox('createvm', {
+  name: ops.name,
+  ostype: 'Debian_64',
+  basefolder: path.resolve(process.cwd()),
+  register: true
 });
+console.log(result.stdout, result.code);
+
+
+binwraps.autoSyncExec = false;
+vbox('createvm', {
+  name: ops.name,
+  ostype: 'Debian_64',
+  basefolder: path.resolve(process.cwd()),
+  register: true
+}, function(){
+     // callllback
+});
+
+
+var commands = binwraps.getCommands();
+binwraps[ commands[0] ]('arg', { weed: 'bad' }); // just an example..
 ```
   
   
