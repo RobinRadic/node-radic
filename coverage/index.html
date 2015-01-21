@@ -44,6 +44,8 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
+      - name: util
+        link: /node-radic/util.html
 
 ---
 <style>
@@ -220,10 +222,10 @@ navigation:
     <link rel="stylesheet" href="prettify.css">
 <div class="coverage-header low">
     <div>
-        Statements: <span class="metric">33% <small>(131 / 397)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">6.45% <small>(12 / 186)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">16.47% <small>(14 / 85)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">33.77% <small>(130 / 385)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">47.55% <small>(233 / 490)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">25.47% <small>(54 / 212)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">33.03% <small>(36 / 109)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">48.1% <small>(228 / 474)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"></div>
@@ -247,15 +249,15 @@ navigation:
 </thead>
 <tbody><tr>
 	<td class="file low" data-value="lib/"><a href="lib/index.html">lib/</a></td>
-	<td data-value="37.76" class="pic low"><span class="cover-fill" style="width: 37px;"></span><span class="cover-empty" style="width:63px;"></span></td>
-	<td data-value="37.76" class="pct low">37.76%</td>
-	<td data-value="98" class="abs low">(37&nbsp;/&nbsp;98)</td>
+	<td data-value="38.78" class="pic low"><span class="cover-fill" style="width: 38px;"></span><span class="cover-empty" style="width:62px;"></span></td>
+	<td data-value="38.78" class="pct low">38.78%</td>
+	<td data-value="98" class="abs low">(38&nbsp;/&nbsp;98)</td>
 	<td data-value="6.82" class="pct low">6.82%</td>
 	<td data-value="44" class="abs low">(3&nbsp;/&nbsp;44)</td>
-	<td data-value="25" class="pct low">25%</td>
-	<td data-value="20" class="abs low">(5&nbsp;/&nbsp;20)</td>
-	<td data-value="39.36" class="pct low">39.36%</td>
-	<td data-value="94" class="abs low">(37&nbsp;/&nbsp;94)</td>
+	<td data-value="30" class="pct low">30%</td>
+	<td data-value="20" class="abs low">(6&nbsp;/&nbsp;20)</td>
+	<td data-value="40.43" class="pct low">40.43%</td>
+	<td data-value="94" class="abs low">(38&nbsp;/&nbsp;94)</td>
 	</tr>
 
 <tr>
@@ -272,42 +274,68 @@ navigation:
 	</tr>
 
 <tr>
-	<td class="file low" data-value="lib/config/"><a href="lib/config/index.html">lib/config/</a></td>
-	<td data-value="31.91" class="pic low"><span class="cover-fill" style="width: 31px;"></span><span class="cover-empty" style="width:69px;"></span></td>
-	<td data-value="31.91" class="pct low">31.91%</td>
-	<td data-value="47" class="abs low">(15&nbsp;/&nbsp;47)</td>
-	<td data-value="13.33" class="pct low">13.33%</td>
-	<td data-value="30" class="abs low">(4&nbsp;/&nbsp;30)</td>
-	<td data-value="28.57" class="pct low">28.57%</td>
-	<td data-value="7" class="abs low">(2&nbsp;/&nbsp;7)</td>
-	<td data-value="32.61" class="pct low">32.61%</td>
-	<td data-value="46" class="abs low">(15&nbsp;/&nbsp;46)</td>
+	<td class="file high" data-value="lib/config/"><a href="lib/config/index.html">lib/config/</a></td>
+	<td data-value="100" class="pic high"><span class="cover-fill cover-full" style="width: 100px;"></span><span class="cover-empty" style="width:0px;"></span></td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="47" class="abs high">(47&nbsp;/&nbsp;47)</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="30" class="abs high">(30&nbsp;/&nbsp;30)</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="7" class="abs high">(7&nbsp;/&nbsp;7)</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="46" class="abs high">(46&nbsp;/&nbsp;46)</td>
+	</tr>
+
+<tr>
+	<td class="file high" data-value="lib/db/"><a href="lib/db/index.html">lib/db/</a></td>
+	<td data-value="89.13" class="pic high"><span class="cover-fill" style="width: 89px;"></span><span class="cover-empty" style="width:11px;"></span></td>
+	<td data-value="89.13" class="pct high">89.13%</td>
+	<td data-value="46" class="abs high">(41&nbsp;/&nbsp;46)</td>
+	<td data-value="66.67" class="pct medium">66.67%</td>
+	<td data-value="12" class="abs medium">(8&nbsp;/&nbsp;12)</td>
+	<td data-value="71.43" class="pct medium">71.43%</td>
+	<td data-value="14" class="abs medium">(10&nbsp;/&nbsp;14)</td>
+	<td data-value="93.02" class="pct high">93.02%</td>
+	<td data-value="43" class="abs high">(40&nbsp;/&nbsp;43)</td>
 	</tr>
 
 <tr>
 	<td class="file medium" data-value="lib/git/"><a href="lib/git/index.html">lib/git/</a></td>
-	<td data-value="50" class="pic medium"><span class="cover-fill" style="width: 50px;"></span><span class="cover-empty" style="width:50px;"></span></td>
-	<td data-value="50" class="pct medium">50%</td>
-	<td data-value="12" class="abs medium">(6&nbsp;/&nbsp;12)</td>
+	<td data-value="58.33" class="pic medium"><span class="cover-fill" style="width: 58px;"></span><span class="cover-empty" style="width:42px;"></span></td>
+	<td data-value="58.33" class="pct medium">58.33%</td>
+	<td data-value="12" class="abs medium">(7&nbsp;/&nbsp;12)</td>
 	<td data-value="0" class="pct low">0%</td>
 	<td data-value="2" class="abs low">(0&nbsp;/&nbsp;2)</td>
+	<td data-value="25" class="pct low">25%</td>
+	<td data-value="4" class="abs low">(1&nbsp;/&nbsp;4)</td>
+	<td data-value="58.33" class="pct medium">58.33%</td>
+	<td data-value="12" class="abs medium">(7&nbsp;/&nbsp;12)</td>
+	</tr>
+
+<tr>
+	<td class="file low" data-value="lib/net/"><a href="lib/net/index.html">lib/net/</a></td>
+	<td data-value="17.02" class="pic low"><span class="cover-fill" style="width: 17px;"></span><span class="cover-empty" style="width:83px;"></span></td>
+	<td data-value="17.02" class="pct low">17.02%</td>
+	<td data-value="47" class="abs low">(8&nbsp;/&nbsp;47)</td>
 	<td data-value="0" class="pct low">0%</td>
-	<td data-value="4" class="abs low">(0&nbsp;/&nbsp;4)</td>
-	<td data-value="50" class="pct medium">50%</td>
-	<td data-value="12" class="abs medium">(6&nbsp;/&nbsp;12)</td>
+	<td data-value="14" class="abs low">(0&nbsp;/&nbsp;14)</td>
+	<td data-value="0" class="pct low">0%</td>
+	<td data-value="10" class="abs low">(0&nbsp;/&nbsp;10)</td>
+	<td data-value="17.39" class="pct low">17.39%</td>
+	<td data-value="46" class="abs low">(8&nbsp;/&nbsp;46)</td>
 	</tr>
 
 <tr>
 	<td class="file low" data-value="lib/util/"><a href="lib/util/index.html">lib/util/</a></td>
-	<td data-value="25.69" class="pic low"><span class="cover-fill" style="width: 25px;"></span><span class="cover-empty" style="width:75px;"></span></td>
-	<td data-value="25.69" class="pct low">25.69%</td>
-	<td data-value="109" class="abs low">(28&nbsp;/&nbsp;109)</td>
-	<td data-value="6.58" class="pct low">6.58%</td>
-	<td data-value="76" class="abs low">(5&nbsp;/&nbsp;76)</td>
-	<td data-value="25" class="pct low">25%</td>
-	<td data-value="20" class="abs low">(5&nbsp;/&nbsp;20)</td>
-	<td data-value="25.96" class="pct low">25.96%</td>
-	<td data-value="104" class="abs low">(27&nbsp;/&nbsp;104)</td>
+	<td data-value="43.12" class="pic low"><span class="cover-fill" style="width: 43px;"></span><span class="cover-empty" style="width:57px;"></span></td>
+	<td data-value="43.12" class="pct low">43.12%</td>
+	<td data-value="109" class="abs low">(47&nbsp;/&nbsp;109)</td>
+	<td data-value="17.11" class="pct low">17.11%</td>
+	<td data-value="76" class="abs low">(13&nbsp;/&nbsp;76)</td>
+	<td data-value="50" class="pct medium">50%</td>
+	<td data-value="20" class="abs medium">(10&nbsp;/&nbsp;20)</td>
+	<td data-value="42.31" class="pct low">42.31%</td>
+	<td data-value="104" class="abs low">(44&nbsp;/&nbsp;104)</td>
 	</tr>
 
 </tbody>

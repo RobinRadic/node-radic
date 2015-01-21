@@ -44,6 +44,8 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
+      - name: util
+        link: /node-radic/util.html
 
 ---
 <style>
@@ -220,10 +222,10 @@ navigation:
     <link rel="stylesheet" href="../prettify.css">
 <div class="coverage-header low">
     <div>
-        Statements: <span class="metric">15.69% <small>(8 / 51)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">17.65% <small>(9 / 51)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">0% <small>(0 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">0% <small>(0 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">17.02% <small>(8 / 47)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">10% <small>(1 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">19.15% <small>(9 / 47)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">lib/</a> &#187; sh.js</div>
@@ -494,7 +496,7 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -649,8 +651,8 @@ sh.exec2= <span class="fstat-no" title="function not covered" >function (command
  * console.log('return code ' + result.code);
  * console.log('stdout + stderr ' + result.stdout);
  */
-sh.execSync = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >    return execsync.exec.apply(sh, _.toArray(arguments))</span>
+sh.execSync = function () {
+    return execsync.exec.apply(sh, _.toArray(arguments))
 };
 &nbsp;
 /**

@@ -44,6 +44,8 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
+      - name: util
+        link: /node-radic/util.html
 
 ---
 <style>
@@ -220,10 +222,10 @@ navigation:
     <link rel="stylesheet" href="../../prettify.css">
 <div class="coverage-header medium">
     <div>
-        Statements: <span class="metric">50% <small>(6 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">58.33% <small>(7 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">50% <small>(6 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">25% <small>(1 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">58.33% <small>(7 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">lib/git/</a> &#187; index.js</div>
@@ -317,7 +319,7 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -368,8 +370,8 @@ navigation:
  console.log(git('status').stdout);
  console.log(git('remote', 'add', 'origin', 'https://github.com/test/test').stdout);
  */
-var git = <span class="fstat-no" title="function not covered" >function git() {</span>
-<span class="cstat-no" title="statement not covered" >    return sh.execSync(util.createExecString('git', _.toArray(arguments)));</span>
+var git = function git() {
+    return sh.execSync(util.createExecString('git', _.toArray(arguments)));
 };
 &nbsp;
 module.exports = git;

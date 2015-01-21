@@ -34,6 +34,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
       - name: cli
         link: /node-radic/cli.html
       - name: git
@@ -44,8 +46,6 @@ navigation:
         link: /node-radic/sh.html
       - name: util
         link: /node-radic/util.html
-      - name: vboxmanage
-        link: /node-radic/vboxmanage.html
 
 ---
 
@@ -53,7 +53,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li><li><a href="vboxmanage.html">vboxmanage</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#_vboxmanage">_vboxmanage</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#rdir">rdir</a></li><li><a href="global.html#todir">todir</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -138,6 +138,76 @@ navigation:
 
     
 
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+
+<hr class="hr-top-margin">
+<h4 class="name" id="module.exports"><span class="type-signature small">&lt;static> </span>module.exports<span class="type-signature"> :requireDirectory</span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="label bg-grey-gallery label-sm">requireDirectory</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
     
 
     
@@ -778,6 +848,190 @@ navigation:
     <dd>
         
 <span class="label bg-green-jungle label-sm">string</span></span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+    <hr class="hr-top-margin">
+    <h4 class="name font-yellow-gold" id="requireDirectory"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;static> </span>requireDirectory<span class="signature">(m, path, options)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="table table-striped table-bordered table-advance table-hover table-condensed table-params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    m
+                    </code>
+                </td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    path
+                    </code>
+                </td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name">
+                    <code class="font-red-thunderbird">
+                    options
+                    </code>
+                </td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="label bg-blue-hoki label-sm">Object</span></span>
 
 
 

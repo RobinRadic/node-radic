@@ -44,6 +44,8 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
+      - name: util
+        link: /node-radic/util.html
 
 ---
 <style>
@@ -247,8 +249,12 @@ navigation:
 15
 16
 17
-18</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+18
+19
+20</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -274,7 +280,9 @@ var _util = require('util'),
     _ = require('lodash'),
     ini = require('ini');
 &nbsp;
-&nbsp;
+/**
+ * @namespace util
+ */
 var util = module.exports;
 _util._extend(util, _util);
 &nbsp;

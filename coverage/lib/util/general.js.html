@@ -44,6 +44,8 @@ navigation:
         link: /node-radic/net.html
       - name: sh
         link: /node-radic/sh.html
+      - name: util
+        link: /node-radic/util.html
 
 ---
 <style>
@@ -220,10 +222,10 @@ navigation:
     <link rel="stylesheet" href="../../prettify.css">
 <div class="coverage-header low">
     <div>
-        Statements: <span class="metric">11.76% <small>(4 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">5.26% <small>(1 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">22.22% <small>(2 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">11.76% <small>(4 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">26.47% <small>(9 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">10.53% <small>(2 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">44.44% <small>(4 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">26.47% <small>(9 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">lib/util/</a> &#187; general.js</div>
@@ -340,37 +342,37 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">5</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -427,11 +429,11 @@ var general = module.exports = {
     },
 &nbsp;
 &nbsp;
-    createExecString: <span class="fstat-no" title="function not covered" >function (cmd, args) {</span>
-<span class="cstat-no" title="statement not covered" >        console.log('cmd', cmd, 'args', args);</span>
-<span class="cstat-no" title="statement not covered" >        _.forEach(args, <span class="fstat-no" title="function not covered" >function (arg, i) {</span></span>
-<span class="cstat-no" title="statement not covered" >            if (typeof arg === 'string') {</span>
-<span class="cstat-no" title="statement not covered" >                cmd += ' ' + JSON.stringify(arg);</span>
+    createExecString: function (cmd, args) {
+        console.log('cmd', cmd, 'args', args);
+        _.forEach(args, function (arg, i) {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof arg === 'string') {
+                cmd += ' ' + JSON.stringify(arg);
             } else <span class="cstat-no" title="statement not covered" >if (typeof arg === 'number') {</span>
 <span class="cstat-no" title="statement not covered" >                cmd += ' ' + arg;</span>
             } else <span class="cstat-no" title="statement not covered" >if (typeof arg === 'object') {</span>
@@ -449,7 +451,7 @@ var general = module.exports = {
             }
         });
         //console.log(cmd);
-<span class="cstat-no" title="statement not covered" >        return cmd;</span>
+        return cmd;
     },
 &nbsp;
 // util/string
