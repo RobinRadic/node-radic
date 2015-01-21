@@ -125,6 +125,32 @@ navigation:
 
 
         
+            <h3>Example</h3>
+            
+    {% highlight javascript %}var binwraps = radic.binwraps;
+binwraps.createBinWrap('VBoxManage');
+
+var vbox = binwraps.vboxmanage;
+var result = vbox('createvm', {
+  name: ops.name,
+  ostype: 'Debian_64',
+  basefolder: path.resolve(process.cwd()),
+  register: true
+});
+console.log(result.stdout, result.code);
+
+binwraps.autoSyncExec = false;
+vbox('createvm', {
+  name: ops.name,
+  ostype: 'Debian_64',
+  basefolder: path.resolve(process.cwd()),
+  register: true
+}, function(){
+     // callllback
+});{% endhighlight %}
+
+
+        
     
     </div>
 
@@ -274,13 +300,19 @@ navigation:
 
             <td class="type">
             
+                
+<span class="label bg-green-jungle label-sm">string</span></span>
+
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The executable name</p></td>
         </tr>
 
     
@@ -339,6 +371,102 @@ navigation:
 
 
 
+
+
+
+        
+            
+
+    
+    <hr class="hr-top-margin">
+    <h4 class="name font-yellow-gold" id="getCommands"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;static> </span>getCommands<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span></h4>
+
+    
+
+
+
+<div class="note note-info">
+    <p>Returns all binwrapped commands</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="label bg-grey-gallery label-sm">Array.&lt;string></span></span>
+
+
+
+    </dd>
+</dl>
+
+    
 
 
 

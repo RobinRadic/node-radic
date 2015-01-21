@@ -222,10 +222,10 @@ navigation:
     <link rel="stylesheet" href="../prettify.css">
 <div class="coverage-header medium">
     <div>
-        Statements: <span class="metric">51.72% <small>(15 / 29)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">53.13% <small>(17 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">0% <small>(0 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">42.86% <small>(3 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">51.72% <small>(15 / 29)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">37.5% <small>(3 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">53.13% <small>(17 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">lib/</a> &#187; binwraps.js</div>
@@ -315,13 +315,66 @@ navigation:
 81
 82
 83
-84</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -388,6 +441,15 @@ navigation:
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">13</span>
 <span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -422,6 +484,28 @@ var commands = [
 &nbsp;
 /**
  * @namespace binwraps
+ * @example
+ * var binwraps = radic.binwraps;
+ * binwraps.createBinWrap('VBoxManage');
+ *
+ * var vbox = binwraps.vboxmanage;
+ * var result = vbox('createvm', {
+ *   name: ops.name,
+ *   ostype: 'Debian_64',
+ *   basefolder: path.resolve(process.cwd()),
+ *   register: true
+ * });
+ * console.log(result.stdout, result.code);
+ *
+ * binwraps.autoSyncExec = false;
+ * vbox('createvm', {
+ *   name: ops.name,
+ *   ostype: 'Debian_64',
+ *   basefolder: path.resolve(process.cwd()),
+ *   register: true
+ * }, function(){
+ *      // callllback
+ * });
  */
 var binwraps = module.exports = {};
 &nbsp;
@@ -466,11 +550,20 @@ var createBinWrap = function (key, cmd){
 &nbsp;
 /**
  * Creates a new binwrapped object
- * @param cmd
+ * @param {string} cmd - The executable name
  */
 binwraps.createBinWrap = function(cmd){
     createBinWrap.call(binwraps, cmd, cmd);
     createBinWrap.call(binwraps.sudo, cmd, 'sudo ' + cmd);
+    commands.push(cmd);
+};
+&nbsp;
+/**
+ * Returns all binwrapped commands
+ * @returns {string[]}
+ */
+binwraps.getCommands = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >    return commands;</span>
 };
 &nbsp;
 commands.forEach(function(cmd){
