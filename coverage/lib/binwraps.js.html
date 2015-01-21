@@ -423,17 +423,17 @@ var commands = [
 /**
  * @namespace binwraps
  */
-var bw = module.exports;
+var binwraps = module.exports = {};
 &nbsp;
 /**
  * If true, executing a binwrapped function will be executed synchronously, without the need to use the 'xxxSync' function.
  * @type {boolean}
  */
-bw.autoSyncExec = true;
+binwraps.autoSyncExec = true;
 &nbsp;
 &nbsp;
-bw.sudo = {};
-bw.sudo.autoSyncExec = true;
+binwraps.sudo = {};
+binwraps.sudo.autoSyncExec = true;
 &nbsp;
 var createBinWrap = function (key, cmd){
     var self = this;
@@ -468,13 +468,13 @@ var createBinWrap = function (key, cmd){
  * Creates a new binwrapped object
  * @param cmd
  */
-bw.createBinWrap = function(cmd){
-    createBinWrap.call(bw, cmd, cmd);
-    createBinWrap.call(bw.sudo, cmd, 'sudo ' + cmd);
+binwraps.createBinWrap = function(cmd){
+    createBinWrap.call(binwraps, cmd, cmd);
+    createBinWrap.call(binwraps.sudo, cmd, 'sudo ' + cmd);
 };
 &nbsp;
 commands.forEach(function(cmd){
-    bw.createBinWrap(cmd);
+    binwraps.createBinWrap(cmd);
 });
 &nbsp;
 &nbsp;
