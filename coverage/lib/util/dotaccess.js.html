@@ -395,10 +395,10 @@ var dotaccess = module.exports = {
     /**
      * Set it
      * @memberOf util
-     * @param obj
-     * @param key
-     * @param value
-     * @param overwrite
+     * @param {object} obj - The object (json) to alter
+     * @param {string} key - The key/path, converts dot to child members
+     * @param {any} value - The value. Supports all JSON allowable values
+     * @param {boolean} overwrite - If true, it will overwrite values already set
      */
     dot_set: function (obj, key, value, overwrite) {
         var objectAndKey = lookup(obj, key),
@@ -410,10 +410,10 @@ var dotaccess = module.exports = {
     /**
      * Get it
      * @memberOf util
-     * @param obj
-     * @param key
+     * @param {object} obj - The object (json) to alter
+     * @param {string} key - The key/path, converts dot to child members
      * @param def
-     * @returns {*}
+     * @returns {object} obj
      */
     dot_get: function (obj, key, def) {
         <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof key === 'undefined') {
@@ -431,8 +431,8 @@ var dotaccess = module.exports = {
     /**
      * Delete it
      * @memberOf util
-     * @param obj
-     * @param key
+     * @param {object} obj - The object (json) to alter
+     * @param {string} key - The key/path, converts dot to child members
      * @returns {boolean}
      */
     dot_del: function (obj, key) {
