@@ -14,12 +14,15 @@
 - `radic` is also a stand-alone application which manages global configuration and such.
   
   
+## How to use
+
 ### Documentation
-You can check [the documentation here](http://robin.radic.nl/node-radic)
+- [Detailed documentation](http://robin.radic.nl/node-radic)
+- [Tutorials and examples](http://robin.radic.nl/node-radic/tutorial-radic.html)
+- [Test coverage](http://robin.radic.nl/node-radic/coverage/)
   
-### How to use
   
-#### Installation
+### Installation
 ```bash
 # Globally install radic for using radic command line tools
 sudo npm install -g radic
@@ -29,9 +32,8 @@ npm install --save radic
 ```
   
   
-#### Quick overview of functionality
-[Detailed documentation](http://robin.radic.nl/node-radic)
-[Test coverage](http://robin.radic.nl/node-radic/coverage/)
+  
+### Overview
   
 | Module | Description |
 |:-------|:------------|
@@ -45,6 +47,8 @@ npm install --save radic
 | [sh](http://robin.radic.nl/node-radic/sh.html) | shell exec, execsync, execlist etc |
 | [binwraps](http://robin.radic.nl/node-radic/binwraps.html) | wraps cli commands in a nice coat. |
   
+  
+### Basic usage
   
 ##### Config
 ```javascript

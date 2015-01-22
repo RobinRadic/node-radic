@@ -3,10 +3,9 @@
 var _ = require('lodash');
 var fs = require('fs-extra');
 var util = require('util');
+var path = require('path');
 
 module.exports = function (grunt) {
-
-
 
 
     require('load-grunt-tasks')(grunt);
@@ -15,7 +14,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         radic_jsdoc: {
             docs: {
-
+                tutorials: true
             }
         },
         radic_coverage: {
@@ -39,6 +38,10 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('publish', ['radic_jsdoc:docs', 'radic_coverage:docs', 'radic_ghpages_publish:docs']);
+    grunt.registerTask('publish', function () {
+        grunt.task.run(['radic_jsdoc:docs']);
+        fs.copySync(path.join(__dirname, 'tutorials'), path.join(__dirname, 'docs/tutorials'), null, true);
+        grunt.task.run(['radic_coverage:docs', 'radic_ghpages_publish:docs']);
+    });
 
 };
