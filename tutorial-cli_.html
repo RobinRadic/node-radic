@@ -75,36 +75,71 @@ navigation:
 </ul>
 
 <div id="main">
+    <section>
+
+<header>
     
 
+    <h2>cli</h2>
+</header>
 
+<article>
+    <h4>Creating a CLI application</h4><p>I recommend using the method below to create commands. This is also utilized in <code>node-radic</code> itself.</p>
+<p>When using the following structure, with a little code it's possible to let all commands in the <code>src/commands</code> directory auto-register.</p>
+<p><strong>Directory structure</strong><br>..bin<br>....myclicmd.js<br>..src<br>....commands<br>......index.js<br>......mycmd1.js<br>......mycmd2.js  </p>
+<p><strong>bin/myclicmd.js</strong>
+{% highlight javascript %}
+var radic = require('radic'),
+    cli = radic.cli;</p>
+<p>require('../src/commands')(cli);
+cli.title('  |  ' + cli.green.bold('myclicmd title') + '  | ' + cli.yellow('v1.0.5') + ' |');</p>
+<p>cli.usage('myclicmd [command] ' + cli.gray('[[subcommands]]'));
+cli.parse(process.argv);
+{% endhighlight %}</p>
+<p><strong>src/commands/index.js</strong>
+{% highlight javascript %}
+var radic = require('radic'),
+    util = radic.util,
+    requireDirectory = util.requireDirectory;</p>
+<p>// This will recursively require all javascript files in the current directory and below
+module.exports = function (cli) {
+    requireDirectory(module, {
+        visit: function (obj) {
+            obj(cli);
+        }
+    });
+};
+{% endhighlight %}</p>
+<p><strong>src/commands/mycmd1.js</strong>
+{% highlight javascript %}
+module.exports = function (cli) {</p>
+<pre class="prettyprint source"><code>cli.command('resources OR resources :action')
+    .description('Copy/edit/link resource files to customise generated files.')
+    .usage({
+        'resources info': 'Displays the current resources configuration and status',
+        'resources copy': 'Copies the default resources to a directory you specify.',
+        'resources link': 'Marks a directory you specify as file resource.'
+    })
+    .method(function (cmd) {
+        if (typeof cmd.action === 'undefined') {
+            cli.log.fatal('Not enough arguments, config requires an action');
+        } else {
+            switch (cmd.action) {
+                case &quot;copy&quot;:
+                    cli.log('Not yet implemented');
+                    break;
+                case &quot;link&quot;:
+                    cli.log('Not yet implemented');
+                    break;
+                case &quot;info&quot;:
+                    cli.log.ok('Configuration cleared');
+                    break;
+            }
+        }
+    });</code></pre><p>};
+{% endhighlight %}</p>
+</article>
 
-    
-            {% highlight javascript %}
-            'use strict';
-var _util = require('util'),
-    path = require('path'),
-    os = require('os'),
-
-    fs = require('fs-extra'),
-    chalk = require('chalk'),
-    _ = require('lodash'),
-    ini = require('ini');
-
-/**
- * @namespace util
- */
-var util = module.exports;
-_util._extend(util, _util);
-
-_.extend(util, require('./general'));
-_.extend(util, require('./dotaccess'));
-util.requireDirectory = require('./require-directory');
-
-            {% endhighlight %}
-
-
-
-
+</section>
 
 </div>

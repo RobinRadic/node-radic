@@ -58,6 +58,12 @@ navigation:
         link: /node-radic/sh.html
       - name: util
         link: /node-radic/util.html
+  - name: Tutorials
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: cli
+        link: /node-radic/undefined
 
 ---
 # radic
