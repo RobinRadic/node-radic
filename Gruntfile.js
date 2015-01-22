@@ -14,6 +14,39 @@ module.exports = function (grunt) {
     grunt.initConfig({
         radic_jsdoc: {
             docs: {
+                docsPath: 'docs'
+            }
+        },
+        radic_jsdoc_mdpages: {
+            docs: {
+                files: [{
+                    src: 'README.md',
+                    dest: 'docs/index.md'
+                }]
+            }
+        },
+        git: {
+            docs: {
+                options: {
+                    cwd: 'docs',
+                    ignoreErrors: true
+                },
+                commands: [
+                    ['add', { A: true }],
+                    ['commit', { m: 'Auto commit & push' }],
+                    ['push', { u: 'origin' }, 'gh-pages']
+                ]
+            }
+        }
+
+    });
+
+
+    grunt.registerTask('docs', ['radic_jsdoc:docs', 'radic_jsdoc_mdpages:docs', 'git:docs']);
+
+    var cfgold = {
+        radic_jsdoc: {
+            docs: {
                 tutorials: true
             }
         },
@@ -36,9 +69,8 @@ module.exports = function (grunt) {
                 }
             }
         }
-    });
-
-    grunt.registerTask('publish', function () {
+    };
+    grunt.registerTask('publish_old', function () {
         grunt.task.run(['radic_jsdoc:docs']);
         fs.copySync(path.join(__dirname, 'tutorials'), path.join(__dirname, 'docs/tutorials'), null, true);
         grunt.task.run(['radic_coverage:docs', 'radic_ghpages_publish:docs']);
