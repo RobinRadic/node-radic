@@ -323,6 +323,7 @@ cli.write = function(msg){
  * @param {string} msg - The message to write
  */
 cli.writeln = function(msg){
+    msg = msg || '';
     cli.write(msg + "\n");
 };
 

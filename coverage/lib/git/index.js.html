@@ -232,12 +232,12 @@ navigation:
 
 </style>
     <link rel="stylesheet" href="../../prettify.css">
-<div class="coverage-header medium">
+<div class="coverage-header high">
     <div>
-        Statements: <span class="metric">58.33% <small>(7 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">25% <small>(1 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">58.33% <small>(7 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">80% <small>(4 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 1)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">80% <small>(4 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">lib/git/</a> &#187; index.js</div>
@@ -281,35 +281,10 @@ navigation:
 35
 36
 37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+38</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -331,11 +306,6 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -354,18 +324,8 @@ navigation:
     app = require('../app'),
     util = require('../util'),
     sh = require('../sh'),
+    binwraps = require('../binwraps'),
     config = app.config;
-&nbsp;
-<span class="fstat-no" title="function not covered" >function createCallback(callback) {</span>
-<span class="cstat-no" title="statement not covered" >    return <span class="fstat-no" title="function not covered" >function (error, stdout, stderr) {</span></span>
-<span class="cstat-no" title="statement not covered" >        if (error !== null) {</span>
-<span class="cstat-no" title="statement not covered" >            callback(error, stderr);</span>
-        }
-<span class="cstat-no" title="statement not covered" >        callback(null, stdout);</span>
-    }
-}
-&nbsp;
-&nbsp;
 &nbsp;
 /**
  * Git command line api and github/bitbucket api.
@@ -382,12 +342,7 @@ navigation:
  console.log(git('status').stdout);
  console.log(git('remote', 'add', 'origin', 'https://github.com/test/test').stdout);
  */
-var git = function git() {
-    return sh.execSync(util.createExecString('git', _.toArray(arguments)));
-};
-&nbsp;
-module.exports = git;
-&nbsp;
+var git = module.exports = binwraps.create('git');
 &nbsp;
 git.config = config.get('git');
 &nbsp;

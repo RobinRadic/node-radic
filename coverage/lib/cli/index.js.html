@@ -234,10 +234,10 @@ navigation:
     <link rel="stylesheet" href="../../prettify.css">
 <div class="coverage-header low">
     <div>
-        Statements: <span class="metric">34.21% <small>(26 / 76)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">0% <small>(0 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">33.77% <small>(26 / 77)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">10.53% <small>(2 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">35.14% <small>(26 / 74)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">34.67% <small>(26 / 75)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">lib/cli/</a> &#187; index.js</div>
@@ -514,7 +514,8 @@ navigation:
 268
 269
 270
-271</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+271
+272</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -762,6 +763,7 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1032,6 +1034,7 @@ cli.write = <span class="fstat-no" title="function not covered" >function(msg){<
  * @param {string} msg - The message to write
  */
 cli.writeln = <span class="fstat-no" title="function not covered" >function(msg){</span>
+<span class="cstat-no" title="statement not covered" >    msg = msg || '';</span>
 <span class="cstat-no" title="statement not covered" >    cli.write(msg + "\n");</span>
 };
 &nbsp;

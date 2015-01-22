@@ -141,7 +141,7 @@ var createBinWrap = function (key, cmd){
     var self = this;
     this[key + 'Sync'] = function(){
         var cm = util.createExecString(cmd, _.toArray(arguments));
-        console.log('cm', cm);
+        //console.log('cm', cm);
         return sh.execSync(cm);
     };
     this[key] = function(){
@@ -171,10 +171,14 @@ var createBinWrap = function (key, cmd){
  * @param {string} cmd - The executable name
  */
 binwraps.createBinWrap = function(cmd){
-    createBinWrap.call(binwraps, cmd, cmd);
-    createBinWrap.call(binwraps.sudo, cmd, 'sudo ' + cmd);
-    commands.push(cmd);
+    if(typeof binwraps[cmd] === 'undefined') {
+        createBinWrap.call(binwraps, cmd, cmd);
+        createBinWrap.call(binwraps.sudo, cmd, 'sudo ' + cmd);
+        commands.push(cmd);
+    }
+    return binwraps[cmd];
 };
+binwraps.create = binwraps.createBinWrap;
 
 /**
  * Returns all binwrapped commands

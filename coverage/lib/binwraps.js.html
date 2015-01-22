@@ -234,10 +234,10 @@ navigation:
     <link rel="stylesheet" href="../prettify.css">
 <div class="coverage-header medium">
     <div>
-        Statements: <span class="metric">53.13% <small>(17 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">0% <small>(0 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">37.5% <small>(3 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">53.13% <small>(17 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">70.59% <small>(24 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">30% <small>(3 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">62.5% <small>(5 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">70.59% <small>(24 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">lib/</a> &#187; binwraps.js</div>
@@ -361,7 +361,11 @@ navigation:
 115
 116
 117
-118</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+118
+119
+120
+121
+122</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -426,13 +430,13 @@ navigation:
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">26</span>
 <span class="cline-any cline-yes">26</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">26</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -457,10 +461,14 @@ navigation:
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">14</span>
 <span class="cline-any cline-yes">13</span>
 <span class="cline-any cline-yes">13</span>
 <span class="cline-any cline-yes">13</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -542,14 +550,14 @@ binwraps.sudo.autoSyncExec = true;
 &nbsp;
 var createBinWrap = function (key, cmd){
     var self = this;
-    this[key + 'Sync'] = <span class="fstat-no" title="function not covered" >function(){</span>
-<span class="cstat-no" title="statement not covered" >        var cm = util.createExecString(cmd, _.toArray(arguments));</span>
-<span class="cstat-no" title="statement not covered" >        console.log('cm', cm);</span>
-<span class="cstat-no" title="statement not covered" >        return sh.execSync(cm);</span>
+    this[key + 'Sync'] = function(){
+        var cm = util.createExecString(cmd, _.toArray(arguments));
+        //console.log('cm', cm);
+        return sh.execSync(cm);
     };
-    this[key] = <span class="fstat-no" title="function not covered" >function(){</span>
-<span class="cstat-no" title="statement not covered" >        if(self.autoSyncExec == true){</span>
-<span class="cstat-no" title="statement not covered" >            return self[key + 'Sync'].apply(self, arguments);</span>
+    this[key] = function(){
+        <span class="missing-if-branch" title="else path not taken" >E</span>if(self.autoSyncExec == true){
+            return self[key + 'Sync'].apply(self, arguments);
         }
 <span class="cstat-no" title="statement not covered" >        var args = _.toArray(arguments);</span>
 <span class="cstat-no" title="statement not covered" >        var callback;</span>
@@ -574,10 +582,14 @@ var createBinWrap = function (key, cmd){
  * @param {string} cmd - The executable name
  */
 binwraps.createBinWrap = function(cmd){
-    createBinWrap.call(binwraps, cmd, cmd);
-    createBinWrap.call(binwraps.sudo, cmd, 'sudo ' + cmd);
-    commands.push(cmd);
+    if(typeof binwraps[cmd] === 'undefined') {
+        createBinWrap.call(binwraps, cmd, cmd);
+        createBinWrap.call(binwraps.sudo, cmd, 'sudo ' + cmd);
+        commands.push(cmd);
+    }
+    return binwraps[cmd];
 };
+binwraps.create = binwraps.createBinWrap;
 &nbsp;
 /**
  * Returns all binwrapped commands
