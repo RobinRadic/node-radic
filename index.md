@@ -60,7 +60,7 @@ navigation:
         link: /node-radic/util.html
 
 ---
-
+# radic
 [![Travis build status](https://img.shields.io/travis/RobinRadic/node-radic.svg)](http://travis-ci.org/RobinRadic/node-radic)
 [![NPM Version](https://img.shields.io/npm/v/radic.svg)](http://npmjs.org/package/radic)
 [![NPM Downloads](https://img.shields.io/npm/dm/radic.svg)](http://npmjs.org/package/radic)
