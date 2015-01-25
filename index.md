@@ -28,8 +28,6 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
-      - name: radic
-        link: /node-radic/module-radic.html
       - name: radic/google
         link: /node-radic/google.html
       - name: radic/sh
@@ -70,6 +68,8 @@ navigation:
         link: /node-radic/git.html
       - name: net
         link: /node-radic/net.html
+      - name: radic
+        link: /node-radic/radic.html
       - name: util
         link: /node-radic/util.html
 

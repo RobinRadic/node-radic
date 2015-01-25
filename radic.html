@@ -1,0 +1,823 @@
+---
+layout: page
+title: Node Radic
+minify_content: false
+navigation:
+  - name: Home
+    link: /
+    icon: fa fa-home
+  - name: Overview
+    link: /node-radic
+    icon: fa fa-dashboard
+  - name: Coverage
+    link: /node-radic/coverage
+    icon: fa fa-code
+  - name: Tutorials
+    link: null
+    icon: fa fa-info
+    children:
+      - name: General
+        link: /node-radic/tutorials
+      - name: "Cli & Commands"
+        link: /node-radic/tutorials/cli.html
+      - name: "Config & DB"
+        link: /node-radic/tutorials/config-db.html
+      - name: Binwraps
+        link: /node-radic/tutorials/binwraps.html
+  - name: Modules
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: radic/google
+        link: /node-radic/google.html
+      - name: radic/sh
+        link: /node-radic/sh.html
+  - name: Classes
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: App
+        link: /node-radic/App.html
+      - name: Config
+        link: /node-radic/Config.html
+      - name: DB
+        link: /node-radic/DB.html
+      - name: Model
+        link: /node-radic/Model.html
+      - name: Table
+        link: /node-radic/Table.html
+  - name: Events
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: "create:error"
+        link: "/node-radic/Model.html#event:create:error"
+      - name: "create:invalid"
+        link: "/node-radic/Model.html#event:create:invalid"
+      - name: create
+        link: "/node-radic/Model.html#event:create"
+  - name: Namespaces
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
+      - name: cli
+        link: /node-radic/cli.html
+      - name: git
+        link: /node-radic/git.html
+      - name: net
+        link: /node-radic/net.html
+      - name: radic
+        link: /node-radic/radic.html
+      - name: util
+        link: /node-radic/util.html
+
+---
+
+<link type="text/css" rel="stylesheet" href="styles/jsdoc-radic.css">
+
+
+<ul class="nav nav-tabs hide">
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="google.html">radic/google</a></li><li><a href="sh.html">radic/sh</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="App.html">App</a></li><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Events<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Model.html#event:create:error">create:error</a></li><li><a href="Model.html#event:create:invalid">create:invalid</a></li><li><a href="Model.html#event:create">create</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="radic.html">radic</a></li><li><a href="util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#app">app</a></li><li><a href="global.html#exec">exec</a></li></ul></li>
+</ul>
+
+<div id="main">
+    
+
+
+
+
+<section>
+
+<header>
+    <div class="portlet-title">
+        <div class="caption">
+            
+                <i class="fa fa-puzzle-piece fa-2x font-red-flamingo"></i>
+                <h2 class="caption-subject bold font-red-flamingo uppercase" style="display: inline-flex;">
+                    
+                        radic
+                    </h2>
+                    
+                </h2>
+            
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+
+<hr class="hr-top-margin">
+<h4 class="name" id="app"><span class="type-signature small">&lt;static> </span>app<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Application data</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+
+<hr class="hr-top-margin">
+<h4 class="name" id="binwraps"><span class="type-signature small">&lt;static> </span>binwraps<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Command wrapper. Wraps terminal commands.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var radic = require('radic'),
+    gzip = radic.binwraps.gzipSync,  // Each command has async and sync methods.
+    zip = radic.binwraps.zip,        // Async command, just the binary name
+    vagrant = radic.binwraps.vagrantSync;
+
+// Easily create wrappers for other commands
+radic.binwrap.createBinWrap('yum');
+var yum = radic.binwrap.yum,
+    yumSync = radic.binwrap.yumSync;
+
+var result = vagrant('init');
+console.log('Vagrant ran synchronously, returned exit code: ' + result.code + ' and output: ' + result.stdout);
+
+gzip({ c: true, d: true, suffix: 'myunpacked_'}, 'filename');
+// equals gzip -c -d --suffix "myunpacked_" filename{% endhighlight %}
+
+
+
+
+        
+            
+
+<hr class="hr-top-margin">
+<h4 class="name" id="cli"><span class="type-signature small">&lt;static> </span>cli<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Cli functions</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="cli.html">cli</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+
+<hr class="hr-top-margin">
+<h4 class="name" id="Config"><span class="type-signature small">&lt;static> </span>Config<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>The config class</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="Config.html">Config</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var radic = require('radic'),
+    config = new radic.Config('myconf');{% endhighlight %}
+
+
+
+
+        
+            
+
+<hr class="hr-top-margin">
+<h4 class="name" id="DB"><span class="type-signature small">&lt;static> </span>DB<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>The database class</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="DB.html">DB</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var radic = require('radic'),
+    db = new radic.DB('fileDB2');{% endhighlight %}
+
+
+
+
+        
+            
+
+<hr class="hr-top-margin">
+<h4 class="name" id="git"><span class="type-signature small">&lt;static> </span>git<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Git tools</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="git.html">git</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var radic = require('radic'),
+    git = radic.git;
+
+git.init(function(err, output){ console.log(err, output); });
+git.getApi('bitbucket').user.repos(null, function(err, data){
+     data.forEach(function(repo){
+         console.log(repo.id);
+     });
+});{% endhighlight %}
+
+
+
+
+        
+            
+
+<hr class="hr-top-margin">
+<h4 class="name" id="net"><span class="type-signature small">&lt;static> </span>net<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Network functions</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="net.html">net</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+
+<hr class="hr-top-margin">
+<h4 class="name" id="sh"><span class="type-signature small">&lt;static> </span>sh<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Shell interaction</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>sh</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+
+<hr class="hr-top-margin">
+<h4 class="name" id="util"><span class="type-signature small">&lt;static> </span>util<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Utility functions. Extends the native nodejs utilities module.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="util.html">util</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    {% highlight javascript %}var radic = require('radic'),
+    util = radic.util;
+
+util.inspect(util);
+var value = util.dot_get(obj, 'path.to.value', 'default');{% endhighlight %}
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
