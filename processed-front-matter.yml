@@ -23,12 +23,6 @@ navigation:
         link: /node-radic/tutorials/config-db.html
       - name: Binwraps
         link: /node-radic/tutorials/binwraps.html
-  - name: Modules
-    link: "#"
-    icon: fa fa-mortar-board
-    children:
-      - name: radic
-        link: /node-radic/module-radic.html
   - name: Classes
     link: "#"
     icon: fa fa-mortar-board
