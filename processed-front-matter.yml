@@ -47,8 +47,8 @@ navigation:
     children:
       - name: error
         link: "/node-radic/Model.html#create#event:error"
-      - name: invalid
-        link: "/node-radic/Model.html#create#event:invalid"
+      - name: "create:invalid"
+        link: "/node-radic/Model.html#event:create:invalid"
       - name: create
         link: "/node-radic/Model.html#event:create"
   - name: Namespaces
