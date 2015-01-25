@@ -27,6 +27,9 @@ describe('sh', function () {
             expect(result.code).to.equal(0, 'The command should return the exit code 0');
             assert.isString(result.stdout);
         });
+        it('run executes a command and does not return stdout', function(){
+            expect(sh.run('echo yo')).to.equal(0, 'The command should return the exit code 0');
+        });
     });
 
     describe('inline bash script', function(){
@@ -35,9 +38,9 @@ describe('sh', function () {
 
             result = sh.inlineScript('echo "hai"\n\
  echo "bai" \n\
- echo "draai"');
-            console.log(result.code);
-            console.log(result.stdout);
+ echo "draai\
+ "');
+
 
             expect(result.code).to.equal(0, 'The command should return the exit code 0');
             assert.isString(result.stdout);

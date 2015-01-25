@@ -14,7 +14,17 @@ module.exports = function (grunt) {
     grunt.initConfig({
         radic_jsdoc: {
             docs: {
-                docsPath: 'docs'
+                options: {
+                    docsPath: 'docs'
+                }
+            }
+        },
+        radic_coverage: {
+            docs: {
+                options: {
+                    exclude: ['lib/cli/_celeri/**'],
+                    frontMatterPath: 'docs/processed-front-matter.yml'
+                }
             }
         },
         radic_jsdoc_mdpages: {
@@ -42,7 +52,7 @@ module.exports = function (grunt) {
     });
 
 
-    grunt.registerTask('docs', ['radic_jsdoc:docs', 'radic_jsdoc_mdpages:docs', 'git:docs']);
+    grunt.registerTask('docs', ['radic_jsdoc:docs', 'radic_jsdoc_mdpages:docs',  'git:docs']);
 
     var cfgold = {
         radic_jsdoc: {

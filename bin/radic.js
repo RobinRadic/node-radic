@@ -9,3 +9,6 @@ cli.title('  |  ' + cli.green.bold('radic') + '  | ' + cli.yellow(radic.app.vers
 cli.usage('radic [command] ' + cli.gray('[[subcommands]]'));
 cli.parse(process.argv);
 
+var app = radic.app;
+
+//app.config.save();
