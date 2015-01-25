@@ -28,10 +28,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
-      - name: google
-        link: /node-radic/module-google.html
-      - name: radic/sh
-        link: /node-radic/sh.html
+      - name: radic
+        link: /node-radic/module-radic.html
   - name: Classes
     link: "#"
     icon: fa fa-mortar-board
@@ -62,14 +60,16 @@ navigation:
     children:
       - name: binwraps
         link: /node-radic/binwraps.html
+      - name: cli
+        link: /node-radic/cli.html
       - name: git
         link: /node-radic/git.html
+      - name: google
+        link: /node-radic/google.html
       - name: net
         link: /node-radic/net.html
-      - name: radic
-        link: /node-radic/radic.html
-      - name: cli
-        link: "/node-radic/radic.html#cli"
+      - name: sh
+        link: /node-radic/sh.html
       - name: util
         link: /node-radic/util.html
 

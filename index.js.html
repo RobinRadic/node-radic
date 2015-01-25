@@ -28,10 +28,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
-      - name: google
-        link: /node-radic/module-google.html
-      - name: radic/sh
-        link: /node-radic/sh.html
+      - name: radic
+        link: /node-radic/module-radic.html
   - name: Classes
     link: "#"
     icon: fa fa-mortar-board
@@ -62,14 +60,16 @@ navigation:
     children:
       - name: binwraps
         link: /node-radic/binwraps.html
+      - name: cli
+        link: /node-radic/cli.html
       - name: git
         link: /node-radic/git.html
+      - name: google
+        link: /node-radic/google.html
       - name: net
         link: /node-radic/net.html
-      - name: radic
-        link: /node-radic/radic.html
-      - name: cli
-        link: "/node-radic/radic.html#cli"
+      - name: sh
+        link: /node-radic/sh.html
       - name: util
         link: /node-radic/util.html
 
@@ -79,7 +79,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-google.html">google</a></li><li><a href="sh.html">radic/sh</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="App.html">App</a></li><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Events<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Model.html#event:create:error">create:error</a></li><li><a href="Model.html#event:create:invalid">create:invalid</a></li><li><a href="Model.html#event:create">create</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="radic.html">radic</a></li><li><a href="radic.html#cli">cli</a></li><li><a href="util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#app">app</a></li><li><a href="global.html#exec">exec</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="App.html">App</a></li><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Events<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Model.html#event:create:error">create:error</a></li><li><a href="Model.html#event:create:invalid">create:invalid</a></li><li><a href="Model.html#event:create">create</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="google.html">google</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#app">app</a></li><li><a href="global.html#exec">exec</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -105,9 +105,7 @@ navigation:
     inquirer = require('inquirer');
 
 /**
- * @namespace
- * @name cli
- * @memberOf radic
+ * @namespace cli
  * @example
  * #!/usr/bin/env node
  * var radic = require('../lib'),
