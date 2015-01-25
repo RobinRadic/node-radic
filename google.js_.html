@@ -110,6 +110,11 @@ var createAPIRequest = require('../node_modules/googleapis/lib/apirequest');
  * @type {{}}
  */
 var google = module.exports = {};
+
+/**
+ *
+ * @type {{contacts: {readwrite: string, readonly: string}}}
+ */
 google.scopes = {
     contacts: {
         readwrite: 'https://www.google.com/m8/feeds/contacts',
@@ -117,7 +122,17 @@ google.scopes = {
     }
 };
 
+/**
+ *
+ * @type {{get: Function}}
+ */
 google.contacts = {
+    /**
+     *
+     * @param params
+     * @param callback
+     * @returns {Request|*|exports}
+     */
     get: function (params, callback) {
         var parameters = {
             options: {
@@ -137,8 +152,13 @@ google.contacts = {
 var OAuth2 = _google.auth.OAuth2;
 
 
-
-
+/**
+ *
+ * @param clientId
+ * @param clientSecret
+ * @param redirectUrl
+ * @returns {OAuth2|*}
+ */
 google.getClient = function (clientId, clientSecret, redirectUrl) {
     if (util.defined(google._client)) {
         return google._client;
@@ -159,7 +179,11 @@ google.getClient = function (clientId, clientSecret, redirectUrl) {
     return google._client;
 };
 
-
+/**
+ *
+ * @param scope
+ * @param callback
+ */
 google.authorize = function (scope, callback) {
     var client = google.getClient();
 
