@@ -42,6 +42,16 @@ navigation:
         link: /node-radic/Model.html
       - name: Table
         link: /node-radic/Table.html
+  - name: Events
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: error
+        link: "/node-radic/Model.html#create#event:error"
+      - name: invalid
+        link: "/node-radic/Model.html#create#event:invalid"
+      - name: create
+        link: "/node-radic/Model.html#event:create"
   - name: Namespaces
     link: "#"
     icon: fa fa-mortar-board
@@ -65,7 +75,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Events<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Model.html#create#event:error">error</a></li><li><a href="Model.html#create#event:invalid">invalid</a></li><li><a href="Model.html#event:create">create</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -76,14 +86,25 @@ navigation:
     
             {% highlight javascript %}
             var path = require('path'),
-
+    EventEmitter = require('eventemitter2').EventEmitter2,
     _ = require('lodash'),
     Datastore = require('nedb'),
-
+    sqlite = require('sqlite3').verbose(),
     util = require('../util'),
     Model = require('./model'),
     app = require('../app');
 
+
+var types = {};
+types.sqlite = function(DB){
+    return new sqlite.Database(DB._dbPath);
+};
+
+types.file = function(DB){
+    var db = new Datastore(DB._dbPath); //{ filename: DB._dbPath, autoload: true });
+    db.loadDatabase(DB.options.onLoaded);
+    return db;
+};
 /**
  * Database object. Creates and manages database files, models etc.
  *
@@ -100,25 +121,33 @@ navigation:
  *
  */
 function DB(name, options){
+    EventEmitter.call(this, {
+        maxListeners: 30,
+        wildcard: true,
+        newListener: true
+    });
     options = options || {};
     this.defaults = {
         path: path.join(app.path, 'stores'),
+        type: 'file',
         name: name,
         ext: '.db',
         onLoaded: function(){}
     };
     this.options = _.extend({}, this.defaults, options);
+    this._dbPath = path.resolve(this.options.path, this.options.name + this.options.ext);
+    this._db = new Datastore(this._dbPath);
     this._models = {};
-    this._db = new Datastore(path.join(this.options.path, this.options.name + this.options.ext));
     this._db.loadDatabase(this.options.onLoaded);
 }
-
+util.inherits(DB, EventEmitter);
 /**
  * The Model class
  * @see {@link Model}
  * @type {Model|exports}
  */
 DB.Model = Model;
+DB.types = types;
 module.exports = DB;
 
 /**
@@ -131,8 +160,11 @@ module.exports = DB;
  * @see {@link Model} for examples
  */
 DB.prototype.model = function(name, schema){
+    if(this.options.type !== 'file') throw new Error('Models are only available for file type database. This is a ' + this.options.type + ' type');
     if(util.defined(schema)){
-        return this._models[name] = new Model(name, schema, this._db);
+        this._models[name] = new Model(name, schema, this._db);
+        this.emit('model.create.' + name);
+        return this._models[name];
     } else if(this.hasModel(name)) {
         return this._models[name];
     } else {
@@ -146,6 +178,7 @@ DB.prototype.model = function(name, schema){
  * @returns {boolean} - Returns true if model is defined, otherwise false
  */
 DB.prototype.hasModel = function(name){
+    if(this.options.type !== 'file') throw new Error('Models are only available for file type database. This is a ' + this.options.type + ' type');
     return util.defined(this._models[name]);
 };
 

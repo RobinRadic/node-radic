@@ -42,6 +42,16 @@ navigation:
         link: /node-radic/Model.html
       - name: Table
         link: /node-radic/Table.html
+  - name: Events
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: error
+        link: "/node-radic/Model.html#create#event:error"
+      - name: invalid
+        link: "/node-radic/Model.html#create#event:invalid"
+      - name: create
+        link: "/node-radic/Model.html#event:create"
   - name: Namespaces
     link: "#"
     icon: fa fa-mortar-board
@@ -65,7 +75,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Events<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Model.html#create#event:error">error</a></li><li><a href="Model.html#create#event:invalid">invalid</a></li><li><a href="Model.html#event:create">create</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -77,6 +87,7 @@ navigation:
             {% highlight javascript %}
             var Datastore = require('nedb');
 var path = require('path'),
+    EventEmitter = require('eventemitter2').EventEmitter2,
     _ = require('lodash'),
     inspector = require('schema-inspector'),
     util = require('./../util');
@@ -121,13 +132,37 @@ function store(storePath, name){
  * var my = new MyModel('user', schema, db._db);
  */
 function Model(name, schema, db){
+    EventEmitter.call(this, {
+        maxListeners: 30,
+        wildcard: true,
+        newListener: true
+    });
     this.name = name;
     this.schema = schema;
     this.db = db;
+
+
+    this.createErrorCallback = function(functionName, err, callback){
+        this.emit(functionName + '.error', { error: err });
+        return callback(err);
+    }.bind(this);
+    this.createInvalidCallback = function(functionName, result, callback){
+        this.emit(functionName + '.invalid', { error: result.error, format: result.format() });
+        return callback(result.error, result.format());
+    }.bind(this);
+    this.createSuccessCallback = function(functionName, data, callback){
+        this.emit(functionName, { data: data });
+        return callback(null, data);
+    }.bind(this);
 }
+util.inherits(Model, EventEmitter);
 module.exports = Model;
 
+
+
 /**
+ * @event insert
+ * @event
  * @callback Model~createCallback
  * @param {boolean|string|undefined|null} error - If there's an error, it will contain an error string
  * @param {object} newDoc - The created record/document after sanitation and insertion
@@ -136,15 +171,40 @@ module.exports = Model;
  * Create a document/record
  * @param {object} data - key/value object containing all required data
  * @param {Model~createCallback} callback - the callback that handles the response
+ * @fires Model#create.error - Fires if there's an error
+ * @fires Model#create.invalid - Fires if invalid
+ * @fires Model#create - Fires if successfull insert
  */
 Model.prototype.create = function(data, callback){
     inspector.sanitize(this.schema, data);
     inspector.validate(this.schema, data, function (err, result) {
-        if(err) return callback(err);
-        if(result.valid !== true) return callback(result.error, result.format());
+        /**
+         * Error create event
+         *
+         * @event Model#create.error
+         * @type {object}
+         * @property {string} error - The error
+         */
+        if(err) return this.createErrorCallback('create', err, callback);
+        /**
+         * Invalid create event
+         *
+         * @event Model#create.invalid
+         * @type {object}
+         * @property {string} error - The validation error
+         * @property {string} format - Format
+         */
+        if(result.valid !== true) return this.createInvalidCallback('create', result, callback);
         this.db.insert(data, function(error, newDoc){
-            callback(null, newDoc)
-        });
+            /**
+             * Create event
+             *
+             * @event Model#create
+             * @type {object}
+             * @property {object} data - The record/document
+             */
+            this.createSuccessCallback('create', newDoc, callback);
+        }.bind(this));
     }.bind(this));
 };
 

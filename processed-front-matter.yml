@@ -41,6 +41,16 @@ navigation:
         link: /node-radic/Model.html
       - name: Table
         link: /node-radic/Table.html
+  - name: Events
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: error
+        link: "/node-radic/Model.html#create#event:error"
+      - name: invalid
+        link: "/node-radic/Model.html#create#event:invalid"
+      - name: create
+        link: "/node-radic/Model.html#event:create"
   - name: Namespaces
     link: "#"
     icon: fa fa-mortar-board
