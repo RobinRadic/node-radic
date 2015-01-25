@@ -87,58 +87,117 @@ navigation:
 
 
 
+
+<section>
+
+<header>
+    <div class="portlet-title">
+        <div class="caption">
+            
+                <i class="fa fa-puzzle-piece fa-2x font-red-flamingo"></i>
+                <h2 class="caption-subject bold font-red-flamingo uppercase" style="display: inline-flex;">
+                    
+                        <span class="ancestors"><a href="radic.html">radic</a>.</span>
+                    
+                        cli
+                    </h2>
+                    
+                </h2>
+            
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="container-overview">
     
-            {% highlight javascript %}
-            var path = require('path'),
-    _ = require('lodash'),
-    fs = require('fs-extra'),
-    util = require('./util'),
-    semver = require('semver'),
-    Config = require('./config');
+        
 
-var configVersion = '1.0.0';
-var configDefaults = {
-    resources: {
-        activeDir: path.resolve(__dirname, '..', 'resources')
-    },
-    textEditorCommand: 'storm'
-};
-
-/**
- * @class
- * @constructor
- */
-function App() {
-    this.path = path.join(util.getUserHomeDir(), '.radic');
-    fs.ensureDirSync(this.path);
-    util._extend(this, require('../package'));
-    this.config = new Config('radic');
-    if (util.defined(this.config.get('configversion')) === false || semver.lt(this.config.get('configversion'), configVersion)) {
-        this.config.config = _.merge(configDefaults, this.config.config);
-        this.config.set('configversion', configVersion);
-        this.config.save();
-    }
-}
-
-App.prototype.get = function (name) {
-    return require('./' + name);
-};
+        
 
 
-/**
- * @instance
- * @type {App}
- */
-var app = new App();
+<dl class="details">
 
-/**
- *
- * @type {App}
- */
-module.exports = app;
+    
 
-            {% endhighlight %}
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+            <h3>Example</h3>
+            
+    {% highlight javascript %}#!/usr/bin/env node
+var radic = require('../lib'),
+    cli = radic.cli;
+
+cli.command('version OR version :type')
+   .description('Shows current version')
+   .usage('radic version minor', 'shows version')
+   .method(function (cmd) {
+       if (typeof cmd.type === 'undefined') {
+           cli.writeln(radic.app.version);
+       } else {
+           cli.log.ok('Yeah we done that');
+           cli.log.debug('But this aswell');
+       }
+   });
+
+cli.parse(process.argv);{% endhighlight %}
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

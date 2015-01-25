@@ -62,14 +62,14 @@ navigation:
     children:
       - name: binwraps
         link: /node-radic/binwraps.html
-      - name: cli
-        link: /node-radic/cli.html
       - name: git
         link: /node-radic/git.html
       - name: net
         link: /node-radic/net.html
       - name: radic
         link: /node-radic/radic.html
+      - name: cli
+        link: "/node-radic/radic.html#cli"
       - name: util
         link: /node-radic/util.html
 
