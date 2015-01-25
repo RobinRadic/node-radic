@@ -24,10 +24,22 @@ navigation:
         link: /node-radic/tutorials/config-db.html
       - name: Binwraps
         link: /node-radic/tutorials/binwraps.html
+  - name: Modules
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: radic
+        link: /node-radic/module-radic.html
+      - name: radic/google
+        link: /node-radic/google.html
+      - name: radic/sh
+        link: /node-radic/sh.html
   - name: Classes
     link: "#"
     icon: fa fa-mortar-board
     children:
+      - name: App
+        link: /node-radic/App.html
       - name: Config
         link: /node-radic/Config.html
       - name: DB
@@ -58,8 +70,6 @@ navigation:
         link: /node-radic/git.html
       - name: net
         link: /node-radic/net.html
-      - name: sh
-        link: /node-radic/sh.html
       - name: util
         link: /node-radic/util.html
 
