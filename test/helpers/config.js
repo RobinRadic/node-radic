@@ -1,4 +1,4 @@
-var radic = require('../../lib'),
+var radic = require('../../'),
     Config = radic.Config;
 
 module.exports = function (chai, utils) {

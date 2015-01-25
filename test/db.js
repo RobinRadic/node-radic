@@ -14,7 +14,7 @@ var path = require('path'),
     sinon = require('sinon'),
     EventEmitter = require('eventemitter2').EventEmitter,
 
-    radic = require('../lib'),
+    radic = require('../'),
     DB = radic.DB,
     Model = DB.Model;
 

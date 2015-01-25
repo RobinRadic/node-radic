@@ -2,9 +2,9 @@
   "name": "radic",
   "version": "0.5.4",
   "description": "Usefull general modules. Cli helper/tools, file based DB with models, validation, schemas. Utility functions. Downloader. Virtualbox vm vboxmanage. Inline shell bash scripts.",
-  "main": "lib/index.js",
+"main": "radic.js",
   "bin": {
-    "radic": "bin/radic.js"
+    "radic": "./radic.js"
   },
   "scripts": {
     "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec"
@@ -25,7 +25,7 @@
     "vm",
     "vboxmanage"
   ],
-  "engine": "node >= 0.11.0",
+  "engine": "node >= 0.10.0",
   "license": "MIT",
   "author": {
     "name": "Robin Radic",
@@ -66,6 +66,7 @@
     "open": "0.0.5",
     "plugin": "^0.3.2",
     "pm2": "^0.12.3",
+    "requizzle": "^0.2.1",
     "schema-inspector": "^1.5.0",
     "semver": "^4.2.0",
     "sqlite3": "^3.0.4",

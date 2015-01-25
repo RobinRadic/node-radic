@@ -80,16 +80,8 @@ global.env = {
     version: {}
 };
 
-// initialize the environment for the current JavaScript VM
-(function(args) {
-    'use strict';
 
-    var path;
-
-    if (args[0] && typeof args[0] === 'object') {
-        // we should be on Node.js
-        args = [__dirname, process.cwd()];
-        path = require('path');
+    var path = require('path');
 
         // Create a custom require method that adds `lib/jsdoc` and `node_modules` to the module
         // lookup path. This makes it possible to `require('jsdoc/foo')` from external templates and
@@ -102,10 +94,9 @@ global.env = {
             },
             infect: true
         });
-    }
 
-  //  require('./lib/ri/util/runtime').initialize(args);
-})( Array.prototype.slice.call(arguments, 0) );
+
+
 
 /**
  * Data that must be shared across the entire application.
@@ -114,7 +105,7 @@ global.env = {
  * @name app
  */
 global.app = {
-    jsdoc: {
+    radic: {
         parser: null
     }
 };
