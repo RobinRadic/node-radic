@@ -65,6 +65,7 @@
     "node-monitor": "^0.3.11",
     "open": "0.0.5",
     "plugin": "^0.3.2",
+    "pm2": "^0.12.3",
     "schema-inspector": "^1.5.0",
     "semver": "^4.2.0",
     "sqlite3": "^3.0.4",
