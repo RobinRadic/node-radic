@@ -46,8 +46,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
-      - name: error
-        link: "/node-radic/Model.html#create#event:error"
+      - name: "create:error"
+        link: "/node-radic/Model.html#event:create:error"
       - name: "create:invalid"
         link: "/node-radic/Model.html#event:create:invalid"
       - name: create

@@ -46,8 +46,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
-      - name: error
-        link: "/node-radic/Model.html#create#event:error"
+      - name: "create:error"
+        link: "/node-radic/Model.html#event:create:error"
       - name: "create:invalid"
         link: "/node-radic/Model.html#event:create:invalid"
       - name: create
@@ -75,7 +75,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Events<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Model.html#create#event:error">error</a></li><li><a href="Model.html#event:create:invalid">create:invalid</a></li><li><a href="Model.html#event:create">create</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Events<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Model.html#event:create:error">create:error</a></li><li><a href="Model.html#event:create:invalid">create:invalid</a></li><li><a href="Model.html#event:create">create</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -473,9 +473,9 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
 
 <h5>Fires:</h5>
 <ul>
-    <li>Model#create.event:error - Fires if there's an error</li>
+    <li>Model#create:error - Fires if there's an error</li>
 
-    <li>Model#create.event:invalid - Fires if invalid</li>
+    <li>Model#create:invalid - Fires if invalid</li>
 
     <li>Model#event:create - Fires if successfull insert</li>
 </ul>
@@ -961,6 +961,147 @@ var my = new MyModel('user', schema, db._db);{% endhighlight %}
 
     
         <h3 class="subsection-title">Events</h3>
+
+        
+            
+
+    
+    <hr class="hr-top-margin">
+    <h4 class="name font-yellow-gold" id="event:create:error"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i>create:error</h4>
+
+    
+
+
+
+<div class="note note-info">
+    <p>Error create event</p>
+</div>
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="label bg-blue-hoki label-sm">object</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="label bg-green-jungle label-sm">string</span></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The error</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
             
