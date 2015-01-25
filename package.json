@@ -4,7 +4,7 @@
   "description": "Usefull general modules. Cli helper/tools, file based DB with models, validation, schemas. Utility functions. Downloader. Virtualbox vm vboxmanage. Inline shell bash scripts.",
   "main": "lib/index.js",
   "bin": {
-    "radic": "bin/radic.js"
+    "radic": "./radic"
   },
   "scripts": {
     "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec"
