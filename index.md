@@ -28,8 +28,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
-      - name: radic/google
-        link: /node-radic/google.html
+      - name: google
+        link: /node-radic/module-google.html
       - name: radic/sh
         link: /node-radic/sh.html
   - name: Classes

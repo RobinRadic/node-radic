@@ -28,8 +28,8 @@ navigation:
     link: "#"
     icon: fa fa-mortar-board
     children:
-      - name: radic/google
-        link: /node-radic/google.html
+      - name: google
+        link: /node-radic/module-google.html
       - name: radic/sh
         link: /node-radic/sh.html
   - name: Classes
@@ -79,7 +79,7 @@ navigation:
 
 
 <ul class="nav nav-tabs hide">
-    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="google.html">radic/google</a></li><li><a href="sh.html">radic/sh</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="App.html">App</a></li><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Events<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Model.html#event:create:error">create:error</a></li><li><a href="Model.html#event:create:invalid">create:invalid</a></li><li><a href="Model.html#event:create">create</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="radic.html">radic</a></li><li><a href="radic.html#cli">cli</a></li><li><a href="util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#app">app</a></li><li><a href="global.html#exec">exec</a></li></ul></li>
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-google.html">google</a></li><li><a href="sh.html">radic/sh</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="App.html">App</a></li><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Events<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Model.html#event:create:error">create:error</a></li><li><a href="Model.html#event:create:invalid">create:invalid</a></li><li><a href="Model.html#event:create">create</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="git.html">git</a></li><li><a href="net.html">net</a></li><li><a href="radic.html">radic</a></li><li><a href="radic.html#cli">cli</a></li><li><a href="util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#app">app</a></li><li><a href="global.html#exec">exec</a></li></ul></li>
 </ul>
 
 <div id="main">
@@ -89,151 +89,121 @@ navigation:
 
     
             {% highlight javascript %}
-            var
+            var app = require('../app'),
+    sh = require('../sh'),
     _ = require('lodash'),
-    fs = require('fs-extra'),
-    path = require('path'),
-    temp = require('temp'),
-
-    app = require('./app'),
+    util = require('../util'),
+    google = require('../google'),
     config = app.config,
-    util = require('./util'),
-    cli = require('./cli');
-
-
-var open = require("open");
-var _google = require('googleapis');
-var createAPIRequest = require('../node_modules/googleapis/lib/apirequest');
-
+    GoogleContacts = require('google-contacts').GoogleContacts;
 /**
- * @module radic/google
- * @type {{}}
+ * @param {cli} cli
  */
-var google = module.exports = {};
+module.exports = function (cli) {
 
-/**
- * @memberOf radic/google
- * @type {{contacts: {readwrite: string, readonly: string}}}
- */
-google.scopes = {
-    contacts: {
-        readwrite: 'https://www.google.com/m8/feeds/contacts',
-        readonly: 'https://www.googleapis.com/auth/contacts.readonly'
-    }
-};
+    cli.command('google OR google :action OR google :action :key OR google :action :key :value')
+        .description('Configures radic')
+        .usage({
+            'google contacts': 'Shows all contacts',
+            'google contacts &lt;filter>': 'Shows all contacts'
+        })
+        .method(function (cmd) {
+            if (typeof cmd.action === 'undefined') {
+                cli.log.fatal('Not enough arguments, config requires an action');
+            } else {
+                //var client = google.getClient();
+                switch (cmd.action) {
+                    case "contacts":
+                        google.authorize(google.scopes.contacts.readwrite, function (token) {
+                         //   console.log('tokens', token);
+                            var c = new GoogleContacts({token: token.access_token});
+                            c._get({type: 'contacts'}, function (err, contacts) {
+                                if (util.defined(contacts)) {
 
-/**
- *
- * @type {{get: Function}}
- */
-google.contacts = {
-    /**
-     *
-     * @param params
-     * @param callback
-     * @returns {Request|*|exports}
-     */
-    get: function (params, callback) {
-        var parameters = {
-            options: {
-                url: google.scopes.contacts.readonly, //'https://www.googleapis.com/oauth2/v2/userinfo',
-                method: 'GET'
-            },
-            params: params,
-            requiredParams: [],
-            pathParams: [],
-            context: self
-        };
+                                    // console.log(util.inspect(contacts.feed, {showHidden: true, color: false, depth: 3}));
+//                                    var table = cli.table('default', 'borderless', {}).head('Naam', 'Telefoon');
 
-        return createAPIRequest(parameters, callback);
-    }
-};
+                                    var colPairs = 3,
+                                        cols = colPairs * 2;
+                                    var colW = 100 / 6;
+                                    var table = cli
+                                        .table('default', 'borderless')
+                                        .head();
+                                    var colPair,
+                                        colPairsContent = [];
 
-var OAuth2 = _google.auth.OAuth2;
+                                    if (process.stdout.getWindowSize()[0] - 10 &lt; 200) {
+                                        colPairs = 3;
+                                    }
 
+                                    var entries = {};
+                                    var names = []
+                                    _.forEach(contacts.feed.entry, function (contact, i) {
+                                        entries[contact.title['$t']] = _.pluck(contact['gd$phoneNumber'], '$t').join("\n");
+                                        names.push(contact.title['$t']);
+                                    });
+                                    //var sorted = _.map(_.sortBy(entries, [0, 1]), _.values);
 
-/**
- *
- * @memberOf radic/google
- * @param clientId
- * @param clientSecret
- * @param redirectUrl
- * @returns {OAuth2|*}
- */
-google.getClient = function (clientId, clientSecret, redirectUrl) {
-    if (util.defined(google._client)) {
-        return google._client;
-    }
-    var creds = config.get('credentials.google.oauth');
-    if (!util.defined(clientId)) {
-        clientId = creds.client_id;
-    }
-    if (!util.defined(clientSecret)) {
-        clientSecret = creds.client_secret;
-    }
-    if (!util.defined(redirectUrl)) {
-        var r = creds.redirect;
-        redirectUrl = r.protocol + "://" + r.host + (typeof r.port === 'number' ? ':' + r.port : '') + "/" + r.uri;
-    }
-    google._client = new OAuth2(clientId, clientSecret, redirectUrl);
+                                    if (typeof cmd.key === 'string' &amp;&amp; !util.defined(cmd.value)) {
+                                        names = _.filter(names.sort(), function (val) {
+                                           // console.log(val);
+                                            return val.toLowerCase().indexOf(cmd.key) > -1;
+                                        })
+                                    }
+                                    _.forEach(names,
+                                        function (name, i) {
+                                            var entry = entries[name];
+                                           // console.log(name, i, entry)
+                                            colPair = (i % 3) + 1;
+                                            colPairsContent.push(name, entry);
+                                            if (colPair &lt; colPairs) {
+                                                colPairsContent.push(cli.red('||'));
+                                            }
 
-    return google._client;
-};
+                                            if (colPairs == colPair) {
+                                                table.push(colPairsContent);
+                                                colPairsContent = [];
+                                            }
+                                        });
 
-/**
- *
- * @param scope
- * @param callback
- */
-google.authorize = function (scope, callback) {
-    var client = google.getClient();
+                                    while (colPair &lt; colPairs) {
+                                        colPair++;
+                                        colPairsContent.push('-', '-');
+                                        table.options.head.push('Naam', 'Telefoonnr')
+                                        if (colPairs != colPair) {
+                                            table.options.head.push('')
+                                        }
+                                    }
 
-    var redirect = config.get('credentials.google.oauth.redirect');
+                                    table.push(colPairsContent);
+                                    util.print('\u001B[2J\u001B[0;0f')
+                                    console.log("\n" + table.toString());
 
-    // Create an temporary http server to intercept the code after redirect
-    var http = require('http');
-    var server = http.createServer(function (req, res) {
-        if (req.url.indexOf('oauth2callback') === -1) return res.end();
-        var code = req.url.replace('/oauth2callback?code=', '');
+                                }
+                                cli.exit();
+                            });
 
-        res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.end('Nice ouwe!\n');
+                        });
+                        break;
+                    case "contacts2":
+                        google.authorize(google.scopes.contacts.readonly, function (client) {
+                            cli.log.ok('YES');
+                            util.log(client);
+                            require('http').request({
+                                url: 'https://www.googleapis.com/auth/contacts.readonly'
+                            }, function (a, b) {
+                                console.log(a, b);
+                                cli.exit();
+                            })
+                        });
 
-        cli.log('Got code: ' + code);
-        server.unref();
-        server.close(function () {
-            cli.log('Closed server');
+                        break;
+
+                }
+            }
         });
-        client.getToken(code, function (err, tokens) {
-            if (err) cli.log.fatal(err);
-            client.setCredentials(tokens);
-            callback(tokens);
-        });
-    });
-    server.listen(redirect.port, redirect.host);
-    cli.log('Server running at http://127.0.0.1:31337/');
 
-    // Generate the url
-    var url = client.generateAuthUrl({
-        access_type: 'offline', // will return a refresh token
-        scope: scope // can be a space-delimited string or an array of scopes
-    });
-
-    // Visit the url
-    cli.log.warn('Attempting to open browser');
-    cli.log('Otherwise, manually open url: ' + cli.cyan(url));
-    open(url);
-    /*
-     // Use the returned code to get the token
-     cli.prompt({ type: 'input', name: 'code', message: 'Enter the code' }, function(answers){
-     console.log(answers);
-     client.getToken(answers.code, function(err, tokens){
-     if(err) cli.log.fatal(err);
-     client.setCredentials(tokens);
-     callback(tokens);
-     });
-     });*/
-}
+};
 
             {% endhighlight %}
 
