@@ -1,0 +1,2 @@
+#!/bin/sh
+browserify lib/util/* -r http -o bundle.js
