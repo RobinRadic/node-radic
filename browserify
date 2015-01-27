@@ -1,2 +1,2 @@
 #!/bin/sh
-browserify lib/util/* -r http -o bundle.js
+browserify lib/util/* -r http -r path -o bundle.js
