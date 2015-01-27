@@ -122,6 +122,7 @@ npm install --save radic
 | [net](http://robin.radic.nl/node-radic/net.html) | network functionality, like downloading |
 | [sh](http://robin.radic.nl/node-radic/sh.html) | shell exec, execsync, execlist etc |
 | [binwraps](http://robin.radic.nl/node-radic/binwraps.html) | wraps cli commands in a nice coat. |
+| [handlebars](http://robin.radic.nl/node-radic-handlebars) | links to `radic-handlebars` |
   
   
 ### Basic usage
