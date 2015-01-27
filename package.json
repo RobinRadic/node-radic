@@ -7,8 +7,7 @@
     "radic": "./radic"
   },
   "scripts": {
-    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec",
-    "install": "node install.js"
+    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- -R spec"
   },
   "keywords": [
     "radic",
@@ -76,6 +75,8 @@
   },
   "devDependencies": {
     "chai": "^1.10.0",
+      "mocha": "^2.1.0",
+      "sinon": "^1.12.2",
     "grunt": "^0.4.5",
     "grunt-build-control": "^0.2.2",
     "grunt-concurrent": "^1.0.0",
@@ -101,8 +102,6 @@
     "istanbul": "^0.3.5",
     "jsdoc": "~3.3.0-alpha5",
     "load-grunt-tasks": "^0.4.0",
-    "mocha": "^2.1.0",
-    "sinon": "^1.12.2",
     "time-grunt": "^0.3.1"
   }
 }
