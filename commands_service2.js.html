@@ -101,12 +101,13 @@ navigation:
  */
 module.exports = function (cli) {
 
+    return;
     var tree = cli.tree('#' + cli.green.bold('Available services information') + '\n' +
     '##monitor              - Monitors hardware/software on this machine. Is required for monitor-dashboard and remote connections\n' +
     '##monitor-dashboard    - Starts a local web-server (http://localhost:4200/) that reads the system performance\n' +
     '##services-dashboard   - Starts a local web-server (http://0.0.0.0:9000/) that can be used to control radic services\n');
 
-    cli.command('service OR service :command OR service :name :command')
+    cli.command('service2')
         .description('Manage radic services')
         .usage({
             'service [command] ': '[list|kill]',

@@ -1,0 +1,273 @@
+---
+layout: page
+title: Node Radic
+minify_content: false
+navigation:
+  - name: Home
+    link: /
+    icon: fa fa-home
+  - name: Overview
+    link: /node-radic
+    icon: fa fa-dashboard
+  - name: Coverage
+    link: /node-radic/coverage
+    icon: fa fa-code
+  - name: Tutorials
+    link: null
+    icon: fa fa-info
+    children:
+      - name: General
+        link: /node-radic/tutorials
+      - name: "Cli & Commands"
+        link: /node-radic/tutorials/cli.html
+      - name: "Config & DB"
+        link: /node-radic/tutorials/config-db.html
+      - name: Binwraps
+        link: /node-radic/tutorials/binwraps.html
+  - name: Modules
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: radic
+        link: /node-radic/module-radic.html
+  - name: Classes
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: App
+        link: /node-radic/App.html
+      - name: Config
+        link: /node-radic/Config.html
+      - name: DB
+        link: /node-radic/DB.html
+      - name: Model
+        link: /node-radic/Model.html
+      - name: Table
+        link: /node-radic/Table.html
+  - name: Events
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: "create:error"
+        link: "/node-radic/Model.html#event:create:error"
+      - name: "create:invalid"
+        link: "/node-radic/Model.html#event:create:invalid"
+      - name: create
+        link: "/node-radic/Model.html#event:create"
+  - name: Namespaces
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: binwraps
+        link: /node-radic/binwraps.html
+      - name: cli
+        link: /node-radic/cli.html
+      - name: git
+        link: /node-radic/git.html
+      - name: google
+        link: /node-radic/google.html
+      - name: net
+        link: /node-radic/net.html
+      - name: sh
+        link: /node-radic/sh.html
+      - name: util
+        link: /node-radic/util.html
+
+---
+
+<link type="text/css" rel="stylesheet" href="styles/jsdoc-radic.css">
+
+
+<ul class="nav nav-tabs hide">
+    <li><a href="index.html">Overview</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Modules<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="module-radic.html">radic</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Classes<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="App.html">App</a></li><li><a href="Config.html">Config</a></li><li><a href="DB.html">DB</a></li><li><a href="Model.html">Model</a></li><li><a href="Table.html">Table</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Events<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="Model.html#event:create:error">create:error</a></li><li><a href="Model.html#event:create:invalid">create:invalid</a></li><li><a href="Model.html#event:create">create</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Namespaces<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="binwraps.html">binwraps</a></li><li><a href="cli.html">cli</a></li><li><a href="git.html">git</a></li><li><a href="google.html">google</a></li><li><a href="net.html">net</a></li><li><a href="sh.html">sh</a></li><li><a href="util.html">util</a></li></ul></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Global<i class="fa fa-angle-down"></i></a><ul class="dropdown-menu" role="menu"><li><a href="global.html#app">app</a></li><li><a href="global.html#exec">exec</a></li><li><a href="global.html#radic">radic</a></li></ul></li>
+</ul>
+
+<div id="main">
+    
+
+
+
+    
+            {% highlight javascript %}
+            var radic = require('../'),
+    sh = require('../sh'),
+    util = require('../util'),
+    pm2 = require('pm2'),
+    fs = require('fs-extra'),
+    _ = require('lodash'),
+    path = require('path'),
+    config = radic.app.config;
+
+
+/**
+ * @param {cli} cli
+ */
+module.exports = function (cli) {
+
+    var tree = cli.tree('#' + cli.green.bold('Available services information') + '\n' +
+    '##monitor              - Monitors hardware/software on this machine. Is required for monitor-dashboard and remote connections\n' +
+    '##monitor-dashboard    - Starts a local web-server (http://localhost:4200/) that reads the system performance\n' +
+    '##services-dashboard   - Starts a local web-server (http://0.0.0.0:9000/) that can be used to control radic services\n');
+
+    cli.command('service :action OR service :action :name')
+        .description('Manage radic services')
+        .usage({
+            'service [command] ': '[list|kill]',
+            'service [name] [command] \n ': 'name:     [all|monitor|process-dashboard|monitor-dashboard]\n' +
+            'command:  [stop|restart|delete|reload|reload-gracefull|describe]'
+        })
+        .optional('')
+        .custom("\n" + tree)
+        .method(function (cmd) {
+
+            switch (cmd.action) {
+                case "list":
+                    var services = config.get('services') || [];
+                    if (!services || services.length == 0) {
+                        cli.log.fatal('No services registered yet. Use ' + cli.yellow.bold('radic service register &lt;name>'));
+                    }
+
+                    var treeStr = '#' + cli.green.bold('Registered services') + "\n";
+                    _.each(services, function (service) {
+                        treeStr += "##" + service.name + ' - ' + service.path;
+                    });
+
+                    var serviceTree = cli.tree(treeStr);
+                    cli.writeln(serviceTree);
+                    cli.writeln();
+                    cli.writeln(cli.green.bold('Running services'));
+
+                    process.argv[2] = 'list';
+                    require('../../node_modules/.bin/pm2');
+                    break;
+
+                case "register":
+                    if (!util.defined(cmd.name)) {
+                        cli.log.fatal('No name defined. To register a service, use ' + cli.yellow.bold('radic service register &lt;name>'))
+                    }
+                    cli.prompt([
+                        {type: 'input', name: 'path', message: 'Script path (relative to this directory or full path)'}
+                    ], function (op) {
+                        var scriptPath = path.resolve(op.path);
+                        var stat = fs.statSync(scriptPath);
+                        if (!fs.existsSync(scriptPath) || stat.isFile() === false) {
+                            cli.log.fatal('Could not find script ' + cli.bold.green(scriptPath));
+                        }
+                        var service = {name: cmd.name, path: scriptPath};
+                        config.set('services.' + cmd.name, service, true);
+                        cli.log.ok('Service ' + service.name);
+                    });
+                    break;
+
+                case "unregister":
+                    cli.prompt([
+                        {type: 'list', name: 'name', message: 'Select service to unregister', choices: _.pluck(config.get('services'), 'name') }
+                    ], function (op) {
+                        var services = config.get('services.' + op.name);
+                        if (!util.defined() == 0) {
+                            cli.log.fatal('Service is already unregistered');
+                        }
+
+                        config.del('services.' + op.name, true);
+                        pm2action('describe', op.name, function (err, proc) {
+                            if (proc.length !== 0) {
+                                pm2action('delete', op.name, function () {
+                                    cli.log.ok('Removed service ' + op.name);
+                                    cli.exit();
+                                });
+                            } else {
+                                cli.exit();
+                            }
+                        });
+                    });
+                    break;
+
+                default:
+                    if (!util.defined(cmd.name)) {
+                        cli.prompt([
+                            {type: 'list', name: 'name', message: 'Select service?', choices: _.pluck(config.get('services'), 'name') }
+                        ], function (op) {
+                            cli.log('name: ' + op.name);
+                            var service = config.get('services.' + op.name);
+                            proc(service.name, cmd.action, service.path)
+                        });
+                    }
+                    break;
+            }
+
+        });
+
+    function srvPath(srvpath) {
+        return path.resolve(__dirname, '../..', 'srv', srvpath);
+    }
+
+    function rootPath(rootpath) {
+        return path.resolve(__dirname, '../..', rootpath);
+    }
+
+    function pm2action(cmd, name, cb) {
+        pm2.connect(function (err) {
+            pm2[cmd](name, function (err, proc) {
+                if (util.defined(cb) &amp;&amp; typeof cb == 'function') {
+                    return cb(err, proc);
+                }
+                if (err) throw new Error('err');
+                if (proc.success === true) {
+                    cli.log.ok(cmd + ' ' + name + ' success');
+                } else {
+                    cli.log.warn(cmd + ' ' + name + ' not successfull');
+                    console.log(proc);
+                }
+                cli.exit();
+            });
+        });
+    }
+
+    function proc(name, action, scriptPath, opts) {
+        opts = opts || {};
+        switch (action) {
+            case "start":
+                if (util.defined(scriptPath) === false) return;
+                pm2.connect(function (err) {
+                    pm2.start(scriptPath, _.merge({name: name}, opts), function (err, proc) {
+                        if (err) throw new Error('err');
+                        if (proc.success === true) {
+                            cli.log.ok(name + ' ' + action + ' success');
+                        } else {
+                            //cli.log.warn(name + ' ' + action + ' not successfull');
+                        }
+                        cli.exit();
+                    });
+                });
+                break;
+            case "restart":
+                pm2action('restart', name);
+                break;
+            case "stop":
+                pm2action('stop', name);
+                break;
+            case "delete":
+                pm2action('delete', name);
+                break;
+            case "reload":
+                pm2action('reload', name);
+                break;
+            case "reload-gracefull":
+                pm2action('gracefulReload', name);
+                break;
+            case "describe":
+                pm2action('describe', name);
+                break;
+
+        }
+    }
+
+}
+
+            {% endhighlight %}
+
+
+
+
+
+</div>

@@ -171,7 +171,7 @@ navigation:
             
 
 <hr class="hr-top-margin">
-<h4 class="name" id="exec"><span class="type-signature small">&lt;static> </span>exec<span class="type-signature"></span></h4>
+<h4 class="name" id=".exec"><span class="type-signature small">&lt;static> </span>exec<span class="type-signature"></span></h4>
 
 
 
@@ -237,7 +237,7 @@ navigation:
 
     
     <hr class="hr-top-margin">
-    <h4 class="name font-yellow-gold" id="execSync"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;static> </span>execSync<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name font-yellow-gold" id=".execSync"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;static> </span>execSync<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
 
     
 
@@ -347,7 +347,7 @@ console.log('stdout + stderr ' + result.stdout);{% endhighlight %}
 
     
     <hr class="hr-top-margin">
-    <h4 class="name font-yellow-gold" id="inlineScript"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;static> </span>inlineScript<span class="signature">(script, <span class="optional">asyncCallback</span>)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    <h4 class="name font-yellow-gold" id=".inlineScript"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;static> </span>inlineScript<span class="signature">(script, <span class="optional">asyncCallback</span>)</span><span class="type-signature"> &rarr; {*}</span></h4>
 
     
 
@@ -546,21 +546,21 @@ console.log('stdout + stderr ' + result.stdout);{% endhighlight %}
     
     {% highlight javascript %}var result;
 
-result = radic.sh.inlineScript('echo "hai"\n\
-echo "bai" \n\
-echo "draai"');
-console.log(result.code);
-console.log(result.stdout);
+ result = radic.sh.inlineScript('echo "hai"\n\
+ echo "bai" \n\
+ echo "draai"');
+ console.log(result.code);
+ console.log(result.stdout);
 
 
-result = radic.sh.inlineScript(function(){/*
-       echo "hai"
-       echo "bai"
-       echo "draai"
-       #apt-cache search mono
+ result = radic.sh.inlineScript(function(){/*
+        echo "hai"
+        echo "bai"
+        echo "draai"
+        #apt-cache search mono
 \/});
-console.log(result.code);
-console.log(result.stdout);{% endhighlight %}
+ console.log(result.code);
+ console.log(result.stdout);{% endhighlight %}
 
 
 
@@ -570,7 +570,7 @@ console.log(result.stdout);{% endhighlight %}
 
     
     <hr class="hr-top-margin">
-    <h4 class="name font-yellow-gold" id="run"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;static> </span>run<span class="signature">(cmd, exitOnlyOnError)</span><span class="type-signature"> &rarr; {int}</span></h4>
+    <h4 class="name font-yellow-gold" id=".run"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;static> </span>run<span class="signature">(cmd, exitOnlyOnError)</span><span class="type-signature"> &rarr; {int}</span></h4>
 
     
 

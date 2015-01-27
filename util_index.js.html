@@ -89,20 +89,24 @@ navigation:
 
     
             {% highlight javascript %}
-            var app = require('../app'),
-    sh = require('../sh'),
-    _ = require('lodash'),
-    util = require('../util'),
-    config = app.config;
+            'use strict';
+var _util = require('util'),
+    path = require('path'),
+    os = require('os'),
+
+    fs = require('fs-extra'),
+    chalk = require('chalk'),
+    _ = require('lodash');
+
 /**
- * @param {cli} cli
+ * @namespace util
  */
-module.exports = function (cli, config) {
+var util = module.exports;
+_util._extend(util, _util);
 
-    cli.generateCommand('config', config);
-
-};
-
+_.extend(util, require('./general'));
+_.extend(util, require('./dotaccess'));
+util.requireDirectory = require('./require-directory');
 
             {% endhighlight %}
 
