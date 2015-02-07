@@ -12,6 +12,7 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     grunt.initConfig({
+        package: require('./package.json'),
         radic_jsdoc: {
             docs: {
                 options: {
@@ -47,8 +48,21 @@ module.exports = function (grunt) {
                     ['push', { u: 'origin' }, 'gh-pages']
                 ]
             }
-        }
+        },
+        changelog: {
+            sample: {
+                options: {
+                template: '{{date}}\n\n{{> features}}{{> fixes}}',
+                    partials: {
+                        features: '{{#each features}}{{> feature}}{{/each}}',
+                        feature: '[NEW] {{this}}\n',
+                        fixes: '{{#each fixes}}{{> fix}}{{/each}}',
+                        fix: '[FIX] {{this}}\n'
+                    }
+                }
 
+            }
+        }
     });
 
 
