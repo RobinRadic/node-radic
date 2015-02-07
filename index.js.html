@@ -111,8 +111,8 @@ var exec = require('child_process').exec,
 
 
 /**
- * @param path
- * @returns {*}
+ * @param {string} path - Relative path to a module in the `lib` or `node_modules` directory of this module
+ * @returns {require} module - The module that had been resolved at path
  */
 function radic(path) {
     try {
@@ -137,6 +137,7 @@ var mod = {
      * Utility functions. Extends the native nodejs utilities module.
      * @see {@link util}
      * @type util
+     * @memberOf radic
      */
     util: require('./util'),
 

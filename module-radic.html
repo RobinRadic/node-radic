@@ -174,7 +174,7 @@ navigation:
 
     
     <hr class="hr-top-margin">
-    <h4 class="name font-yellow-gold" id="~radic"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;inner> </span>radic<span class="signature">(path)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    <h4 class="name font-yellow-gold" id="~radic"><i class="fa fa-bolt font-red-thunderbird fa-lg">&nbsp;</i><span class="type-signature small">&lt;inner> </span>radic<span class="signature">(path)</span><span class="type-signature"> &rarr; {require}</span></h4>
 
     
 
@@ -222,13 +222,19 @@ navigation:
 
             <td class="type">
             
+                
+<span class="label bg-green-jungle label-sm">string</span></span>
+
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Relative path to a module in the <code>lib</code> or <code>node_modules</code> directory of this module</p></td>
         </tr>
 
     
@@ -290,6 +296,10 @@ navigation:
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <p>module - The module that had been resolved at path</p>
+</div>
+
 
 
 <dl>
@@ -298,7 +308,7 @@ navigation:
     </dt>
     <dd>
         
-<span class="label bg-grey-gallery label-sm">*</span></span>
+<span class="label bg-grey-gallery label-sm">require</span></span>
 
 
 
