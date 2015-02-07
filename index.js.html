@@ -129,7 +129,7 @@ function radic(path) {
 }
 
 
-var mod = {
+var mod = module.exports = {
     /** Application data */
     app: require('./app'),
 
@@ -233,7 +233,6 @@ var mod = {
 };
 
 require('util')._extend(radic, mod);
-module.exports = radic;
 
             {% endhighlight %}
 
