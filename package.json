@@ -66,13 +66,14 @@
     "open": "0.0.5",
     "plugin": "^0.3.2",
     "pm2": "^0.12.3",
-    "radic-handlebars": "^0.1.4",
     "schema-inspector": "^1.5.0",
     "semver": "^4.2.0",
     "sqlite3": "^3.0.4",
     "structr": "0.2.x",
     "temp": "~0.8.1",
-    "tq": "0.0.4"
+    "tmp": "0.0.24",
+    "tq": "0.0.4",
+    "underscore.string": "^3.0.2"
   },
   "devDependencies": {
     "chai": "^1.10.0",
