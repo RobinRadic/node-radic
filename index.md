@@ -30,6 +30,12 @@ navigation:
     children:
       - name: radic
         link: /node-radic/module-radic.html
+  - name: Externals
+    link: "#"
+    icon: fa fa-mortar-board
+    children:
+      - name: tmp
+        link: /node-radic/external-tmp.html
   - name: Classes
     link: "#"
     icon: fa fa-mortar-board

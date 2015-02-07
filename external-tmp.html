@@ -93,90 +93,116 @@ navigation:
 
 
 
+
+<section>
+
+<header>
+    <div class="portlet-title">
+        <div class="caption">
+            
+                <i class="fa fa-puzzle-piece fa-2x font-red-flamingo"></i>
+                <h2 class="caption-subject bold font-red-flamingo uppercase" style="display: inline-flex;">
+                    
+                        <span class="ancestors"><a href="module-radic.html">radic</a>~</span>
+                    
+                        tmp
+                    </h2>
+                    
+                </h2>
+            
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="container-overview">
     
-            {% highlight javascript %}
-            var _ = require('lodash'),
+        
+            <div class="description"><p>tmp export
+Not advisable to use, you should install it yourself</p></div>
+        
 
-    chalk = require('chalk');
-
-
-var general = module.exports = {
-    log: function () {
-        var args = _.toArray(arguments);
-        _.each(args, function (arg, i) {
-            if (typeof arg === 'string') {
-                if (i === 0) {
-                    args[i] = chalk.bold.green(arg);
-                } else {
-                    args[i] = chalk.yellow(arg);
-                }
-            } else if (typeof arg !== 'undefined') {
-                args[i] = this.inspect(arg, {showHidden: true, colors: true, depth: 5});
-            } else {
-                args[i] = chalk.bold.cyan(' else: ' + typeof arg);
-            }
-        }.bind(this));
-        console.log.apply(console, args);
-    },
-
-    /**
-     * Get the full path to the user home directory
-     *
-     * @memberOf util
-     * @returns {string} path - Path to the user home directory
-     */
-    getUserHomeDir: function () {
-        return process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
-    },
-
-    defined: function (val) {
-        return typeof val !== 'undefined';
-    },
+        
 
 
-    createExecString: function (cmd, args) {
-        //console.log('cmd', cmd, 'args', args);
-        _.forEach(args, function (arg, i) {
-            if (typeof arg === 'string') {
-                cmd += ' ' + JSON.stringify(arg);
-            } else if (typeof arg === 'number') {
-                cmd += ' ' + arg;
-            } else if (typeof arg === 'object') {
-                _.forEach(arg, function (opt, optk) {
-                    var dashes = '--'; // --orphan
-                    if(optk.length === 1){  // -m
-                        dashes = '-';
-                    }
-                    if (typeof opt === 'boolean') {
-                        cmd += ' ' + dashes + optk;
-                    } else {
-                        cmd += ' ' + dashes + optk + ' ' + JSON.stringify(opt);
-                    }
-                });
-            }
-        });
-        //console.log(cmd);
-        return cmd;
-    },
+<dl class="details">
 
-// util/string
-    ucfirst: function (str) {
+    
 
-        str += '';
-        var f = str.charAt(0)
-            .toUpperCase();
-        return f + str.substr(1);
-    },
+    
 
-// util/cli
-    getWindowWidthPercentage: function (percentage) {
-        var width = process.stdout.getWindowSize()[0] - 10;
-        return Math.floor((width / 100) * percentage);
-    }
-}
+    
 
-            {% endhighlight %}
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/raszi/node-tmp">https://github.com/raszi/node-tmp</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li>tmp</li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
