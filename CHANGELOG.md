@@ -1,0 +1,73 @@
+# Changelog
+
+
+
+- 2015-02-07[view](https://github.com/robinradic/node-radic/commit/28808083f7af9a05311376ea6a69ac826bbbef9b): 0.5.7  
+- 2015-02-07[view](https://github.com/robinradic/node-radic/commit/21fcc3ebeb4e1ba7169b701332bb3795669a9987): Synced bower version with upcomming npm version  
+- 2015-02-07[view](https://github.com/robinradic/node-radic/commit/c44b133175dd1b8ff14122c1399a13a1af81919d): new stuf  
+- 2015-02-07[view](https://github.com/robinradic/node-radic/commit/f7f134820216382f597c280c64a4ba86faa8517b): added net.openBrowser and some 3rd party module exports  
+- 2015-01-29[view](https://github.com/robinradic/node-radic/commit/ad4a0e77808bf73b1796935aa2bfe2e2b4bf4960): small fix  
+- 2015-01-27[view](https://github.com/robinradic/node-radic/commit/66dbbe4c1f1a3fcc7fd5140ef7146309bdf68f38): readme update  
+- 2015-01-27[view](https://github.com/robinradic/node-radic/commit/8fbe8aefd16e83a4b38c7b503559a42328aa4d8f): added handlebars to exports and put some jsdoc above it  
+- 2015-01-27[view](https://github.com/robinradic/node-radic/commit/c1cc1987d668d757df970f5d3c7c771efda1a872): new stuff  
+- 2015-01-27[view](https://github.com/robinradic/node-radic/commit/2628cebcf9e518512ce3c9fe8ae23174f0190518): added install  
+- 2015-01-27[view](https://github.com/robinradic/node-radic/commit/3e3e18813311c863f473f6c441960fb2d73f323a): new  
+- 2015-01-26[view](https://github.com/robinradic/node-radic/commit/ccbb1853603da18cdfcf42e347100a86e692fcc7): 0.5.6  
+- 2015-01-26[view](https://github.com/robinradic/node-radic/commit/4308a6701e23b0cf2bde904a3ed897f302a25952): Synced bower version with upcomming npm version  
+- 2015-01-26[view](https://github.com/robinradic/node-radic/commit/3b88d08be669756456c51f75a0a6154e93652e28): added bower and browserify  
+- 2015-01-25[view](https://github.com/robinradic/node-radic/commit/568e10853d1c81205fbce99fdda751a20930aaf9): 0.5.5  
+- 2015-01-25[view](https://github.com/robinradic/node-radic/commit/bb5768bd5cec78074b448b1193889e13f12cd68b): new stuff  
+- 2015-01-25[view](https://github.com/robinradic/node-radic/commit/91b85b0364b134d637dac8a7037b6dc992ef376c): changed radic into a require function and modified binwraps resonse  
+- 2015-01-25[view](https://github.com/robinradic/node-radic/commit/db21e8ee3b552471a11f79143ffdee9218a42682): travis.yml fix  
+- 2015-01-25[view](https://github.com/robinradic/node-radic/commit/32a5051053404807d4edaa0447253cce901f02ad): fixed dependency issue  
+- 2015-01-25[view](https://github.com/robinradic/node-radic/commit/dcfd704a90e633e4ba252ca14fe0a0a8b5dbb434): fixed model and db  
+- 2015-01-25[view](https://github.com/robinradic/node-radic/commit/72c1df15acb0b83cf78908f1f7d466f3e1834ce0): started with google  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/b32c7ab39240b6c4c94c9887431b3616941b3f74): 0.5.4  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/72a01bac4134258e4a006d53ad670455808b546b): cleanup srv  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/f69aeda9defe1ec6484a2099f013ad8fd51ef93b): gitignore update  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/e79dc8a2e8139dd430d6b92a99dbc50fdda73407): after remove ignore files  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/24584d111e90cd7cf6210168b05118c05333ff8b): 0.5.3  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/da8b2a45c6129efa2d7d7a8b6401fc091ab13138): pre-publish commit  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/d85abb10c4065216968498f83a5f1c2165b7baa8): cleaned up deprecated commands and stuff that has been implemented in generator instead  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/3276465c71d90f848ee0e238eee30b02949e3a1f): removed index.js from jsdoc.json  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/9fb8bf8118de17444818ef64c4bdd040a7872d82): added npmignore and did some cleaning  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/713e447144a41e87a1723122bdb945c03e4bac82): cli.writeln paramter now optional  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/b06ead9a6c41636caaaef80c8f903486436c47fe): git object should be a binwrap  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/ea8f2f9001d4b16e864a5c8e728296dc62d95121): pre-delete of commands  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/60fcfe920c6b34c7dcbf998ead5f7aed83f1739e): 0.5.2  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/ac2b78d82dcd0007879091d58a6ceace8b563703): removed console log from binwrap exec  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/a02cffa0d6fa471a4b3c5c6daa83843de4a84f5c): 0.5.1  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/3db116352e48bdabba5e773290f2caee31b8122e): prevent creating already created binwraps  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/3c8cfb6fca152a1d217d280e2501494f99fad5d2): added binwraps.create alias and made sure it returns the binwrap  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/920976bc602e219f11452562bfee8787568cb5cc): created initial sh test  
+- 2015-01-22[view](https://github.com/robinradic/node-radic/commit/f15f25c38fa08411e306af99b7009dd967ebdfca): small changes  
+- 2015-01-21[view](https://github.com/robinradic/node-radic/commit/059be49f20283c462ebc9634a96d370bf08676b8): 0.5.0  
+- 2015-01-21[view](https://github.com/robinradic/node-radic/commit/98c2640b351b5d95d2838ba0f2def4d3be700ea4): removed vboxmanage, added some doc, did some magic, etc  
+- 2015-01-21[view](https://github.com/robinradic/node-radic/commit/94f7e5948aecab32aac68ae9236b5c64e411f2fc): new stuff  
+- 2015-01-13[view](https://github.com/robinradic/node-radic/commit/990910d25c5c0613c4a761cad3dd330de7788417): added commands, resources, binwraps, services and made several improvements  
+- 2015-01-12[view](https://github.com/robinradic/node-radic/commit/8165c090a140e37da8408b2652fd368e8c0151c4): 0.4.2  
+- 2015-01-12[view](https://github.com/robinradic/node-radic/commit/ff3f70b91911c531caa716536c9f5b997e5aae68): package.json fix  
+- 2015-01-12[view](https://github.com/robinradic/node-radic/commit/970987a9204a8d1b7378e37d67a2742bb2b9bde9): 0.4.1  
+- 2015-01-12[view](https://github.com/robinradic/node-radic/commit/6bc14688c3151647164386aa55e3332fd12d4d2d): package update  
+- 2015-01-12[view](https://github.com/robinradic/node-radic/commit/6c4a4b7520f1879f89c368ea14ad93e99d342953): readme update  
+- 2015-01-12[view](https://github.com/robinradic/node-radic/commit/6d7ee687f9705d378ac35ff60719b75180982db7): readme modifications  
+- 2015-01-12[view](https://github.com/robinradic/node-radic/commit/5713591f9ff117435fc40119d2c542be04397d0f): 0.4.0  
+- 2015-01-12[view](https://github.com/robinradic/node-radic/commit/79785409b4a411a607f7886283e1af6d55c801c6): added inlinescript  
+- 2015-01-11[view](https://github.com/robinradic/node-radic/commit/b56820e59034072ea5d7a79f6d8c97b1d39bef15): added jsdoc  
+- 2015-01-06[view](https://github.com/robinradic/node-radic/commit/0cbb9b8c1ec94d627ae072ec85f3ddc2eb8febeb): added vboxmanage  
+- 2014-12-29[view](https://github.com/robinradic/node-radic/commit/b52d6bb4098daa703c3b7245f8cde6e3a94e3b76): added jsdoc comments  
+- 2014-12-29[view](https://github.com/robinradic/node-radic/commit/f80a3f34c709a0927d3d9a67f102f7d386747685): added some jsdoc comments  
+- 2014-12-29[view](https://github.com/robinradic/node-radic/commit/21a179fe242ec822c89c0754f38ab9f6a96d3065): 0.3.0  
+- 2014-12-29[view](https://github.com/robinradic/node-radic/commit/bd05c414ef0d1f0e4750c965e102daf105f0ab44): cleanup  
+- 2014-12-29[view](https://github.com/robinradic/node-radic/commit/ab5dda01ae2176201d241ea7275ccbb654a91e2c): coverage report changes  
+- 2014-12-29[view](https://github.com/robinradic/node-radic/commit/c7f21e9299e0dc9285d8ea91bf7de142eeaaa38e): 0.2.1  
+- 2014-12-29[view](https://github.com/robinradic/node-radic/commit/f15f7fa9500d9eb77be7807fdc2607ede8e5acb6): update repo url  
+- 2014-12-29[view](https://github.com/robinradic/node-radic/commit/07666e4f50b6a32551c682465dafe24b968a4c95): 0.2.0  
+- 2014-12-29[view](https://github.com/robinradic/node-radic/commit/59f2d8fdb97f9858a37dc1d71c242e12f927fc58): added cli module and util/db tests  
+- 2014-12-24[view](https://github.com/robinradic/node-radic/commit/74a7b1cd4cf5f3796cd5ec70c958e2e926aa194b): 0.1.3  
+- 2014-12-24[view](https://github.com/robinradic/node-radic/commit/66e162b06196a3f4742e55077e69a13fa61f292b): adjustments  
+- 2014-12-24[view](https://github.com/robinradic/node-radic/commit/eec23b1f2dc35c1613cec76a35f512c63986cdc3): 0.1.2  
+- 2014-12-24[view](https://github.com/robinradic/node-radic/commit/72921f4bd7e7a8312fbead953d1fd0614173c91a): adjustments  
+- 2014-12-24[view](https://github.com/robinradic/node-radic/commit/5d045133111bdd9af3810a2e6e499696ca46bc63): 0.1.1  
+- 2014-12-24[view](https://github.com/robinradic/node-radic/commit/4b48673bf2118668f6f9eed64c08ab6278a5671c): added exports for git and db  
+

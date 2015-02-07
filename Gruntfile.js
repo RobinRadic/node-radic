@@ -50,23 +50,32 @@ module.exports = function (grunt) {
             }
         },
         changelog: {
-            sample: {
+
+
+            make: {
                 options: {
-                template: '{{date}}\n\n{{> features}}{{> fixes}}',
+                    logArguments: [
+                        '--pretty=[%ad](https://github.com/robinradic/node-radic/commit/%H): %s',
+                        '--no-merges',
+                        '--date=short'
+                    ],
+                    dest: 'CHANGELOG.md',
+                    template: '\n\n{{> features}}',
+                    after: 'v0.1.0',
+                    fileHeader: '# Changelog',
+                    featureRegex: /^(.*)$/gim,
                     partials: {
-                        features: '{{#each features}}{{> feature}}{{/each}}',
-                        feature: '[NEW] {{this}}\n',
-                        fixes: '{{#each fixes}}{{> fix}}{{/each}}',
-                        fix: '[FIX] {{this}}\n'
+                        features: '{{#if features}}{{#each features}}{{> feature}}{{/each}}{{else}}{{> empty}}{{/if}}\n',
+                        feature: '- {{this}}  \n'
                     }
                 }
-
             }
+
         }
     });
 
 
-    grunt.registerTask('docs', ['radic_jsdoc:docs', 'radic_jsdoc_mdpages:docs',  'git:docs']);
+    grunt.registerTask('docs', ['radic_jsdoc:docs', 'radic_jsdoc_mdpages:docs', 'changelog:make', 'git:docs']);
 
     grunt.registerTask('default', []);
 
