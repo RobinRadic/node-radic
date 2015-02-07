@@ -2,6 +2,9 @@
 
 
 
+- [2015-02-08](https://github.com/robinradic/node-radic/commit/584a02003d6dd459972aef233e6e06ff731136cd): 0.5.8  
+- [2015-02-08](https://github.com/robinradic/node-radic/commit/7aa06344ebec3b66f680133f2043802ad1192079): pre-publish commit  
+- [2015-02-08](https://github.com/robinradic/node-radic/commit/db1cd9947a6d17e1978244742cd485770358fa73): Synced bower version with upcomming npm version  
 - [2015-02-08](https://github.com/robinradic/node-radic/commit/f2da7357747bd11019c2edf0f20c426b3a09d2ca): added changelog.md and grunt task  
 - [2015-02-07](https://github.com/robinradic/node-radic/commit/28808083f7af9a05311376ea6a69ac826bbbef9b): 0.5.7  
 - [2015-02-07](https://github.com/robinradic/node-radic/commit/21fcc3ebeb4e1ba7169b701332bb3795669a9987): Synced bower version with upcomming npm version  
