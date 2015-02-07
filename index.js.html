@@ -114,7 +114,7 @@ var exec = require('child_process').exec,
  * @param {string} path - Relative path to a module in the `lib` or `node_modules` directory of this module
  * @returns {require} module - The module that had been resolved at path
  */
-var radic =  module.exports = function radic(path) {
+var radic = function radic(path) {
     try {
         return require('./' + path);
     }
@@ -143,6 +143,7 @@ radic.util = require('./util');
  */
 radic.binwraps = require('./binwraps');
 
+module.exports = radic;
 
 var mod = {
     /** Application data */
