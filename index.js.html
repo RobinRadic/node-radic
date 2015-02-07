@@ -140,8 +140,26 @@ radic.util = require('./util');
  * Command wrapper. Wraps terminal commands.
  * @see {@link binwraps}
  * @type binwraps
+ * @static
  */
 radic.binwraps = require('./binwraps');
+
+/**
+ * Git tools
+ * @see {@link git}
+ * @static
+ * @memberOf radic
+ */
+radic.git = require('./git');
+
+/**
+ * Google api tools
+ * @see {@link google}
+ * @type google
+ */
+radic.google = require('./google');
+
+radic.sh = require('./sh');
 
 module.exports = radic;
 
@@ -247,8 +265,6 @@ var mod = {
      */
     async: require('async')
 };
-
-require('util')._extend(radic, mod);
 
             {% endhighlight %}
 
