@@ -75,8 +75,8 @@ module.exports = function (grunt) {
     });
 
 
-    grunt.registerTask('docs', ['radic_jsdoc:docs', 'radic_jsdoc_mdpages:docs', 'changelog:make', 'git:docs']);
+    grunt.registerTask('docs', ['radic_jsdoc:docs', 'radic_jsdoc_mdpages:docs', 'git:docs']);
 
-    grunt.registerTask('default', []);
+    grunt.registerTask('version:patch', ['changelog:make', 'docs', 'publish:patch']);
 
 };
